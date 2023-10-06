@@ -145,7 +145,7 @@ export default defineComponent({
                 return
             }
 
-            const addedArticle = new Article(
+            const newArticle = new Article(
                 enteredValues.id,
                 enteredValues.img,
                 enteredValues.title,
@@ -155,7 +155,7 @@ export default defineComponent({
             );
 
             if (addArticle) {
-                addArticle(addedArticle);
+                addArticle(newArticle);
             }
         };
 

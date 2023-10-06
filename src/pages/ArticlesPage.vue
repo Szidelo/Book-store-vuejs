@@ -66,8 +66,6 @@ export default defineComponent({
             return "article" + (articles.length + 1).toString();
         };
 
-        createArticleDate();
-
         const addArticle = (article: Article) => {
             article.id = createArticleId();
 

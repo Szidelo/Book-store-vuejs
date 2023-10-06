@@ -13,11 +13,15 @@
         class="container-fluid d-flex flex-column align-items-center py-5 px-1 bg-light">
         <article-list :articles="articles"></article-list>
         <div>
-            <base-button @click="toggleForm" class="btn-yellow btn-lg">
+            <base-button
+                @click="toggleForm"
+                class="btn-yellow btn-lg">
                 Add New Article
             </base-button>
         </div>
-        <add-article @close="toggleForm" v-if="isFormVisible"></add-article>
+        <add-article
+            @close="toggleForm"
+            v-if="isFormVisible"></add-article>
     </section>
 </template>
 
@@ -31,32 +35,51 @@ import Article from "@/classes/Article";
 export default defineComponent({
     components: {
         ArticleList,
-        AddArticle
+        AddArticle,
     },
 
     setup() {
         const articles = inject("articles") as ListOfArticles;
 
-        let isFormVisible = ref(false)
+        let isFormVisible = ref(false);
 
-        
         const toggleForm = () => {
-            isFormVisible.value = !isFormVisible.value
-        }
+            isFormVisible.value = !isFormVisible.value;
+        };
 
         const saveArticlesToLocalStore = (articles: ListOfArticles) => {
-            localStorage.setItem('articles', JSON.stringify(articles))
-        }
+            localStorage.setItem("articles", JSON.stringify(articles));
+        };
+
+        const createArticleDate = () => {
+            let result: string;
+            let today = new Date();
+            let dd = String(today.getDate()).padStart(2, "0");
+            let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+            let yyyy = today.getFullYear();
+
+            result = dd + "." + mm + "." + yyyy;
+
+            return result;
+        };
+
+        const createArticleId = () => {
+            return "article" + (articles.length + 1).toString();
+        };
+
+        createArticleDate();
 
         const addArticle = (article: Article) => {
+            article.id = createArticleId();
 
-            articles.push(article)
-            saveArticlesToLocalStore(articles)
-            toggleForm()
+            article.date = createArticleDate();
 
-        }
+            articles.push(article);
+            saveArticlesToLocalStore(articles);
+            toggleForm();
+        };
 
-        provide('addArticle', addArticle)
+        provide("addArticle", addArticle);
 
         return { articles, isFormVisible, toggleForm };
     },

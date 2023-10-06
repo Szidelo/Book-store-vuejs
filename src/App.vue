@@ -25,16 +25,14 @@ export default defineComponent({
     },
 
     setup() {
-        const articles = ref<ListOfArticles>([
-
-        ]);
+        const articles = ref<ListOfArticles>([]);
 
         const localStorageArticles = JSON.parse(localStorage.getItem('articles') || '[]') as ListOfArticles;
 
         if (localStorageArticles.length > 0) {
             articles.value = [...localStorageArticles];
         } else {
-            // Use the hardcoded articles if not found in localStorage
+            
             articles.value = [
             new Article(
                 "article1",
@@ -110,7 +108,6 @@ export default defineComponent({
             ),
             ];
             
-            // Save the hardcoded articles to localStorage
             localStorage.setItem('articles', JSON.stringify(articles.value));
         }
 

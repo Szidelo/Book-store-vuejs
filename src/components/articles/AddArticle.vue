@@ -111,19 +111,22 @@
 <script lang="ts">
 import Article from "@/classes/Article";
 import ArticleData from "@/types/ArticleType";
-import { defineComponent, inject, reactive } from "vue";
+import { defineComponent, inject, reactive} from "vue";
 export default defineComponent({
     setup() {
-        const enteredValues = reactive<ArticleData>({
-            id: 'id',
-            img: '',
-            title: '',
-            description: '',
-            date: 'some date',
-            category: ''
-        })
 
-        const addArticle = inject<((article: Article) => void) | undefined>('addArticle')
+        const enteredValues = reactive<ArticleData>({
+            id: "",
+            img: "",
+            title: "",
+            description: "",
+            date: "some date",
+            category: "",
+        });
+
+        const addArticle = inject<((article: Article) => void) | undefined>(
+            "addArticle"
+        );
 
         const submitData = () => {
             const addedArticle = new Article(
@@ -133,15 +136,14 @@ export default defineComponent({
                 enteredValues.description,
                 enteredValues.date,
                 enteredValues.category
-            )
+            );
 
             if (addArticle) {
-                addArticle(addedArticle)
+                addArticle(addedArticle);
             }
-        }
+        };
 
-
-        return {enteredValues, submitData}
+        return { enteredValues, submitData };
     },
 });
 </script>

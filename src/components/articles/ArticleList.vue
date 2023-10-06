@@ -17,9 +17,11 @@
                     </div>
                     <div
                         class="d-flex flex-column justify-content-between h-100">
-                        <p>{{ article.description }}</p>
+                        <div class="overflow-hidden card__body-description">
+                            <p>{{ article.description }}</p>
+                        </div>
                         <div class="d-flex justify-content-between">
-                            <router-link to="/">
+                            <router-link :to="'/articles/' + article.id">
                                 <base-button class="btn-link"
                                     >Readmore</base-button
                                 >
@@ -36,7 +38,7 @@
 <script lang="ts">
 import ListOfArticles from "@/types/ListOfArticles";
 
-import { defineComponent, PropType } from "vue";
+import { defineComponent, PropType} from "vue";
 export default defineComponent({
     props: {
         articles: {
@@ -44,6 +46,7 @@ export default defineComponent({
             required: true,
         },
     },
+
 });
 </script>
 
@@ -80,5 +83,9 @@ img:hover {
 
 .card__body-header {
     min-height: 100px;
+}
+
+.card__body-description {
+    max-height: 100px;
 }
 </style>

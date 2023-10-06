@@ -97,7 +97,7 @@
                     v-model="enteredValues.description"></textarea>
             </div>
             <div>
-                <!-- <strong v-if="!isValid">Please Fill Out All Fields</strong> -->
+                <strong v-if="!isValid">Please Fill Out All Fields</strong>
             </div>
             <div class="pt-4">
                 <base-button class="btn-yellow btn-xxl"
@@ -111,9 +111,10 @@
 <script lang="ts">
 import Article from "@/classes/Article";
 import ArticleData from "@/types/ArticleType";
-import { defineComponent, inject, reactive} from "vue";
+import { defineComponent, inject, reactive, ref} from "vue";
 export default defineComponent({
     setup() {
+        const isValid = ref(true)
 
         const enteredValues = reactive<ArticleData>({
             id: "",
@@ -128,7 +129,22 @@ export default defineComponent({
             "addArticle"
         );
 
+        const validateForm = () => {
+            if(enteredValues.title === '' || enteredValues.img === '' || enteredValues.category === '' || enteredValues.description === '') {
+                return isValid.value = false
+            }
+
+            return isValid.value = true
+        }
+
         const submitData = () => {
+
+            validateForm()
+
+            if(!isValid.value) {
+                return
+            }
+
             const addedArticle = new Article(
                 enteredValues.id,
                 enteredValues.img,
@@ -143,7 +159,7 @@ export default defineComponent({
             }
         };
 
-        return { enteredValues, submitData };
+        return { enteredValues, submitData, isValid };
     },
 });
 </script>

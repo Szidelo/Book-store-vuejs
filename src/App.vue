@@ -13,7 +13,7 @@ import ArticleImg6 from "./assets/article-images/article6-img.png";
 import ArticleImg7 from "./assets/article-images/article7-img.png";
 import ArticleImg8 from "./assets/article-images/article8-img.png";
 import ArticleImg9 from "./assets/article-images/article9-img.png";
-import { defineComponent, ref, provide, computed, onMounted } from "vue";
+import { defineComponent, ref, provide } from "vue";
 import Article from "./classes/Article";
 import ListOfArticles from "./types/ListOfArticles";
 import TheNav from "./components//layouts/TheNav.vue";

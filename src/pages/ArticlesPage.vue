@@ -30,7 +30,6 @@ import AddArticle from "@/components/articles/AddArticle.vue";
 import ArticleList from "../components/articles/ArticleList.vue";
 import ListOfArticles from "@/types/ListOfArticles";
 import { defineComponent, inject, ref, provide } from "vue";
-import ArticleData from "@/types/ArticleType";
 import Article from "@/classes/Article";
 export default defineComponent({
     components: {

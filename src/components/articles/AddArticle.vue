@@ -27,7 +27,7 @@
                     name="title"
                     id="title"
                     placeholder="Article title"
-                    ref="titleInput" />
+                    v-model="enteredValues.title" />
             </div>
             <div class="inputs">
                 <svg
@@ -49,7 +49,7 @@
                     name="article-category"
                     id="article-category"
                     placeholder="Article category"
-                    ref="categoryInput" />
+                    v-model="enteredValues.category" />
             </div>
             <div class="inputs">
                 <svg
@@ -71,7 +71,7 @@
                     name="article-img"
                     id="article-img"
                     placeholder="Article image Url"
-                    ref="imgInput" />
+                    v-model="enteredValues.img" />
             </div>
             <div class="inputs">
                 <svg
@@ -94,7 +94,7 @@
                     cols="30"
                     rows="5"
                     placeholder="Article info"
-                    ref="descriptionInput"></textarea>
+                    v-model="enteredValues.description"></textarea>
             </div>
             <div>
                 <!-- <strong v-if="!isValid">Please Fill Out All Fields</strong> -->
@@ -109,14 +109,39 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import Article from "@/classes/Article";
+import ArticleData from "@/types/ArticleType";
+import { defineComponent, inject, reactive } from "vue";
 export default defineComponent({
     setup() {
-        function submitData() {
-            console.log("submit");
+        const enteredValues = reactive<ArticleData>({
+            id: 'id',
+            img: '',
+            title: '',
+            description: '',
+            date: 'some date',
+            category: ''
+        })
+
+        const addArticle = inject<((article: Article) => void) | undefined>('addArticle')
+
+        const submitData = () => {
+            const addedArticle = new Article(
+                enteredValues.id,
+                enteredValues.img,
+                enteredValues.title,
+                enteredValues.description,
+                enteredValues.date,
+                enteredValues.category
+            )
+
+            if (addArticle) {
+                addArticle(addedArticle)
+            }
         }
 
-        return { submitData };
+
+        return {enteredValues, submitData}
     },
 });
 </script>

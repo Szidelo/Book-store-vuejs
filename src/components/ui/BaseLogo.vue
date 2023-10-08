@@ -11,19 +11,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-export default defineComponent({
-    
-})
+import { defineComponent } from "vue";
+export default defineComponent({});
 </script>
 
 <style scoped>
-    h5 {
-        color: var(--color-white);
-        font-family: Inter;
-        font-size: 28px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 35px;
-    }
+h5 {
+    color: var(--color-white);
+    font-family: Inter;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 35px;
+}
 </style>

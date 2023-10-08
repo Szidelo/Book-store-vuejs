@@ -46,7 +46,8 @@ export default defineComponent({
             isFormVisible.value = !isFormVisible.value;
         };
 
-        const saveNewArticleToLocalStorage = (articles: ListOfArticles) => { // Poate o clasa statica ManageLocalStorage cu o metoda addToLocalStorage ?
+        const saveNewArticleToLocalStorage = (articles: ListOfArticles) => {
+            // Poate o clasa statica ManageLocalStorage cu o metoda addToLocalStorage ?
             localStorage.setItem("articles", JSON.stringify(articles));
         };
 

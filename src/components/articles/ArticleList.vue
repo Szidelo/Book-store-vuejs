@@ -38,7 +38,7 @@
 <script lang="ts">
 import ListOfArticles from "@/types/ListOfArticles";
 
-import { defineComponent, PropType} from "vue";
+import { defineComponent, PropType } from "vue";
 export default defineComponent({
     props: {
         articles: {
@@ -46,7 +46,6 @@ export default defineComponent({
             required: true,
         },
     },
-
 });
 </script>
 

@@ -1,10 +1,10 @@
 interface ArticleData {
-    id: string,
-    img: string,
-    title: string,
-    description: string,
-    date: string,
-    category: string
+    id: string;
+    img: string;
+    title: string;
+    description: string;
+    date: string;
+    category: string;
 }
 
-export default ArticleData
+export default ArticleData;

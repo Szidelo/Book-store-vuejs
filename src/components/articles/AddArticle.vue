@@ -111,10 +111,10 @@
 <script lang="ts">
 import Article from "@/classes/Article";
 import ArticleData from "@/types/ArticleType";
-import { defineComponent, inject, reactive, ref} from "vue";
+import { defineComponent, inject, reactive, ref } from "vue";
 export default defineComponent({
     setup() {
-        const isValid = ref(true)
+        const isValid = ref(true);
 
         const enteredValues = reactive<ArticleData>({
             id: "",
@@ -130,19 +130,23 @@ export default defineComponent({
         );
 
         const validateForm = () => {
-            if(enteredValues.title === '' || enteredValues.img === '' || enteredValues.category === '' || enteredValues.description === '') {
-                return isValid.value = false
+            if (
+                enteredValues.title === "" ||
+                enteredValues.img === "" ||
+                enteredValues.category === "" ||
+                enteredValues.description === ""
+            ) {
+                return (isValid.value = false);
             }
 
-            return isValid.value = true
-        }
+            return (isValid.value = true);
+        };
 
         const submitData = () => {
+            validateForm();
 
-            validateForm()
-
-            if(!isValid.value) {
-                return
+            if (!isValid.value) {
+                return;
             }
 
             const newArticle = new Article(

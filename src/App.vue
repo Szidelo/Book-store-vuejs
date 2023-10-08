@@ -30,8 +30,8 @@ export default defineComponent({
         const localStorageArticles = JSON.parse(localStorage.getItem('articles') || '[]') as ListOfArticles;
 
         if (localStorageArticles.length > 0) {
-            articles.value = [...localStorageArticles];
-        } else {
+            articles.value = [...localStorageArticles]; //daca exista articole salvate in localstorage, variabila articles va avea ca valoare o copie dupa array-ul 'articles' din localstorage
+        } else { // daca localstorage e gol, articles va avea ca valoare articolele hardcodate dupa care for fi salvate si in localstorage
             
             articles.value = [
             new Article(
@@ -111,7 +111,7 @@ export default defineComponent({
             localStorage.setItem('articles', JSON.stringify(articles.value));
         }
 
-        provide("articles", articles.value);
+        provide("articles", articles.value); // inject in ArticlesPage
 
         return { articles };
     },

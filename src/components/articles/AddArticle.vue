@@ -121,7 +121,7 @@ export default defineComponent({
             img: "",
             title: "",
             description: "",
-            date: "some date",
+            date: "",
             category: "",
         });
 

@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import AddArticle from "@/components/articles/AddArticle.vue";
+import AddArticle from "../components/articles/AddArticle.vue";
 import ArticleList from "../components/articles/ArticleList.vue";
 import ListOfArticles from "@/types/ListOfArticles";
 import { defineComponent, inject, ref, provide } from "vue";
@@ -46,11 +46,11 @@ export default defineComponent({
             isFormVisible.value = !isFormVisible.value;
         };
 
-        const saveArticlesToLocalStore = (articles: ListOfArticles) => {
+        const saveNewArticleToLocalStorage = (articles: ListOfArticles) => { // Poate o clasa statica ManageLocalStorage cu o metoda addToLocalStorage ?
             localStorage.setItem("articles", JSON.stringify(articles));
         };
 
-        const createArticleDate = () => {
+        const getCurrentDate = () => {
             let result: string;
             let today = new Date();
             let dd = String(today.getDate()).padStart(2, "0");
@@ -69,14 +69,14 @@ export default defineComponent({
         const addArticle = (article: Article) => {
             article.id = createArticleId();
 
-            article.date = createArticleDate();
+            article.date = getCurrentDate();
 
-            articles.push(article);
-            saveArticlesToLocalStore(articles);
+            articles.push(article); //<-------------- Modific articles de aici fiind injected? & Posibil o clasa care sa aibe ca propeitate lista de articole si o metoda addNewArticle?
+            saveNewArticleToLocalStorage(articles);
             toggleForm();
         };
 
-        provide("addArticle", addArticle);
+        provide("addArticle", addArticle); // injected in AddArticle.vue
 
         return { articles, isFormVisible, toggleForm };
     },

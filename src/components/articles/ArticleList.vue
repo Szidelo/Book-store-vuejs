@@ -42,7 +42,8 @@
     </div>
     <add-article
         @close="toggleForm"
-        v-if="isFormVisible"></add-article>
+        v-if="isFormVisible">
+    </add-article>
 </template>
 
 <script lang="ts">
@@ -58,7 +59,8 @@ import ArticleImg9 from "../../assets/article-images/article9-img.png";
 import ListOfArticles from "@/types/ListOfArticles";
 import AddArticle from "./AddArticle.vue";
 import Article from "@/classes/Article";
-import { useStorage } from '../../composables/useStorage'
+import { useStorage } from "../../composables/useStorage";
+import {setStorage} from '../../composables/setIStorage'
 import { defineComponent, onMounted, ref, provide } from "vue";
 export default defineComponent({
     components: {
@@ -70,15 +72,15 @@ export default defineComponent({
 
         const isFormVisible = ref(false);
 
-        // const localStorageArticles = JSON.parse(
-        //     localStorage.getItem("articles") || "[]"
-        // ) as ListOfArticles;
-
-        const localStorageArticles = useStorage('articles')
+        const localStorageArticles = useStorage("articles");
 
         const toggleForm = () => {
             return (isFormVisible.value = !isFormVisible.value);
         };
+
+        const saveToLocalStorage = () => {
+            setStorage('articles', articles.value)
+        }
 
         const manageLocalStorage = () => {
             if (localStorageArticles.value.length > 0) {
@@ -159,17 +161,8 @@ export default defineComponent({
                     ),
                 ];
 
-                localStorage.setItem(
-                    "articles",
-                    JSON.stringify(articles.value)
-                );
+                saveToLocalStorage()
             }
-
- 
-        };
-
-        const saveToLocalStorage = () => {
-            localStorage.setItem("articles", JSON.stringify(articles.value));
         };
 
         const getCurrentDate = () => {
@@ -195,7 +188,7 @@ export default defineComponent({
 
             articles.value.push(newArticle);
             saveToLocalStorage();
-            toggleForm()
+            toggleForm();
         };
 
         provide("addArticle", addArticle); // injected in AddArticle.vue
@@ -203,7 +196,6 @@ export default defineComponent({
         onMounted(() => {
             manageLocalStorage();
         });
-
         return { articles, toggleForm, isFormVisible };
     },
 });
@@ -248,4 +240,3 @@ img:hover {
     max-height: 100px;
 }
 </style>
-../../composables/useStorage

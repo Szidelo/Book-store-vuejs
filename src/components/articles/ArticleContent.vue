@@ -36,15 +36,15 @@
 <script lang="ts">
 import ArticleData from "@/types/ArticleType";
 import ListOfArticles from "@/types/ListOfArticles";
-import { defineComponent, inject, reactive } from "vue";
+import { defineComponent, reactive } from "vue";
 import { useRoute } from "vue-router";
 export default defineComponent({
     setup() {
-        const articles = inject("articles") as ListOfArticles;
+        const articles = JSON.parse(
+            localStorage.getItem("articles") || "[]"
+        ) as ListOfArticles;
 
         const route = useRoute();
-
-        console.log(route.params.articleId);
 
         let currentArticle = reactive<ArticleData>({
             id: "",
@@ -56,11 +56,11 @@ export default defineComponent({
         });
 
         function findArticle() {
-            const foundArticle = articles.filter((article) => {
+            const foundArticles = articles.filter((article) => {
                 return article.id === route.params.articleId;
             });
 
-            return (currentArticle = { ...foundArticle[0] });
+            return (currentArticle = { ...foundArticles[0] });
         }
 
         findArticle();

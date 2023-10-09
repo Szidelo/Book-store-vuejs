@@ -11,75 +11,17 @@
 
     <section
         class="container-fluid d-flex flex-column align-items-center py-5 px-1 bg-light">
-        <article-list :articles="articles"></article-list>
-        <div>
-            <base-button
-                @click="toggleForm"
-                class="btn-yellow btn-lg">
-                Add New Article
-            </base-button>
-        </div>
-        <add-article
-            @close="toggleForm"
-            v-if="isFormVisible"></add-article>
+        <article-list></article-list>
     </section>
 </template>
 
 <script lang="ts">
-import AddArticle from "../components/articles/AddArticle.vue";
 import ArticleList from "../components/articles/ArticleList.vue";
-import ListOfArticles from "@/types/ListOfArticles";
-import { defineComponent, inject, ref, provide } from "vue";
-import Article from "@/classes/Article";
+import { defineComponent } from "vue";
 export default defineComponent({
     components: {
         ArticleList,
-        AddArticle,
     },
 
-    setup() {
-        const articles = inject("articles") as ListOfArticles;
-
-        let isFormVisible = ref(false);
-
-        const toggleForm = () => {
-            isFormVisible.value = !isFormVisible.value;
-        };
-
-        const saveNewArticleToLocalStorage = (articles: ListOfArticles) => {
-            // Poate o clasa statica ManageLocalStorage cu o metoda addToLocalStorage ?
-            localStorage.setItem("articles", JSON.stringify(articles));
-        };
-
-        const getCurrentDate = () => {
-            let result: string;
-            let today = new Date();
-            let dd = String(today.getDate()).padStart(2, "0");
-            let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-            let yyyy = today.getFullYear();
-
-            result = dd + "." + mm + "." + yyyy;
-
-            return result;
-        };
-
-        const createArticleId = () => {
-            return "article" + (articles.length + 1).toString();
-        };
-
-        const addArticle = (article: Article) => {
-            article.id = createArticleId();
-
-            article.date = getCurrentDate();
-
-            articles.push(article); //<-------------- Modific articles de aici fiind injected? & Posibil o clasa care sa aibe ca propeitate lista de articole si o metoda addNewArticle?
-            saveNewArticleToLocalStorage(articles);
-            toggleForm();
-        };
-
-        provide("addArticle", addArticle); // injected in AddArticle.vue
-
-        return { articles, isFormVisible, toggleForm };
-    },
 });
 </script>

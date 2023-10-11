@@ -3,7 +3,7 @@
         <a href="">
             <img
                 class="mb-2"
-                src="../../assets/Logo.png"
+                :src="logo"
                 alt="" />
         </a>
         <h5>Pages</h5>
@@ -12,7 +12,14 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-export default defineComponent({});
+import Logo from "../../assets/logo.png";
+export default defineComponent({
+    setup() {
+        const logo = Logo;
+
+        return {logo}
+    }
+});
 </script>
 
 <style scoped>

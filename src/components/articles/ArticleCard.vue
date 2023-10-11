@@ -1,0 +1,84 @@
+<template>
+	<div
+		v-for="article in articles"
+		:key="article.id"
+		class="col-12 col-lg-6 col-xxl-4 p-4"
+	>
+		<div class="card mb-4">
+			<div class="card__img-container">
+				<img :src="article.img" alt="" />
+			</div>
+			<div
+				class="card-body d-flex flex-column justify-content-between h-100 p-3"
+			>
+				<div class="card__body-header">
+					<h5 class="color-bue py-3">{{ article.title }}</h5>
+				</div>
+				<div class="d-flex flex-column justify-content-between h-100">
+					<div class="overflow-hidden card__body-description">
+						<p>{{ article.description }}</p>
+					</div>
+					<div class="d-flex justify-content-between">
+						<router-link :to="'/articles/' + article.id">
+							<base-button class="btn-link">Readmore</base-button>
+						</router-link>
+						<h6>{{ article.date }}</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script lang="ts">
+import ListOfArticles from "@/types/ListOfArticles";
+import { defineComponent, PropType } from "vue";
+export default defineComponent({
+	props: {
+		articles: {
+			type: Object as PropType<ListOfArticles>,
+            required: true
+		},
+	},
+});
+</script>
+
+<style scoped>
+.card {
+    border: none;
+    width: 100%;
+    height: 100%;
+    max-height: 580px;
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card__img-container {
+    width: 100%;
+    height: 100%;
+    max-height: 380px;
+    overflow: hidden;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: var(--transition);
+}
+
+img:hover {
+    transform: scale(1.03);
+}
+
+.card__body-header {
+    min-height: 100px;
+}
+
+.card__body-description {
+    max-height: 100px;
+}
+</style>

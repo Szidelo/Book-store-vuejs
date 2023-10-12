@@ -1,6 +1,9 @@
 <template>
-    
-	<div v-for="product in products" :key="product.id" class="col-12 col-lg-6 col-xxl-4 p-4">
+	<div
+		v-for="product in products"
+		:key="product.id"
+		class="col-12 col-lg-6 col-xxl-4 p-4"
+	>
 		<div class="card mb-4">
 			<div class="card__img-container">
 				<img class="img-fluid" :src="product.img" alt="" />
@@ -35,7 +38,7 @@
 					<h5 class="color-blue py-3">{{ product.format }}</h5>
 				</div>
 				<div>
-					<router-link to="/store">
+					<router-link :to="'/store/' + product.id">
 						<base-button class="btn-white btn-sm">Order Now</base-button>
 					</router-link>
 				</div>
@@ -45,15 +48,15 @@
 </template>
 
 <script lang="ts">
-import ListOfProducts from '../../types/ListOfProducts'
+import ListOfProducts from "../../types/ListOfProducts";
 import { defineComponent, PropType } from "vue";
 export default defineComponent({
-    props: {
-        products: {
-            type: Object as PropType<ListOfProducts>,
-            required: true
-        }
-    }
+	props: {
+		products: {
+			type: Object as PropType<ListOfProducts>,
+			required: true,
+		},
+	},
 });
 </script>
 

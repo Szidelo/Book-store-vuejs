@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import ArticlesPage from "./pages/ArticlesPage.vue";
 import StorePage from "./pages/StorePage.vue";
 import ArticleContent from "./components/articles/ArticleContent.vue";
+import ProductContent from "./components/store/ProductContent.vue";
 
 const routes = [
     {
@@ -20,6 +21,10 @@ const routes = [
         path: "/articles/:articleId",
         component: ArticleContent,
     },
+    {
+        path: "/store/:productId",
+        component: ProductContent
+    }
 ];
 const router = createRouter({
     history: createWebHistory(),

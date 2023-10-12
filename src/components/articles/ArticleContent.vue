@@ -55,7 +55,7 @@ export default defineComponent({
             category: "",
         });
 
-        function findArticle() {
+        const findArticle = () => {
             const foundArticles = articles.filter((article) => {
                 return article.id === route.params.articleId;
             });

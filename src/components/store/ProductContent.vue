@@ -46,13 +46,15 @@
 <script lang="ts">
 import Product from "@/classes/Product";
 import { useRoute } from "vue-router";
-import { defineComponent, ref, reactive } from "vue";
+import { defineComponent, ref, reactive, inject } from "vue";
 import ListOfProducts from "@/types/ListOfProducts";
 export default defineComponent({
 	setup() {
 		const products = JSON.parse(
 			localStorage.getItem("products") || "[]"
 		) as ListOfProducts;
+
+		const orderedProducts = inject('orderedProducts') as ListOfProducts;
 
 		const productIsAdded = ref<boolean>(false);
 
@@ -89,7 +91,9 @@ export default defineComponent({
 				quantity: enteredNumberOfProducts.value,
 			};
 
-            console.log(product);
+			orderedProducts.push(product);
+
+            console.log(orderedProducts);
 
 			return (productIsAdded.value = true);
 		};

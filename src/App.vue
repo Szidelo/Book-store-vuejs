@@ -1,17 +1,24 @@
 <template>
-    <TheNav />
-    <RouterView />
+	<TheNav />
+	<RouterView />
 </template>
 
 <script lang="ts">
-import { defineComponent, } from "vue";
+import { defineComponent, ref, provide} from "vue";
 import TheNav from "./components//layouts/TheNav.vue";
+import ListOfProducts from "./types/ListOfProducts";
 
 export default defineComponent({
-    name: "App",
-    components: {
-        TheNav,
-    },
+	name: "App",
+	components: {
+		TheNav,
+	},
+
+	setup() {
+		const orderedProducts = ref<ListOfProducts>([])
+
+		provide('orderedProducts', orderedProducts.value)
+	}
 });
 </script>
 
@@ -20,62 +27,62 @@ export default defineComponent({
 @import url("https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap");
 
 :root {
-    --color-blue: #1b3764;
-    --color-yellow: #ffca42;
-    --color-light: #f6f8fc;
-    --color-white: #fff;
-    --color-paragraph: #969aa0;
-    --color-grayish-blue: #f4f8ff;
+	--color-blue: #1b3764;
+	--color-yellow: #ffca42;
+	--color-light: #f6f8fc;
+	--color-white: #fff;
+	--color-paragraph: #969aa0;
+	--color-grayish-blue: #f4f8ff;
 
-    --transition: all 0.3s ease;
+	--transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 .container {
-    max-width: 1540px !important;
+	max-width: 1540px !important;
 }
 
 main {
-    min-height: 100vh;
+	min-height: 100vh;
 }
 
 .color-blue {
-    color: var(--color-blue);
+	color: var(--color-blue);
 }
 
 .color-yellow {
-    color: var(--color-yellow);
+	color: var(--color-yellow);
 }
 
 .color-light {
-    color: var(--color-light);
+	color: var(--color-light);
 }
 
 .color-white {
-    color: var(--color-white);
+	color: var(--color-white);
 }
 
 .bg-blue {
-    background-color: var(--color-blue);
+	background-color: var(--color-blue);
 }
 
 .bg-yellow {
-    background-color: var(--color-yellow);
+	background-color: var(--color-yellow);
 }
 
 .bg-light {
-    background-color: var(--color-light);
+	background-color: var(--color-light);
 }
 
 .bg-white {
-    background-color: var(--color-white);
+	background-color: var(--color-white);
 }
 
 .bg-grayish-blue {
-    background-color: var(--color-grayish-blue);
+	background-color: var(--color-grayish-blue);
 }
 
 h1,
@@ -84,54 +91,54 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: Cardo;
-    font-weight: 700;
+	font-family: Cardo;
+	font-weight: 700;
 }
 
 h1 {
-    font-size: 65px;
-    line-height: 84.5px;
-    letter-spacing: -0.975px;
+	font-size: 65px;
+	line-height: 84.5px;
+	letter-spacing: -0.975px;
 }
 
 h2 {
-    font-size: 55px;
-    line-height: 71.5px;
-    letter-spacing: -0.825px;
+	font-size: 55px;
+	line-height: 71.5px;
+	letter-spacing: -0.825px;
 }
 
 h3 {
-    font-size: 45px;
-    line-height: 58.5px;
-    letter-spacing: -0.675px;
+	font-size: 45px;
+	line-height: 58.5px;
+	letter-spacing: -0.675px;
 }
 
 h4 {
-    font-size: 32px;
-    line-height: 41.6px;
-    letter-spacing: -0.48px;
+	font-size: 32px;
+	line-height: 41.6px;
+	letter-spacing: -0.48px;
 }
 
 h5 {
-    font-size: 24px;
-    line-height: 31.2px;
-    letter-spacing: -0.36px;
+	font-size: 24px;
+	line-height: 31.2px;
+	letter-spacing: -0.36px;
 }
 
 h6 {
-    font-size: 18px;
-    line-height: 22.5px;
-    letter-spacing: 0.36px;
+	font-size: 18px;
+	line-height: 22.5px;
+	letter-spacing: 0.36px;
 }
 
 p {
-    color: var(--color-paragraph);
-    font-family: Inter;
-    font-size: 19px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 32.3px;
-    letter-spacing: -0.19px;
+	color: var(--color-paragraph);
+	font-family: Inter;
+	font-size: 19px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 32.3px;
+	letter-spacing: -0.19px;
 }
 </style>
 ./types/ListOfArticles

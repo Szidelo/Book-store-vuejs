@@ -20,9 +20,12 @@
 						:id="product.id"
 						:title="product.title"
 						:img="product.img"
-						:price="+(product.price * product.quantity).toFixed(2)"
+						:price="price(product)"
 						:quantity="product.quantity"
 						@remove-item="removeItem(product.id)"
+						@update-quantity="
+                            updateQuantity(product, $event)
+                        "
 					></cart-item>
 				</ul>
 			</div>
@@ -40,9 +43,10 @@
 </template>
 
 <script lang="ts">
+import Product from "@/classes/Product";
 import ListOfProducts from "../../types/ListOfProducts";
 import CartItem from "./CartItem.vue";
-import { defineComponent, inject, ref, computed } from "vue";
+import { defineComponent, inject, computed } from "vue";
 export default defineComponent({
 	components: {
 		CartItem,
@@ -55,17 +59,45 @@ export default defineComponent({
 
 		const productsInCart = computed(() => {
 			return orderedProducts.length > 0 ? 1 : 0;
-		})
+		});
 
-		console.log(orderedProducts);
+		const price = computed(() => {
+			return (product: Product) => {
+				return +(product.price * product.quantity).toFixed(2);
+			};
+		});
 
-		const removeItem = (productId: string) => {
-			console.log("Removing" + productId);
+		const calculatedSubtotal = computed(() => {
+			console.log(price.value)
+			return orderedProducts.reduce((acc, product) => {
+				return acc + price.value(product);
+			}, 0);
+		});
+
+		const updateQuantity = (product: Product, newQuantity: number) => {
+			const index = orderedProducts.findIndex(
+				(item) => item.id === product.id
+			);
+
+			return orderedProducts[index].quantity = newQuantity;
 		};
 
-		const calculatedSubtotal = ref<number>(0);
+		const removeItem = (productId: string) => {
+			const index = orderedProducts.findIndex(
+				(item) => item.id === productId
+			);
 
-		return { orderedProducts, removeItem, calculatedSubtotal, productsInCart };
+			return orderedProducts.splice(index, 1)
+		};
+
+		return {
+			orderedProducts,
+			removeItem,
+			updateQuantity,
+			calculatedSubtotal,
+			productsInCart,
+			price,
+		};
 	},
 });
 </script>

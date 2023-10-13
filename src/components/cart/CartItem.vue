@@ -18,7 +18,7 @@
 				</base-button>
 			</div>
 			<div>
-				<input type="number" :value="quantity" min="1" />
+				<input type="number" :value="quantity"  min="1" @input="updateQuantity"/>
 			</div>
 		</div>
 	</li>
@@ -52,6 +52,7 @@ export default defineComponent({
 			type: Number,
 			required: true,
 		},
+		
 	},
 
 	emits: ["remove-item", 'update-quantity'],
@@ -59,8 +60,11 @@ export default defineComponent({
 	setup(props, { emit }) {
 		const isConfirmMessageVisible = ref<boolean>(false);
 
-		const updateQuantity = (newQuantity: number) => {
-			emit('update-quantity', newQuantity)
+		const localQuantity = ref(props.quantity);
+
+		const updateQuantity = (newQuantity: Event) => { // doc: https://stackoverflow.com/questions/67434135/vue-3-typescript-warning-on-vue-emit-and-event-object-is-possibly-null
+			const quantity = Number((newQuantity.target as HTMLInputElement).value);
+			emit('update-quantity', quantity);
 		}
 
 		const removeItem = () => {
@@ -68,6 +72,7 @@ export default defineComponent({
 		};
 
 		const confirmRemoveItem = () => {
+			emit("remove-item");
 			return (isConfirmMessageVisible.value = false);
 		};
 
@@ -77,6 +82,7 @@ export default defineComponent({
 
 		return {
 			isConfirmMessageVisible,
+			localQuantity,
 			removeItem,
 			confirmRemoveItem,
 			cancelRemoveItem,

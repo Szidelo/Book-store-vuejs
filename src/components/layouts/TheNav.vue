@@ -19,7 +19,7 @@
 						src="../../assets//cart.png"
 						alt=""
 					/>
-					<span>{{productsInCart}}</span>
+					<span>{{ productsInCart }}</span>
 				</li>
 			</ul>
 
@@ -48,15 +48,15 @@ export default defineComponent({
 	},
 
 	setup() {
-        const orderedProducts = inject('orderedProducts') as ListOfProducts
+		const orderedProducts = inject("orderedProducts") as ListOfProducts;
 
 		const cardIsVisible = ref<boolean>(false);
 
-        const productsInCart = computed(() => {
-            return orderedProducts.reduce((total, product) => {
-                return total += product.quantity
-            }, 0 )
-        })
+		const productsInCart = computed(() => {
+			return orderedProducts.reduce((total, product) => {
+				return (total += product.quantity);
+			}, 0);
+		});
 
 		const closeCart = () => {
 			console.log(cardIsVisible);

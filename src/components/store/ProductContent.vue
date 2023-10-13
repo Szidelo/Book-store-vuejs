@@ -91,9 +91,16 @@ export default defineComponent({
 				quantity: enteredNumberOfProducts.value,
 			};
 
-			orderedProducts.push(product);
+			const index = orderedProducts.findIndex(
+				(item) => item.id === product.id
+			);
 
-            console.log(orderedProducts);
+			if(index !== -1) {
+				orderedProducts[index].quantity += enteredNumberOfProducts.value;
+				return (productIsAdded.value = true);
+			} 
+
+			orderedProducts.push(product);
 
 			return (productIsAdded.value = true);
 		};

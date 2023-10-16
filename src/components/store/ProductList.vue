@@ -1,8 +1,16 @@
 <template>
-    <section
+	<section
 		class="container-fluid d-flex flex-column align-items-center py-5 px-1"
 	>
 		<div class="container row px-0 px-md-2 px-xxl-5 py-5">
+			<div>
+				<button @click="showAll">all</button>
+				<button @click="showCategory('Printed Book')">printed</button>
+				<button @click="showCategory('Audio')">audio</button>
+				<button @click="showCategory('Audio CD + Printed Book')">
+					audio + printed
+				</button>
+			</div>
 			<product-card :products="products"></product-card>
 		</div>
 	</section>
@@ -15,7 +23,6 @@ import ProdImg3 from "../../assets/product-images/atomic3.png";
 import ProdImg4 from "../../assets/product-images/dark1.jpg";
 import ProdImg5 from "../../assets/product-images/dark2.png";
 import ProdImg6 from "../../assets/product-images/dark3.png";
-
 import ProductCard from "@/components/store/ProductCard.vue";
 import ListOfProducts from "@/types/ListOfProducts";
 import Product from "@/classes/Product";
@@ -86,11 +93,28 @@ export default defineComponent({
 			),
 		];
 
-		onMounted(() => {
-            setStorage('products', products.value);
-        }) 
+		const visibleProducts = ref<ListOfProducts>([]);
 
-		return { products };
+		const showAll = () => {
+			return (visibleProducts.value = products.value);
+		};
+
+		const showCategory = (category: string) => {
+			visibleProducts.value = products.value.filter(
+				(product) => product.format === category
+			);
+
+			return visibleProducts.value;
+		};
+
+		onMounted(() => {
+			if (!localStorage.getItem("products")) {
+				setStorage("products", products.value);
+			}
+			showAll();
+		});
+
+		return { products: visibleProducts, showAll, showCategory };
 	},
 });
 </script>

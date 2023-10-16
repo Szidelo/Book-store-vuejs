@@ -3,14 +3,15 @@
 		class="container-fluid d-flex flex-column align-items-center py-5 px-1"
 	>
 		<div class="container row px-0 px-md-2 px-xxl-5 py-5">
-			<div>
-				<button @click="showAll">all</button>
-				<button @click="showCategory('Printed Book')">printed</button>
-				<button @click="showCategory('Audio')">audio</button>
-				<button @click="showCategory('Audio CD + Printed Book')">
-					audio + printed
-				</button>
+			<div class="d-flex gap-4 ms-4 mb-4">
+				<base-button :class="products.length > 2 ? 'btn-link btn-link-active' : 'btn-link'" @click="showAll">All</base-button>
+				<base-button class="btn-link" @click="showCategory('Printed Book')">Printed</base-button>
+				<base-button class="btn-link" @click="showCategory('Audio')">Audio</base-button>
+				<base-button class="btn-link" @click="showCategory('Audio CD + Printed Book')">
+					Audio & Printed
+				</base-button>
 			</div>
+			<hr>
 			<product-card :products="products"></product-card>
 		</div>
 	</section>

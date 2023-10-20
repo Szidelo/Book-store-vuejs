@@ -24,11 +24,9 @@ class ArticleList {
         const localArticles = this.getArticles()
 
 		if (localArticles.length === 0) {
-			console.log('test if')
 			this.setArticles(data.articles);
 			this.saveArticles()
 		} else {
-			console.log('test else')
 			this.setArticles(localArticles)
 		}
     }

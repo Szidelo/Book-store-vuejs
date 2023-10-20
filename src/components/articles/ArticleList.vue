@@ -29,9 +29,8 @@
 import AddArticle from "./AddArticle.vue";
 import ArticleCard from "./ArticleCard.vue";
 import ArticleList from "@/classes/ArticleList";
-import data from "../../utils/data.json";
 import Article from "@/classes/Article";
-import { defineComponent, ref, provide, reactive } from "vue";
+import { defineComponent, ref, provide} from "vue";
 export default defineComponent({
 	components: {
 		AddArticle,
@@ -59,8 +58,6 @@ export default defineComponent({
 		// 	console.log('test else')
 		// 	articles.setArticles(localArticles)
 		// }
-
-		console.log(articles);
 
 		const addArticle = (newArticle: Article) => {
 			articles.addArticle(newArticle);

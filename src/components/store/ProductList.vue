@@ -4,15 +4,43 @@
 	>
 		<div class="container row px-0 px-md-2 px-xxl-5 py-5">
 			<div class="d-flex gap-4 ms-4 mb-4">
-				<base-button :class="products.length > 2 ? 'btn-link btn-link-active' : 'btn-link'" @click="showCategory('all')">All</base-button>
-				<base-button class="btn-link" @click="showCategory('Printed Book')">Printed</base-button>
-				<base-button class="btn-link" @click="showCategory('Audio')">Audio</base-button>
-				<base-button class="btn-link" @click="showCategory('Audio CD + Printed Book')">
+				<base-button
+					:class="
+						products.length > 2
+							? 'btn-link btn-link-active'
+							: 'btn-link'
+					"
+					@click="showCategory('all')"
+					>All</base-button
+				>
+				<base-button
+					class="btn-link"
+					@click="showCategory('Printed Book')"
+					>Printed</base-button
+				>
+				<base-button
+					class="btn-link"
+					@click="showCategory('Audio')"
+					>Audio</base-button
+				>
+				<base-button
+					class="btn-link"
+					@click="showCategory('Audio CD + Printed Book')"
+				>
 					Audio & Printed
 				</base-button>
 			</div>
-			<hr>
-			<product-card :products="products"></product-card>
+			<hr />
+			<product-card
+				v-for="product in products"
+				:key="product.id"
+				:id="product.id"
+				:title="product.title"
+				:description="product.description"
+				:format="product.format"
+				:price="product.price"
+				:img="product.img"
+			></product-card>
 		</div>
 	</section>
 </template>
@@ -97,7 +125,7 @@ export default defineComponent({
 		const visibleProducts = ref<ListOfProducts>([]);
 
 		const showCategory = (category: string) => {
-			if(category === 'all') {
+			if (category === "all") {
 				return (visibleProducts.value = products.value);
 			}
 			visibleProducts.value = products.value.filter(
@@ -111,7 +139,7 @@ export default defineComponent({
 			if (!localStorage.getItem("products")) {
 				setStorage("products", products.value);
 			}
-			showCategory('all');
+			showCategory("all");
 		});
 
 		return { products: visibleProducts, showCategory };

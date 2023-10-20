@@ -1,25 +1,23 @@
 <template>
 	<div
-		v-for="product in products"
-		:key="product.id"
 		class="col-12 col-lg-6 col-xxl-4 p-4"
 	>
 		<div class="card mb-4">
 			<div class="card__img-container">
-				<img class="img-fluid" :src="product.img" alt="" />
+				<img class="img-fluid" :src="img" alt="" />
 			</div>
 			<div
 				class="card-body d-flex flex-column justify-content-between h-100 p-3"
 			>
 				<div class="card__header">
-					<h5 class="color-blue py-3">{{ product.title }}</h5>
+					<h5 class="color-blue py-3">{{ title }}</h5>
 				</div>
 				<div>
-					<strong>${{ product.price }} USD</strong>
+					<strong>${{ price }} USD</strong>
 				</div>
 				<div>
 					<p>
-						{{ product.description }}
+						{{ description }}
 					</p>
 				</div>
 				<div class="d-flex">
@@ -35,10 +33,10 @@
 						</svg>
 					</div>
 
-					<h5 class="color-blue py-3">{{ product.format }}</h5>
+					<h5 class="color-blue py-3">{{ format }}</h5>
 				</div>
 				<div>
-					<router-link :to="'/store/' + product.id">
+					<router-link :to="'/store/' + id">
 						<base-button class="btn-white btn-sm">Order Now</base-button>
 					</router-link>
 				</div>
@@ -48,16 +46,37 @@
 </template>
 
 <script lang="ts">
-import ListOfProducts from "../../types/ListOfProducts";
-import { defineComponent, PropType } from "vue";
+import { defineComponent } from "vue";
 export default defineComponent({
 	props: {
-		products: {
-			type: Object as PropType<ListOfProducts>,
+		id: {
+			type: String,
 			required: true,
 		},
+		img: {
+			type: String,
+			required: true,
+		},
+		title: {
+			type: String,
+			required: true,
+		},
+		description: {
+			type: String,
+			required: true,
+		},
+		price: {
+			type: Number,
+			required: true,
+		},
+		format: {
+			type: String,
+			required: true,
+		},
+
+		}
 	},
-});
+);
 </script>
 
 <style scoped>

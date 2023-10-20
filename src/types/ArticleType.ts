@@ -1,4 +1,4 @@
-interface ArticleData {
+interface ArticleType {
     id: string;
     img: string;
     title: string;
@@ -7,4 +7,4 @@ interface ArticleData {
     category: string;
 }
 
-export default ArticleData;
+export default ArticleType;

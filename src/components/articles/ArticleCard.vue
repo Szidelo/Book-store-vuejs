@@ -1,28 +1,26 @@
 <template>
 	<div
-		v-for="article in articles"
-		:key="article.id"
 		class="col-12 col-lg-6 col-xxl-4 p-4"
 	>
 		<div class="card mb-4">
 			<div class="card__img-container">
-				<img :src="article.img" alt="" />
+				<img :src="img" alt="" />
 			</div>
 			<div
 				class="card-body d-flex flex-column justify-content-between h-100 p-3"
 			>
 				<div class="card__body-header">
-					<h5 class="color-bue py-3">{{ article.title }}</h5>
+					<h5 class="color-bue py-3">{{ title }}</h5>
 				</div>
 				<div class="d-flex flex-column justify-content-between h-100">
 					<div class="overflow-hidden card__body-description">
-						<p>{{ article.description }}</p>
+						<p>{{ description }}</p>
 					</div>
 					<div class="d-flex justify-content-between">
-						<router-link :to="'/articles/' + article.id">
+						<router-link :to="'/articles/' + id">
 							<base-button class="btn-link">Readmore</base-button>
 						</router-link>
-						<h6>{{ article.date }}</h6>
+						<h6>{{ date }}</h6>
 					</div>
 				</div>
 			</div>
@@ -31,13 +29,28 @@
 </template>
 
 <script lang="ts">
-import ListOfArticles from "@/types/ListOfArticles";
-import { defineComponent, PropType } from "vue";
+import { defineComponent} from "vue";
 export default defineComponent({
 	props: {
-		articles: {
-			type: Object as PropType<ListOfArticles>,
-            required: true
+		id: {
+			type: String,
+			required: true,
+		},
+		img: {
+			type: String,
+			required: true,
+		},
+		title: {
+			type: String,
+			required: true,
+		},
+		description: {
+			type: String,
+			required: true,
+		},
+		date: {
+			type: String,
+			required: true,
 		},
 	},
 });

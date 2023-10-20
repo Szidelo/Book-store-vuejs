@@ -68,7 +68,6 @@ export default defineComponent({
 		});
 
 		const calculatedSubtotal = computed(() => {
-			console.log(price.value)
 			return orderedProducts.reduce((acc, product) => {
 				return acc + price.value(product);
 			}, 0);

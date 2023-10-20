@@ -142,6 +142,24 @@ export default defineComponent({
             return (isValid.value = true);
         };
 
+        
+		const getCurrentDate = () => {
+			//Documentation for current date: https://stackoverflow.com/questions/1531093/how-do-i-get-the-current-date-in-javascript
+			let result: string;
+			let today = new Date();
+			let dd = String(today.getDate()).padStart(2, "0");
+			let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+			let yyyy = today.getFullYear();
+
+			result = dd + "." + mm + "." + yyyy;
+
+			return result;
+		};
+
+		const createArticleId = () => {
+			return "article" + new Date().toISOString();
+		};
+
         const submitData = () => {
             validateForm();
 
@@ -150,11 +168,11 @@ export default defineComponent({
             }
 
             const newArticle = new Article(
-                enteredValues.id,
+                createArticleId(),
                 enteredValues.img,
                 enteredValues.title,
                 enteredValues.description,
-                enteredValues.date,
+                getCurrentDate(),
                 enteredValues.category
             );
 

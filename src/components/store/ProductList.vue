@@ -46,12 +46,6 @@
 </template>
 
 <script lang="ts">
-import ProdImg1 from "../../assets/product-images/atomic1.jpg";
-import ProdImg2 from "../../assets/product-images/atomic2.png";
-import ProdImg3 from "../../assets/product-images/atomic3.png";
-import ProdImg4 from "../../assets/product-images/dark1.jpg";
-import ProdImg5 from "../../assets/product-images/dark2.png";
-import ProdImg6 from "../../assets/product-images/dark3.png";
 import ProductCard from "@/components/store/ProductCard.vue";
 import ListOfProducts from "@/types/ListOfProducts";
 import Product from "@/classes/Product";
@@ -69,7 +63,7 @@ export default defineComponent({
 			new Product(
 				"product1",
 				"Atomic One’s",
-				ProdImg1,
+				"assets/product-images/atomic1.jpg",
 				13.84,
 				"As the book contains theoretical content as well as solved questions.",
 				"Printed Book",
@@ -78,7 +72,7 @@ export default defineComponent({
 			new Product(
 				"product2",
 				"Atomic One’s - Audio",
-				ProdImg2,
+				"assets/product-images/atomic2.png",
 				68.97,
 				"As the book contains theoretical content as well as solved questions.",
 				"Audio",
@@ -87,7 +81,7 @@ export default defineComponent({
 			new Product(
 				"product3",
 				"Atomic One’s - CD",
-				ProdImg3,
+				"assets/product-images/atomic3.png",
 				27.95,
 				"As the book contains theoretical content as well as solved questions.",
 				"Audio CD + Printed Book",
@@ -96,7 +90,7 @@ export default defineComponent({
 			new Product(
 				"product4",
 				"The Dark Light",
-				ProdImg4,
+				"assets/product-images/dark1.jpg",
 				86.11,
 				"As the book contains theoretical content as well as solved questions.",
 				"Printed Book",
@@ -105,7 +99,7 @@ export default defineComponent({
 			new Product(
 				"product5",
 				"The Dark Light - Audio",
-				ProdImg5,
+				"assets/product-images/dark2.png",
 				73.22,
 				"As the book contains theoretical content as well as solved questions.",
 				"Audio",
@@ -114,7 +108,7 @@ export default defineComponent({
 			new Product(
 				"product6",
 				"The Dark Light - CD",
-				ProdImg6,
+				"assets/product-images/dark3.png",
 				83.55,
 				"As the book contains theoretical content as well as solved questions.",
 				"Audio CD + Printed Book",

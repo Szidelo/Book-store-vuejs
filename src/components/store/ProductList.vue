@@ -5,22 +5,22 @@
 		<div class="container row px-0 px-md-2 px-xxl-5 py-5">
 			<div class="d-flex gap-4 ms-4 mb-4">
 				<base-button
-					:class="setActiveClass('all')"
+					:class="setActiveLink('all')"
 					@click="category = 'all'"
 					>All</base-button
 				>
 				<base-button
-				:class="setActiveClass('Printed Book')"
+				:class="setActiveLink('Printed Book')"
 					@click="category = 'Printed Book'"
 					>Printed</base-button
 				>
 				<base-button
-				:class="setActiveClass('Audio')"
+				:class="setActiveLink('Audio')"
 					@click="category = 'Audio'"
 					>Audio</base-button
 				>
 				<base-button
-					:class="setActiveClass('Audio CD + Printed Book')"
+					:class="setActiveLink('Audio CD + Printed Book')"
 					@click="category = 'Audio CD + Printed Book'"
 				>
 					Audio & Printed
@@ -55,7 +55,7 @@ export default defineComponent({
 
 		const category = ref("all");
 
-		const setActiveClass = (val: string) => {
+		const setActiveLink = (val: string) => {
 			return category.value === val ? 'btn-link btn-link-active' : 'btn-link'
 		}
 
@@ -66,7 +66,7 @@ export default defineComponent({
 			products.sortByCategory(category.value);
 		});
 
-		return { products, category, setActiveClass };
+		return { products, category, setActiveLink };
 	},
 });
 </script>

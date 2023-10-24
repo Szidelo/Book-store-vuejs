@@ -33,8 +33,6 @@ class ProductList {
             return product.format === format
         })
 
-        console.log(sortedProducts)
-
         return sortedProducts
     }
 }

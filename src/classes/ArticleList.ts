@@ -1,36 +1,38 @@
 import Article from "./Article";
-import data from '../utils/data.json'
+import data from "../utils/data.json";
 
 class ArticleList {
 	private articles: Article[] = [];
 
 	public addArticle(article: Article) {
 		this.articles.push(article);
-		this.saveArticles()
-	}
-
-	public getArticles() {
-		return JSON.parse(localStorage.getItem('articles') || "[]") as Article[];
-	}
-
-	public saveArticles() {
-		localStorage.setItem("articles", JSON.stringify(this.articles));
+		this.saveArticles();
 	}
 
 	public setArticles(articles: Article[]) {
 		this.articles = articles;
 	}
 
-    public loadArticles() {
-        const localArticles = this.getArticles()
+	public getArticles() {
+		return JSON.parse(
+			localStorage.getItem("articles") || "[]"
+		) as Article[];
+	}
+
+	public saveArticles() {
+		localStorage.setItem("articles", JSON.stringify(this.articles));
+	}
+
+	public loadArticles() {
+		const localArticles = this.getArticles();
 
 		if (localArticles.length < 9) {
 			this.setArticles(data.articles);
-			this.saveArticles()
+			this.saveArticles();
 		} else {
-			this.setArticles(localArticles)
+			this.setArticles(localArticles);
 		}
-    }
+	}
 }
 
 export default ArticleList;

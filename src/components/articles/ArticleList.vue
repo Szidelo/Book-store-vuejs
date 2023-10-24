@@ -61,7 +61,6 @@ export default defineComponent({
 
 		const addArticle = (newArticle: Article) => {
 			articles.addArticle(newArticle);
-			articles.saveArticles();
 			toggleForm();
 		};
 

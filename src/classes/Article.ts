@@ -1,6 +1,6 @@
-import ArticleData from "@/types/ArticleType";
 
-class Article implements ArticleData {
+
+class Article  {
     constructor(
         public id: string,
         public img: string,

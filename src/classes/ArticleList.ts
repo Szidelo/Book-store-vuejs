@@ -6,24 +6,25 @@ class ArticleList {
 
 	public addArticle(article: Article) {
 		this.articles.push(article);
+		this.saveArticles()
 	}
 
 	public getArticles() {
 		return JSON.parse(localStorage.getItem('articles') || "[]") as Article[];
 	}
 
-	public setArticles(articles: Article[]) {
-		this.articles = articles;
-	}
-
 	public saveArticles() {
 		localStorage.setItem("articles", JSON.stringify(this.articles));
+	}
+
+	public setArticles(articles: Article[]) {
+		this.articles = articles;
 	}
 
     public loadArticles() {
         const localArticles = this.getArticles()
 
-		if (localArticles.length === 0) {
+		if (localArticles.length < 9) {
 			this.setArticles(data.articles);
 			this.saveArticles()
 		} else {

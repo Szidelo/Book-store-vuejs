@@ -110,18 +110,15 @@
 
 <script lang="ts">
 import Article from "@/classes/Article";
-import ArticleData from "@/types/ArticleType";
 import { defineComponent, inject, reactive, ref } from "vue";
 export default defineComponent({
     setup() {
         const isValid = ref(true);
 
-        const enteredValues = reactive<ArticleData>({
-            id: "",
+        const enteredValues = reactive({
             img: "",
             title: "",
             description: "",
-            date: "",
             category: "",
         });
 

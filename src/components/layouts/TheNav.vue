@@ -25,12 +25,17 @@
 
 			<teleport to="#app">
 				<keep-alive>
-					<the-cart @close="closeCart" v-if="cardIsVisible"></the-cart>
+					<the-cart
+						@close="closeCart"
+						v-if="cardIsVisible"
+					></the-cart>
 				</keep-alive>
 			</teleport>
 
 			<router-link to="/store">
-				<base-button class="btn-yellow btn-sm">Order Today </base-button>
+				<base-button class="btn-yellow btn-sm"
+					>Order Today
+				</base-button>
 			</router-link>
 		</div>
 	</nav>

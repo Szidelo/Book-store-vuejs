@@ -25,16 +25,16 @@ class ProductList {
 		}
 	}
 
-    public sortByCategory(format: string) {
-        if(format === 'all') {
-            return this.products
-        }
-        const sortedProducts = this.products.filter((product) => {
-            return product.format === format
-        })
+	public sortByCategory(format: string) {
+		if (format === "all") {
+			return this.products;
+		}
+		const sortedProducts = this.products.filter((product) => {
+			return product.format === format;
+		});
 
-        return sortedProducts
-    }
+		return sortedProducts;
+	}
 }
 
 export default ProductList;

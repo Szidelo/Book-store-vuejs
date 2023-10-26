@@ -1,6 +1,10 @@
 <template>
 	<section>
-		<base-dialog v-if="productIsAdded" @close="closeDialog" title="Info">
+		<base-dialog
+			v-if="productIsAdded"
+			@close="closeDialog"
+			title="Info"
+		>
 			<h6>{{ currentProduct.title }} Was Added To Your Cart!</h6>
 		</base-dialog>
 		<div
@@ -8,7 +12,11 @@
 			class="d-flex flex-column flex-xl-row align-items-center justify-content-center column-gap-4 my-5 py-4"
 		>
 			<div class="img-container">
-				<img class="img-fluid product-book" :src="currentProduct.img" alt="" />
+				<img
+					class="img-fluid product-book"
+					:src="currentProduct.img"
+					alt=""
+				/>
 			</div>
 			<div class="p-3">
 				<h2>{{ currentProduct.title }}</h2>
@@ -33,7 +41,9 @@
 						/>
 					</div>
 					<div class="col-12 col-md-9">
-						<base-button @click="addToCart" class="btn-yellow btn-xxl"
+						<base-button
+							@click="addToCart"
+							class="btn-yellow btn-xxl"
 							>Add To Cart</base-button
 						>
 					</div>
@@ -47,7 +57,6 @@
 import Product from "@/classes/Product";
 import { useRoute } from "vue-router";
 import { defineComponent, ref, reactive, inject } from "vue";
-import Cart from "@/classes/Cart";
 import ListOfProducts from "@/types/ListOfProducts";
 export default defineComponent({
 	setup() {
@@ -55,7 +64,7 @@ export default defineComponent({
 			localStorage.getItem("products") || "[]"
 		) as ListOfProducts;
 
-		const orderedProducts = inject('orderedProducts') as ListOfProducts;
+		const orderedProducts = inject("orderedProducts") as ListOfProducts;
 
 		const productIsAdded = ref<boolean>(false);
 
@@ -96,15 +105,22 @@ export default defineComponent({
 				(item) => item.id === product.id
 			);
 
-			if(index !== -1) {
-				orderedProducts[index].quantity += enteredNumberOfProducts.value;
-				localStorage.setItem("orderedProducts", JSON.stringify(orderedProducts));
+			if (index !== -1) {
+				orderedProducts[index].quantity +=
+					enteredNumberOfProducts.value;
+				localStorage.setItem(
+					"orderedProducts",
+					JSON.stringify(orderedProducts)
+				);
 				return (productIsAdded.value = true);
-			} 
+			}
 
 			orderedProducts.push(product);
 
-			localStorage.setItem("orderedProducts", JSON.stringify(orderedProducts));
+			localStorage.setItem(
+				"orderedProducts",
+				JSON.stringify(orderedProducts)
+			);
 
 			return (productIsAdded.value = true);
 		};

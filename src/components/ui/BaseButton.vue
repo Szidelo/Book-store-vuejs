@@ -71,6 +71,21 @@ button {
 	color: var(--color-light);
 }
 
+.btn-icon {
+	background-color: var(--color-yellow);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	border: 1px solid var(--color-yellow);
+	padding: 20px;
+}
+
+.btn-icon:hover {
+	background-color: var(--color-white);
+	color: var(--color-light);
+}
+
 .btn-white {
 	background-color: var(--color-white);
 	display: flex;

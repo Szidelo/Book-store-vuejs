@@ -30,7 +30,7 @@ import AddArticle from "./AddArticle.vue";
 import ArticleCard from "./ArticleCard.vue";
 import ArticleList from "@/classes/ArticleList";
 import Article from "@/classes/Article";
-import { defineComponent, ref, provide} from "vue";
+import { defineComponent, ref, provide } from "vue";
 export default defineComponent({
 	components: {
 		AddArticle,
@@ -46,7 +46,7 @@ export default defineComponent({
 
 		const articles = new ArticleList();
 
-		articles.loadArticles()
+		articles.loadArticles();
 
 		// const localArticles = articles.getArticles()
 

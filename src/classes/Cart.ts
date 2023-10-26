@@ -1,34 +1,34 @@
 import Product from "./Product";
 
 class Cart {
-    private products: Product[] = []
+	private products: Product[] = [];
 
-    private key = 'orderedProducts'
+	private key = "orderedProducts";
 
-    public setProducts() {
-        this.products = this.getProducts()
-    }
-    
-    public addItem(product: Product) {
-        this.products.push(product)
-        this.saveProducts()
-    }
+	public setProducts() {
+		this.products = this.getProducts();
+	}
 
-    public removeItem(productId: string) {
-        const index = this.products.findIndex((product) => {
-            return product.id === productId
-        })
+	public addItem(product: Product) {
+		this.products.push(product);
+		this.saveProducts();
+	}
 
-        return this.products.slice(index, 1)
-    }
+	public removeItem(productId: string) {
+		const index = this.products.findIndex((product) => {
+			return product.id === productId;
+		});
 
-    public saveProducts() {
-        localStorage.setItem(this.key, JSON.stringify(this.products))
-    }
+		return this.products.slice(index, 1);
+	}
 
-    public getProducts() {
-        return JSON.parse(localStorage.getItem(this.key) || '[]') as Product[]
-    }
+	public saveProducts() {
+		localStorage.setItem(this.key, JSON.stringify(this.products));
+	}
+
+	public getProducts() {
+		return JSON.parse(localStorage.getItem(this.key) || "[]") as Product[];
+	}
 }
 
-export default Cart
+export default Cart;

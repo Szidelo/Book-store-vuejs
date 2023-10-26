@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import ProductList from '../components/store/ProductList.vue'
+import ProductList from "../components/store/ProductList.vue";
 import { defineComponent } from "vue";
 export default defineComponent({
 	components: {

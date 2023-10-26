@@ -1,16 +1,27 @@
 <template>
-	<div @click="$emit('close')" class="background-div"></div>
+	<div
+		@click="$emit('close')"
+		class="background-div"
+	></div>
 	<div class="cart">
 		<header
 			class="d-flex justify-content-between align-items-center bg-yellow w-100 p-4"
 		>
 			<h4 class="color-white m-0">Your Cart</h4>
-			<button class="close-btn" @click="$emit('close')">x</button>
+			<button
+				class="close-btn"
+				@click="$emit('close')"
+			>
+				x
+			</button>
 		</header>
 		<div class="p-3">
 			<div class="w-100">
 				<ul>
-					<p v-if="!productsInCart" class="text-center">
+					<p
+						v-if="!productsInCart"
+						class="text-center"
+					>
 						No Items In Your Card
 					</p>
 					<cart-item
@@ -23,9 +34,7 @@
 						:price="price(product)"
 						:quantity="product.quantity"
 						@remove-item="removeItem(product.id)"
-						@update-quantity="
-                            updateQuantity(product, $event)
-                        "
+						@update-quantity="updateQuantity(product, $event)"
 					></cart-item>
 				</ul>
 			</div>
@@ -67,7 +76,8 @@ export default defineComponent({
 			};
 		});
 
-		const calculatedSubtotal = computed(() => {  // doc: https://stackoverflow.com/questions/42949931/how-to-compute-subtotal-of-all-items-on-their-property-criteria-qty-price
+		const calculatedSubtotal = computed(() => {
+			// doc: https://stackoverflow.com/questions/42949931/how-to-compute-subtotal-of-all-items-on-their-property-criteria-qty-price
 			return orderedProducts.reduce((acc, product) => {
 				return acc + price.value(product);
 			}, 0);
@@ -78,7 +88,12 @@ export default defineComponent({
 				(item) => item.id === product.id
 			);
 
-			return orderedProducts[index].quantity = newQuantity;
+			orderedProducts[index].quantity = newQuantity;
+
+			localStorage.setItem(
+				"orderedProducts",
+				JSON.stringify(orderedProducts)
+			);
 		};
 
 		const removeItem = (productId: string) => {
@@ -86,7 +101,7 @@ export default defineComponent({
 				(item) => item.id === productId
 			);
 
-			orderedProducts.splice(index, 1)
+			orderedProducts.splice(index, 1);
 
 			localStorage.setItem(
 				"orderedProducts",

@@ -4,7 +4,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, provide} from "vue";
+import { defineComponent, ref, provide } from "vue";
 import TheNav from "./components//layouts/TheNav.vue";
 import ListOfProducts from "./types/ListOfProducts";
 
@@ -15,12 +15,14 @@ export default defineComponent({
 	},
 
 	setup() {
-		const orderedProducts = ref<ListOfProducts>([])
+		const orderedProducts = ref<ListOfProducts>([]);
 
-		orderedProducts.value = JSON.parse(localStorage.getItem('orderedProducts') || '[]')
+		orderedProducts.value = JSON.parse(
+			localStorage.getItem("orderedProducts") || "[]"
+		);
 
-		provide('orderedProducts', orderedProducts.value)
-	}
+		provide("orderedProducts", orderedProducts.value);
+	},
 });
 </script>
 

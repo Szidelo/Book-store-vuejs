@@ -1,10 +1,11 @@
 <template>
-	<div
-		class="col-12 col-lg-6 col-xxl-4 p-4"
-	>
+	<div class="col-12 col-lg-6 col-xxl-4 p-4">
 		<div class="card mb-4">
 			<div class="card__img-container">
-				<img :src="img" alt="" />
+				<img
+					:src="img"
+					alt=""
+				/>
 			</div>
 			<div
 				class="card-body d-flex flex-column justify-content-between h-100 p-3"
@@ -29,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent} from "vue";
+import { defineComponent } from "vue";
 export default defineComponent({
 	props: {
 		id: {
@@ -58,40 +59,40 @@ export default defineComponent({
 
 <style scoped>
 .card {
-    border: none;
-    width: 100%;
-    height: 100%;
-    max-height: 580px;
-    padding: 0;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+	border: none;
+	width: 100%;
+	height: 100%;
+	max-height: 580px;
+	padding: 0;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
 .card__img-container {
-    width: 100%;
-    height: 100%;
-    max-height: 380px;
-    overflow: hidden;
+	width: 100%;
+	height: 100%;
+	max-height: 380px;
+	overflow: hidden;
 }
 
 img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: top;
-    transition: var(--transition);
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	object-position: top;
+	transition: var(--transition);
 }
 
 img:hover {
-    transform: scale(1.03);
+	transform: scale(1.03);
 }
 
 .card__body-header {
-    min-height: 100px;
+	min-height: 100px;
 }
 
 .card__body-description {
-    max-height: 100px;
+	max-height: 100px;
 }
 </style>

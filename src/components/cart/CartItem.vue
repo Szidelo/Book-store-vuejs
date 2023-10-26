@@ -2,7 +2,10 @@
 	<li class="w-100">
 		<div class="d-flex justify-content-between gap-2">
 			<div>
-				<img :src="img" alt="" />
+				<img
+					:src="img"
+					alt=""
+				/>
 			</div>
 			<div class="w-75">
 				<h5>{{ title }}</h5>
@@ -13,12 +16,20 @@
 					@cancel="cancelRemoveItem"
 				>
 				</base-confirm>
-				<base-button v-else class="btn-link" @click="removeItem"
+				<base-button
+					v-else
+					class="btn-link"
+					@click="removeItem"
 					>Remove
 				</base-button>
 			</div>
 			<div>
-				<input type="number" :value="quantity"  min="1" @input="updateQuantity"/>
+				<input
+					type="number"
+					:value="quantity"
+					min="1"
+					@input="updateQuantity"
+				/>
 			</div>
 		</div>
 	</li>
@@ -52,20 +63,22 @@ export default defineComponent({
 			type: Number,
 			required: true,
 		},
-		
 	},
 
-	emits: ["remove-item", 'update-quantity'],
+	emits: ["remove-item", "update-quantity"],
 
 	setup(props, { emit }) {
 		const isConfirmMessageVisible = ref<boolean>(false);
 
 		const localQuantity = ref(props.quantity);
 
-		const updateQuantity = (newQuantity: Event) => { // doc: https://stackoverflow.com/questions/67434135/vue-3-typescript-warning-on-vue-emit-and-event-object-is-possibly-null
-			const quantity = Number((newQuantity.target as HTMLInputElement).value);
-			emit('update-quantity', quantity);
-		}
+		const updateQuantity = (newQuantity: Event) => {
+			// doc: https://stackoverflow.com/questions/67434135/vue-3-typescript-warning-on-vue-emit-and-event-object-is-possibly-null
+			const quantity = Number(
+				(newQuantity.target as HTMLInputElement).value
+			);
+			emit("update-quantity", quantity);
+		};
 
 		const removeItem = () => {
 			return (isConfirmMessageVisible.value = true);
@@ -86,7 +99,7 @@ export default defineComponent({
 			removeItem,
 			confirmRemoveItem,
 			cancelRemoveItem,
-			updateQuantity
+			updateQuantity,
 		};
 	},
 });

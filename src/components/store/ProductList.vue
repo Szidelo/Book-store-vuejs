@@ -10,12 +10,12 @@
 					>All</base-button
 				>
 				<base-button
-				:class="setActiveLink('Printed Book')"
+					:class="setActiveLink('Printed Book')"
 					@click="category = 'Printed Book'"
 					>Printed</base-button
 				>
 				<base-button
-				:class="setActiveLink('Audio')"
+					:class="setActiveLink('Audio')"
 					@click="category = 'Audio'"
 					>Audio</base-button
 				>
@@ -43,7 +43,7 @@
 
 <script lang="ts">
 import ProductCard from "@/components/store/ProductCard.vue";
-import {defineComponent, onMounted, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import ProductList from "@/classes/ProductList";
 export default defineComponent({
 	components: {
@@ -56,8 +56,10 @@ export default defineComponent({
 		const category = ref("all");
 
 		const setActiveLink = (val: string) => {
-			return category.value === val ? 'btn-link btn-link-active' : 'btn-link'
-		}
+			return category.value === val
+				? "btn-link btn-link-active"
+				: "btn-link";
+		};
 
 		products.setProducts();
 

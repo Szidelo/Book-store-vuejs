@@ -2,7 +2,7 @@
 	"articles": [
 		{
 			"id": "article1",
-			"img": "assets/article-images/article1-img.png",
+			"img": "/assets/article-images/article1-img.png",
 			"title": "Significant reading has more info number",
 			"description": "Override the digital divide with additional clickthroughs from DevOps for real-time schemas.",
 			"date": "23.05.2022",
@@ -10,7 +10,7 @@
 		},
 		{
 			"id": "article2",
-			"img": "assets/article-images/article2-img.png",
+			"img": "/assets/article-images/article2-img.png",
 			"title": "Release of Letraset sheets tools containing passages",
 			"description": "Capitalize on low-hanging fruit to identify a ballpark value-added activity to beta test.",
 			"date": "24.05.2022",
@@ -18,7 +18,7 @@
 		},
 		{
 			"id": "article3",
-			"img": "assets/article-images/article3-img.png",
+			"img": "/assets/article-images/article3-img.png",
 			"title": "The energy efficiency offers hydrotherapy or swim",
 			"description": "Podcasting operational change management inside of workflows to establish a framework.",
 			"date": "25.05.2022",
@@ -26,7 +26,7 @@
 		},
 		{
 			"id": "article4",
-			"img": "assets/article-images/article4-img.png",
+			"img": "/assets/article-images/article4-img.png",
 			"title": "The energy efficiency offers hydrotherapy or swim",
 			"description": "Taking seamless key performance indicators offline to maximize the long book reading tail.",
 			"date": "26.05.2022",
@@ -34,7 +34,7 @@
 		},
 		{
 			"id": "article5",
-			"img": "assets/article-images/article5-img.png",
+			"img": "/assets/article-images/article5-img.png",
 			"title": "Exploring the Wonders of Wildlife Photography",
 			"description": "Discover the beauty of wildlife through the lens of photography, capturing nature at its finest.",
 			"date": "27.05.2022",
@@ -42,7 +42,7 @@
 		},
 		{
 			"id": "article6",
-			"img": "assets/article-images/article1-img.png",
+			"img": "/assets/article-images/article1-img.png",
 			"title": "Unveiling the Mysteries of Ancient Artifacts",
 			"description": "Embark on a journey into the past as we uncover the secrets hidden within ancient artifacts.",
 			"date": "28.05.2022",
@@ -50,7 +50,7 @@
 		},
 		{
 			"id": "article7",
-			"img": "assets/article-images/article7-img.png",
+			"img": "/assets/article-images/article7-img.png",
 			"title": "The Secrets of Culinary Masterpieces",
 			"description": "Delve into the world of gastronomy and learn the secrets behind culinary masterpieces from around the globe.",
 			"date": "29.05.2022",
@@ -58,7 +58,7 @@
 		},
 		{
 			"id": "article8",
-			"img": "assets/article-images/article8-img.png",
+			"img": "/assets/article-images/article8-img.png",
 			"title": "A Journey Through Time: Historical Landmarks",
 			"description": "Take a step back in time and explore the historical landmarks that have shaped our world.",
 			"date": "30.05.2022",
@@ -66,7 +66,7 @@
 		},
 		{
 			"id": "article9",
-			"img": "assets/article-images/article9-img.png",
+			"img": "/assets/article-images/article9-img.png",
 			"title": "Discovering Hidden Treasures: Archaeological Excavations",
 			"description": "Join archaeologists on their quest to unearth hidden treasures and unlock the mysteries of ancient civilizations.",
 			"date": "03.06.2022",
@@ -78,7 +78,7 @@
 		{
 			"id": "product1",
 			"title": "Atomic One’s",
-			"img": "assets/product-images/atomic1.jpg",
+			"img": "/assets/product-images/atomic1.jpg",
 			"price": 13.84,
 			"description": "As the book contains theoretical content as well as solved questions.",
 			"format": "Printed Book",
@@ -87,7 +87,7 @@
 		{
 			"id": "product2",
 			"title": "Atomic One’s - Audio",
-			"img": "assets/product-images/atomic2.png",
+			"img": "/assets/product-images/atomic2.png",
 			"price": 68.97,
 			"description": "As the book contains theoretical content as well as solved questions.",
 			"format": "Audio",
@@ -96,7 +96,7 @@
 		{
 			"id": "product3",
 			"title": "Atomic One’s - CD",
-			"img": "assets/product-images/atomic3.png",
+			"img": "/assets/product-images/atomic3.png",
 			"price": 27.95,
 			"description": "As the book contains theoretical content as well as solved questions.",
 			"format": "Audio CD + Printed Book",
@@ -105,7 +105,7 @@
 		{
 			"id": "product4",
 			"title": "The Dark Light",
-			"img": "assets/product-images/dark1.jpg",
+			"img": "/assets/product-images/dark1.jpg",
 			"price": 86.11,
 			"description": "As the book contains theoretical content as well as solved questions.",
 			"format": "Printed Book",
@@ -114,7 +114,7 @@
 		{
 			"id": "product5",
 			"title": "The Dark Light - Audio",
-			"img": "assets/product-images/dark2.png",
+			"img": "/assets/product-images/dark2.png",
 			"price": 73.22,
 			"description": "As the book contains theoretical content as well as solved questions.",
 			"format": "Audio",
@@ -123,7 +123,7 @@
 		{
 			"id": "product6",
 			"title": "The Dark Light - CD",
-			"img": "D:/Repo/Book-store-vuejs/public/assets/product-images/dark3.png",
+			"img": "/assets/product-images/dark2.png",
 			"price": 83.55,
 			"description": "As the book contains theoretical content as well as solved questions.",
 			"format": "Audio CD + Printed Book",

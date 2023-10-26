@@ -47,6 +47,7 @@
 import Product from "@/classes/Product";
 import { useRoute } from "vue-router";
 import { defineComponent, ref, reactive, inject } from "vue";
+import Cart from "@/classes/Cart";
 import ListOfProducts from "@/types/ListOfProducts";
 export default defineComponent({
 	setup() {
@@ -97,10 +98,13 @@ export default defineComponent({
 
 			if(index !== -1) {
 				orderedProducts[index].quantity += enteredNumberOfProducts.value;
+				localStorage.setItem("orderedProducts", JSON.stringify(orderedProducts));
 				return (productIsAdded.value = true);
 			} 
 
 			orderedProducts.push(product);
+
+			localStorage.setItem("orderedProducts", JSON.stringify(orderedProducts));
 
 			return (productIsAdded.value = true);
 		};

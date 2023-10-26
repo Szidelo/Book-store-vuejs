@@ -65,8 +65,6 @@ export default defineComponent({
 
         findArticle();
 
-        console.log(currentArticle)
-
         return { currentArticle };
     },
 });

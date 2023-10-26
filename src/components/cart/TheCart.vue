@@ -67,7 +67,7 @@ export default defineComponent({
 			};
 		});
 
-		const calculatedSubtotal = computed(() => {
+		const calculatedSubtotal = computed(() => {  // doc: https://stackoverflow.com/questions/42949931/how-to-compute-subtotal-of-all-items-on-their-property-criteria-qty-price
 			return orderedProducts.reduce((acc, product) => {
 				return acc + price.value(product);
 			}, 0);
@@ -86,7 +86,12 @@ export default defineComponent({
 				(item) => item.id === productId
 			);
 
-			return orderedProducts.splice(index, 1)
+			orderedProducts.splice(index, 1)
+
+			localStorage.setItem(
+				"orderedProducts",
+				JSON.stringify(orderedProducts)
+			);
 		};
 
 		return {

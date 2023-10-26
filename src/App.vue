@@ -17,6 +17,8 @@ export default defineComponent({
 	setup() {
 		const orderedProducts = ref<ListOfProducts>([])
 
+		orderedProducts.value = JSON.parse(localStorage.getItem('orderedProducts') || '[]')
+
 		provide('orderedProducts', orderedProducts.value)
 	}
 });

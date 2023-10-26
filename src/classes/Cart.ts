@@ -5,16 +5,16 @@ class Cart {
 
     private key = 'orderedProducts'
 
-    setProducts() {
+    public setProducts() {
         this.products = this.getProducts()
     }
     
-    addItem(product: Product) {
+    public addItem(product: Product) {
         this.products.push(product)
         this.saveProducts()
     }
 
-    removeItem(productId: string) {
+    public removeItem(productId: string) {
         const index = this.products.findIndex((product) => {
             return product.id === productId
         })
@@ -22,11 +22,11 @@ class Cart {
         return this.products.slice(index, 1)
     }
 
-    saveProducts() {
+    public saveProducts() {
         localStorage.setItem(this.key, JSON.stringify(this.products))
     }
 
-    getProducts() {
+    public getProducts() {
         return JSON.parse(localStorage.getItem(this.key) || '[]') as Product[]
     }
 }

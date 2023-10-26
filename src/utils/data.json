@@ -123,7 +123,7 @@
 		{
 			"id": "product6",
 			"title": "The Dark Light - CD",
-			"img": "assets/product-images/dark3.png",
+			"img": "D:/Repo/Book-store-vuejs/public/assets/product-images/dark3.png",
 			"price": 83.55,
 			"description": "As the book contains theoretical content as well as solved questions.",
 			"format": "Audio CD + Printed Book",

@@ -6,9 +6,9 @@
 					class="col-12 col-lg-8 col-xl-6 d-flex flex-column justify-content-center mx-auto mx-xl-0 gap-3"
 				>
 					<div
-						class="d-flex justify-content-start align-items-center w-md-50"
+						class="d-flex justify-content-start align-items-center subtitle-wrapper"
 					>
-						<img
+						<img class="m-0"
 							src="../../assets/Line.png"
 							alt="line"
 						/>
@@ -118,6 +118,10 @@ export default defineComponent({
 header {
 	gap: 30px;
 	padding: 60px 0;
+}
+
+.subtitle-wrapper {
+    max-width: 350px;
 }
 
 .subtitle {

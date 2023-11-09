@@ -28,12 +28,12 @@ button {
 	color: var(--color-white);
 	display: flex;
 	width: 300px;
-	padding: 18px 103px;
+	padding: 20px 53px 21px 53px;
 	justify-content: center;
 	align-items: center;
 	gap: 10px;
 	flex-shrink: 0;
-	border: 1px solid transparent;
+	border: 1px solid var(--color-yellow);
 }
 
 .btn-blue:hover {

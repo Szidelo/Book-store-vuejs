@@ -50,6 +50,10 @@ export default defineComponent({
 	max-width: 1540px !important;
 }
 
+section {
+	padding: 100px 0;
+}
+
 main {
 	min-height: 100vh;
 }

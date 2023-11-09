@@ -20,17 +20,26 @@
 		</template>
 	</the-home-header>
 	<section
-		class="container-fluid d-flex flex-column align-items-center py-5 px-1 bg-light">
+		class="container-fluid d-flex flex-column align-items-center py-5 px-0 bg-light">
         <AboutAuthor />
+        <CallToAction />
+        <LearnSection />
+		<TheChapter />
     </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import AboutAuthor from "../components/homepage/AboutAuthor.vue";
+import CallToAction from "../components/homepage/CallToAction.vue";
+import LearnSection from "../components/homepage/LearnSection.vue";
+import TheChapter from "@/components/homepage/TheChapter.vue";
 export default defineComponent({
     components: {
         AboutAuthor,
+        CallToAction,
+        LearnSection,
+		TheChapter,
     },
 
 });

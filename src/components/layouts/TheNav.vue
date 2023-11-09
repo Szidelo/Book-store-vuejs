@@ -7,6 +7,9 @@
 			</div>
 			<ul class="d-flex flex-column flex-lg-row align-items-center gap-5">
 				<li>
+					<router-link to="/home">Home</router-link>
+				</li>
+				<li>
 					<router-link to="/articles">Articles</router-link>
 				</li>
 				<li>

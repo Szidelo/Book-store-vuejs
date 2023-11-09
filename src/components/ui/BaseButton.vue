@@ -109,6 +109,26 @@ button {
 	transition: var(--transition);
 }
 
+.link-home {
+	margin-left: 15px;
+    padding-left: 0;
+    font-family: Cardo,sans-serif;
+    color: #fff;
+    font-size: 19px;
+    line-height: 1.6;
+    font-weight: 700;
+    letter-spacing: .02em;
+    text-decoration: none;
+    text-transform: capitalize;
+	color: var(--color-white);
+	border-bottom: 1px solid var(--color-white);
+}
+
+.link-home:hover {
+	color: var(--color-yellow);
+	border-color: var(--color-yellow);
+}
+
 .btn-link:focus,
 .btn-link:active {
 	color: var(--color-yellow);

@@ -36,6 +36,7 @@ export default defineComponent({
 	--color-light: #f6f8fc;
 	--color-white: #fff;
 	--color-paragraph: #969aa0;
+	--color-paragraph-light: #b4c7e7;;
 	--color-grayish-blue: #f4f8ff;
 
 	--transition: all 0.3s ease;
@@ -63,6 +64,10 @@ main {
 
 .color-light {
 	color: var(--color-light);
+}
+
+.color-para-light {
+	color: var(--color-paragraph-light);
 }
 
 .color-white {
@@ -143,6 +148,10 @@ p {
 	font-weight: 400;
 	line-height: 32.3px;
 	letter-spacing: -0.19px;
+}
+
+a {
+	text-decoration: none;
 }
 </style>
 ./types/ListOfArticles

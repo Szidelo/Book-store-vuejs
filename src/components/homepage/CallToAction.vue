@@ -14,7 +14,12 @@
 						This the first true value generator on the Internet. It
 						uses alphas dictionary of over 200 Latin words.
 					</p>
-					<base-button class="btn-blue">Order Today</base-button>
+					<router-link to="/store">
+						<base-button
+							class="btn-blue me-sm-5 mb-4 mb-sm-0"
+							>Order Today
+						</base-button>
+					</router-link>
 				</div>
 			</div>
 			<div

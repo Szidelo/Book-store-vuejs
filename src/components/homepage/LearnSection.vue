@@ -1,16 +1,8 @@
 <template>
 	<section class="container-fluid bg-white">
-		<div
-			class="d-flex flex-column justify-content-center align-items-center mb-5"
-		>
-			<h3 class="color-blue font-cardo text-center">
-				What will you learn?
-			</h3>
-			<img
-				src="../../assets/Line.png"
-				alt="line"
-			/>
-		</div>
+
+		<base-section-header title="What will you learn?" />
+		
 		<div class="row container mx-auto px-0 px-md-2 px-xxl-5 py-5">
 			<div class="col-12 col-xl-6 mx-auto mx-xl-0 order-1 order-md-2 order-xl-1">
 				<div class="row mb-5 mb-md-0">

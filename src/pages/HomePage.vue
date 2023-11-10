@@ -20,7 +20,8 @@
 		</template>
 	</the-home-header>
 	<section
-		class="container-fluid d-flex flex-column align-items-center py-5 px-0 bg-light">
+		class="container-fluid d-flex flex-column align-items-center py-0 px-0 bg-light">
+		<AuthorsBook />
         <AboutAuthor />
         <CallToAction />
         <LearnSection />
@@ -29,10 +30,12 @@
 		<ArticleSection />
 		<SubscribeSection />
     </section>
+	<the-footer />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import AuthorsBook from "@/components/homepage/AuthorsBook.vue";
 import AboutAuthor from "../components/homepage/AboutAuthor.vue";
 import CallToAction from "../components/homepage/CallToAction.vue";
 import LearnSection from "../components/homepage/LearnSection.vue";
@@ -42,6 +45,7 @@ import ArticleSection from "@/components/homepage/ArticleSection.vue";
 import SubscribeSection from "@/components/homepage/SubscribeSection.vue";
 export default defineComponent({
     components: {
+		AuthorsBook,
         AboutAuthor,
         CallToAction,
         LearnSection,
@@ -49,7 +53,6 @@ export default defineComponent({
 		TestimonialsSection,
 		ArticleSection,
 		SubscribeSection,
-	
     },
 
 });

@@ -8,6 +8,7 @@
 		</template>
 	</the-header>
 	<product-list></product-list>
+	<the-footer />
 </template>
 
 <script lang="ts">

@@ -1,16 +1,8 @@
 <template>
 	<section class="container-fluid bg-grayish-blue">
-		<div
-			class="d-flex flex-column justify-content-center align-items-center mb-5"
-		>
-			<h3 class="color-blue font-cardo text-center">
-				The Chapter Includes
-			</h3>
-			<img
-				src="../../assets/Line.png"
-				alt="line"
-			/>
-		</div>
+
+		<base-section-header title="The Chapter Includes" />
+
 		<div class="row container mx-auto px-0 px-md-2 px-xxl-5 py-5">
 			<ChapterCard
 				v-for="card in chapterCards"

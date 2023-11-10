@@ -14,6 +14,7 @@
 	>
 		<article-list></article-list>
 	</section>
+	<the-footer />
 </template>
 
 <script lang="ts">

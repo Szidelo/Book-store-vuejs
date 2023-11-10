@@ -13,7 +13,7 @@
 				<div class="card__body-header">
 					<h5 class="color-bue py-3">{{ title }}</h5>
 				</div>
-				<div class="d-flex flex-column justify-content-between h-100">
+				<div class="card__body-bottom d-flex flex-column justify-content-between h-100">
 					<div class="overflow-hidden card__body-description">
 						<p>{{ description }}</p>
 					</div>
@@ -94,5 +94,18 @@ img:hover {
 
 .card__body-description {
 	max-height: 100px;
+}
+
+@media (max-width: 380px) {
+	.card {
+		max-height: 100%;
+	}
+	.card__body-bottom {
+		min-height: 200px !important;
+		padding-top: 30px;
+	}
+	.card__body-description {
+		max-height: auto;
+	}
 }
 </style>

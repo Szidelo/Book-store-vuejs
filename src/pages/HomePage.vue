@@ -25,6 +25,9 @@
         <CallToAction />
         <LearnSection />
 		<TheChapter />
+		<TestimonialsSection />
+		<ArticleSection />
+		<SubscribeSection />
     </section>
 </template>
 
@@ -34,12 +37,19 @@ import AboutAuthor from "../components/homepage/AboutAuthor.vue";
 import CallToAction from "../components/homepage/CallToAction.vue";
 import LearnSection from "../components/homepage/LearnSection.vue";
 import TheChapter from "@/components/homepage/TheChapter.vue";
+import TestimonialsSection from "@/components/homepage/TestimonialsSection.vue";
+import ArticleSection from "@/components/homepage/ArticleSection.vue";
+import SubscribeSection from "@/components/homepage/SubscribeSection.vue";
 export default defineComponent({
     components: {
         AboutAuthor,
         CallToAction,
         LearnSection,
 		TheChapter,
+		TestimonialsSection,
+		ArticleSection,
+		SubscribeSection,
+	
     },
 
 });

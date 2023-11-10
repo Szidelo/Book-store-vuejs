@@ -111,15 +111,15 @@ button {
 
 .link-home {
 	margin-left: 15px;
-    padding-left: 0;
-    font-family: Cardo,sans-serif;
-    color: #fff;
-    font-size: 19px;
-    line-height: 1.6;
-    font-weight: 700;
-    letter-spacing: .02em;
-    text-decoration: none;
-    text-transform: capitalize;
+	padding-left: 0;
+	font-family: Cardo, sans-serif;
+	color: #fff;
+	font-size: 19px;
+	line-height: 1.6;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	text-decoration: none;
+	text-transform: capitalize;
 	color: var(--color-white);
 	border-bottom: 1px solid var(--color-white);
 }
@@ -140,5 +140,17 @@ button {
 
 .btn-link:hover {
 	color: var(--color-yellow);
+}
+
+@media (max-width: 300px) {
+	.btn-blue {
+		width: 100%;
+		padding: 20px 53px 21px 53px;
+		justify-content: center;
+		align-items: center;
+		gap: 10px;
+		flex-shrink: 0;
+		border: 1px solid var(--color-yellow);
+	}
 }
 </style>

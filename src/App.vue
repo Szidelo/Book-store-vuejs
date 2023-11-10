@@ -36,7 +36,7 @@ export default defineComponent({
 	--color-light: #f6f8fc;
 	--color-white: #fff;
 	--color-paragraph: #969aa0;
-	--color-paragraph-light: #b4c7e7;;
+	--color-paragraph-light: #b4c7e7;
 	--color-grayish-blue: #f4f8ff;
 
 	--transition: all 0.3s ease;
@@ -157,5 +157,18 @@ p {
 a {
 	text-decoration: none;
 }
+
+@media (max-width: 768px) {
+	h2 {
+		font-size: 48px;
+	}
+
+	h3 {
+		font-size: 38px;
+	}
+
+	h4 {
+		font-size: 27px;
+	}
+}
 </style>
-./types/ListOfArticles

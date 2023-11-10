@@ -1,6 +1,6 @@
 <template>
 	<div class="col-12 col-md-6 mb-4">
-		<div class="bg-grayish-blue p-5 h-100">
+		<div class="bg-grayish-blue p-3 p-md-5 h-100">
 			<div class="mb-4">
 				<span>{{ number }}</span>
 			</div>

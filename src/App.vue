@@ -42,6 +42,10 @@ export default defineComponent({
 	--transition: all 0.3s ease;
 }
 
+* {
+	transition: var(--transition);
+}
+
 ::-webkit-scrollbar {
 	display: none;
 }

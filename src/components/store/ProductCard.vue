@@ -1,13 +1,17 @@
 <template>
 	<div class="col-12 col-lg-6 col-xxl-4 p-4">
 		<div class="card mb-4">
-			<div class="card__img-container">
+			<router-link
+				class="card__img-container"
+				:to="'/store/' + id"
+			>
 				<img
 					class="img-fluid"
 					:src="img"
 					alt=""
 				/>
-			</div>
+			</router-link>
+			<!-- <div></div> -->
 			<div
 				class="card-body d-flex flex-column justify-content-between h-100 p-3"
 			>

@@ -51,14 +51,24 @@
 			</div>
 		</div>
 	</section>
+	<ProductExtra/>
+	<ProductShipment/>
+	<the-footer></the-footer>
 </template>
 
 <script lang="ts">
+import ProductExtra from "./ProductExtra.vue";
+import ProductShipment from "./ProductShipment.vue";
 import Product from "@/classes/Product";
 import { useRoute } from "vue-router";
 import { defineComponent, ref, reactive, inject } from "vue";
 import ListOfProducts from "@/types/ListOfProducts";
 export default defineComponent({
+	name: "ProductContent",
+	components: {
+		ProductExtra,
+		ProductShipment
+	},
 	setup() {
 		const products = JSON.parse(
 			localStorage.getItem("products") || "[]"

@@ -1,15 +1,22 @@
 <template>
 	<div class="col-12 col-lg-6">
 		<div :class="'card d-flex flex-column flex-xl-row mb-4 ' + background">
-			<div class="card__img-container">
+			<router-link
+				class="card__img-container"
+				:to="'/store/' + id"
+			>
 				<img
 					class="img-fluid h-100 book-img"
 					:src="img"
 					alt=""
 				/>
-			</div>
+			</router-link>
+
 			<div
-				:class="'card-body d-flex flex-column justify-content-between h-100 p-3 ' + background"
+				:class="
+					'card-body d-flex flex-column justify-content-between h-100 p-3 ' +
+					background
+				"
 			>
 				<div class="card__header">
 					<h5 class="color-blue py-3">{{ title }}</h5>
@@ -72,7 +79,7 @@ export default defineComponent({
 		background: {
 			type: String,
 			required: false,
-			default: "transparent"
+			default: "transparent",
 		},
 		id: {
 			type: String,
@@ -110,8 +117,8 @@ export default defineComponent({
 
 <style scoped>
 .book-img {
-    min-height: 400px;
-    object-fit: cover;
+	min-height: 400px;
+	object-fit: cover;
 }
 .card {
 	border: none;

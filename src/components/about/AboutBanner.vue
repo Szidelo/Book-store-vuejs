@@ -43,7 +43,7 @@
 						dictionary of over 200 Latin words, combined with a
 						handful.
 					</p>
-					<router-link to="/store">
+					<router-link to="/contact">
 						<base-button class="btn-yellow btn-sm"
 							>Contact now
 						</base-button>

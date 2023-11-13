@@ -13,7 +13,7 @@
 						>Order Today
 					</base-button>
 				</router-link>
-				<router-link to="/articles">
+				<router-link to="/contact">
 					<base-button class="btn-link link-home m-0">Read free demo!</base-button>
 				</router-link>
 			</div>

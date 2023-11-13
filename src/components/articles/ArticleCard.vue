@@ -1,19 +1,23 @@
 <template>
 	<div class="col-12 col-lg-6 col-xxl-4 p-4">
 		<div class="card mb-4">
-			<div class="card__img-container">
-				<img
-					:src="img"
-					alt=""
-				/>
-			</div>
+			<router-link class="card__img-container" :to="'/articles/' + id">
+				<div>
+					<img
+						:src="img"
+						alt=""
+					/>
+				</div>
+			</router-link>
 			<div
 				class="card-body d-flex flex-column justify-content-between h-100 p-3"
 			>
 				<div class="card__body-header">
 					<h5 class="color-bue py-3">{{ title }}</h5>
 				</div>
-				<div class="card__body-bottom d-flex flex-column justify-content-between h-100">
+				<div
+					class="card__body-bottom d-flex flex-column justify-content-between h-100"
+				>
 					<div class="overflow-hidden card__body-description">
 						<p>{{ description }}</p>
 					</div>

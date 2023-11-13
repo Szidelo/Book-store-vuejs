@@ -142,6 +142,41 @@ button {
 	color: var(--color-yellow);
 }
 
+.btn-description,
+.btn-info {
+	font-family: "Cardo", serif !important;
+	text-transform: uppercase;
+	padding: 15px;
+	width: 340px;
+	border: none;
+}
+
+.btn-description {
+	background-color: var(--color-blue);
+	color: white;
+}
+
+.btn-info:hover,
+.btn-description:hover {
+	background-color: var(--color-blue) !important;
+	color: white !important;
+}
+
+.btn-info {
+	background-color: var(--color-grayish-blue);
+}
+
+@media (max-width: 350px) {
+	.btn-description,
+	.btn-info {
+		font-family: "Cardo", serif !important;
+		text-transform: uppercase;
+		padding: 15px 7px;
+		width: 100%;
+		border: none;
+	}
+}
+
 @media (max-width: 300px) {
 	.btn-blue {
 		width: 100%;

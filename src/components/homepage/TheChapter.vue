@@ -1,6 +1,5 @@
 <template>
 	<section class="container-fluid bg-grayish-blue">
-
 		<base-section-header title="The Chapter Includes" />
 
 		<div class="row container mx-auto px-0 px-md-2 px-xxl-5 py-5">
@@ -17,12 +16,14 @@
 			class="d-flex flex-column justify-content-center align-items-center mb-5"
 		>
 			<div class="wrapper px-2">
-				<base-button class="btn-yellow btn-xxl"
-					>Start a 15-Days Free Trail</base-button
-				>
+				<router-link to="/contact">
+					<base-button class="btn-yellow btn-xxl"
+						>Start a 15-Days Free Trail</base-button
+					>
+				</router-link>
 				<p class="text-center mt-3">
 					Short description about each chapter <br />
-					<router-link to="/store">Have any questions?</router-link>
+					<router-link to="/contact">Have any questions?</router-link>
 					Contact us
 				</p>
 			</div>

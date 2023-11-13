@@ -21,7 +21,7 @@
 	</the-home-header>
 	<section
 		class="container-fluid d-flex flex-column align-items-center py-0 px-0 bg-light">
-		<AuthorsBook />
+		<AuthorsBook  :background="'bg-white'"/>
         <AboutAuthor />
         <CallToAction />
         <LearnSection />

@@ -1,6 +1,6 @@
 <template>
 	<div class="col-12 col-lg-6">
-		<div class="card d-flex flex-column flex-xl-row mb-4">
+		<div :class="'card d-flex flex-column flex-xl-row mb-4 ' + background">
 			<div class="card__img-container">
 				<img
 					class="img-fluid h-100 book-img"
@@ -9,7 +9,7 @@
 				/>
 			</div>
 			<div
-				class="card-body d-flex flex-column justify-content-between h-100 p-3"
+				:class="'card-body d-flex flex-column justify-content-between h-100 p-3 ' + background"
 			>
 				<div class="card__header">
 					<h5 class="color-blue py-3">{{ title }}</h5>
@@ -69,6 +69,11 @@ import { defineComponent } from "vue";
 import icon from "../../assets/cart-plus.svg";
 export default defineComponent({
 	props: {
+		background: {
+			type: String,
+			required: false,
+			default: "transparent"
+		},
 		id: {
 			type: String,
 			required: true,

@@ -1,5 +1,5 @@
 <template>
-	<section class="container-fluid bg-white">
+	<section :class="'container-fluid ' + background">
 
         <base-section-header title="Authors' Books" />
 
@@ -13,6 +13,7 @@
 				:description="book.description"
 				:price="book.price"
 				:format="book.format"
+				:background="background"
 			/>
 		</div>
 	</section>
@@ -26,6 +27,13 @@ export default defineComponent({
 	name: "BookList",
 	components: {
 		BookCard,
+	},
+
+	props: {
+		background: {
+			type: String,
+			required: true,
+		},
 	},
 
 	setup() {

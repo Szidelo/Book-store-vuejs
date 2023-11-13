@@ -70,6 +70,10 @@ main {
 	color: var(--color-light);
 }
 
+.color-para {
+	color: var(--color-paragraph);
+}
+
 .color-para-light {
 	color: var(--color-paragraph-light);
 }

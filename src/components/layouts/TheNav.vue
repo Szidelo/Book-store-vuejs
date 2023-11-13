@@ -19,6 +19,9 @@
 					<router-link to="/store">Store</router-link>
 				</li>
 				<li>
+					<router-link to="/contact">Contact Us</router-link>
+				</li>
+				<li>
 					<img
 						@click="showCart"
 						class="cart"

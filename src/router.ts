@@ -5,6 +5,7 @@ import ArticlesPage from "./pages/ArticlesPage.vue";
 import StorePage from "./pages/StorePage.vue";
 import ArticleContent from "./components/articles/ArticleContent.vue";
 import ProductContent from "./components/store/ProductContent.vue";
+import ContactPage from "./pages/ContactPage.vue";
 
 const routes = [
     {
@@ -34,6 +35,10 @@ const routes = [
     {
         path: "/store/:productId",
         component: ProductContent
+    },
+    {
+        path: "/contact",
+        component: ContactPage
     }
 ];
 const router = createRouter({

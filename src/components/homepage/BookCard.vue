@@ -14,7 +14,7 @@
 
 			<div
 				:class="
-					'card-body d-flex flex-column justify-content-between h-100 p-3 ' +
+					'card-body d-flex flex-column justify-content-between h-100 p-0 p-sm-3 ' +
 					background
 				"
 			>
@@ -49,7 +49,7 @@
 
 					<h5 class="color-blue py-3">{{ format }}</h5>
 				</div>
-				<div class="d-flex gap-3">
+				<div class="d-flex flex-column flex-sm-row gap-3">
 					<base-button
 						@click="$emit('add-product')"
 						class="btn-icon"

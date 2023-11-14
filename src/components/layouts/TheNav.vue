@@ -1,26 +1,39 @@
 <template>
 	<nav class="bg-blue">
-		<div class="container d-flex justify-content-around">
-			<div class="d-flex">
+		<div
+			class="container d-flex flex-column flex-lg-row justify-content-between px-2 px-xxl-5"
+		>
+			<div
+				class="d-flex justify-content-between justify-content-xl-start"
+			>
 				<base-logo></base-logo>
 				<TheNavSocials />
 			</div>
-			<ul class="d-flex flex-column flex-lg-row align-items-center gap-5">
-				<li>
-					<router-link to="/home">Home</router-link>
+			<ul
+				class="d-flex justify-content-start justify-content-xl-center align-items-center gap-4 gap-xxl-5 px-0 mt-3 mt-lg-0"
+			>
+				<li
+					class="desktop-nav"
+					v-for="(link, index) in links"
+					:key="index"
+				>
+					<router-link :to="link.path">{{ link.name }}</router-link>
 				</li>
 				<li>
-					<router-link to="/about">About</router-link>
+					<ul :class="!isNavVisible ? 'mobile-nav' : 'mobile-nav visible'">
+						<li @click="toggleNav" class="close-nav">X</li>
+						<li
+							
+							v-for="(link, index) in links"
+							:key="index"
+						>
+							<router-link @click="toggleNav" :to="link.path">{{
+								link.name
+							}}</router-link>
+						</li>
+					</ul>
 				</li>
-				<li>
-					<router-link to="/articles">Articles</router-link>
-				</li>
-				<li>
-					<router-link to="/store">Store</router-link>
-				</li>
-				<li>
-					<router-link to="/contact">Contact Us</router-link>
-				</li>
+
 				<li>
 					<img
 						@click="showCart"
@@ -30,22 +43,27 @@
 					/>
 					<span>{{ productsInCart }}</span>
 				</li>
+				<teleport to="#app">
+					<keep-alive>
+						<the-cart
+							@close="closeCart"
+							v-if="cardIsVisible"
+						></the-cart>
+					</keep-alive>
+				</teleport>
+
+				<router-link to="/store">
+					<base-button class="btn-yellow btn-sm"
+						>Order Today
+					</base-button>
+				</router-link>
+
+				<div @click="toggleNav" class="burger">
+					<div class="burger-line"></div>
+					<div class="burger-line"></div>
+					<div class="burger-line"></div>
+				</div>
 			</ul>
-
-			<teleport to="#app">
-				<keep-alive>
-					<the-cart
-						@close="closeCart"
-						v-if="cardIsVisible"
-					></the-cart>
-				</keep-alive>
-			</teleport>
-
-			<router-link to="/store">
-				<base-button class="btn-yellow btn-sm"
-					>Order Today
-				</base-button>
-			</router-link>
 		</div>
 	</nav>
 </template>
@@ -62,6 +80,29 @@ export default defineComponent({
 	},
 
 	setup() {
+		const links = [
+			{
+				path: "/home",
+				name: "home",
+			},
+			{
+				path: "/about",
+				name: "about",
+			},
+			{
+				path: "/articles",
+				name: "articles",
+			},
+			{
+				path: "/store",
+				name: "our store",
+			},
+			{
+				path: "/contact",
+				name: "contact us",
+			},
+		];
+
 		const orderedProducts = inject("orderedProducts") as ListOfProducts;
 
 		const cardIsVisible = ref<boolean>(false);
@@ -80,7 +121,13 @@ export default defineComponent({
 		const showCart = () => {
 			return (cardIsVisible.value = true);
 		};
-		return { cardIsVisible, productsInCart, closeCart, showCart };
+
+		const isNavVisible = ref(false)
+
+		const toggleNav = () => {
+			return isNavVisible.value = !isNavVisible.value
+		}
+		return { cardIsVisible, productsInCart, links, isNavVisible, closeCart, showCart, toggleNav };
 	},
 });
 </script>
@@ -88,6 +135,8 @@ export default defineComponent({
 <style scoped>
 nav {
 	padding: 20px 0;
+	width: 100%;
+	z-index: 100;
 }
 
 ul {
@@ -97,8 +146,9 @@ ul {
 	transition: var(--transition);
 }
 
-a {
+ul li a {
 	text-decoration: none !important;
+	text-transform: capitalize;
 	color: #fff;
 	font-family: Inter;
 	font-size: 17px;
@@ -153,41 +203,87 @@ span {
 	padding: 2px 0;
 }
 
+.burger {
+	display: none;
+}
+
+.mobile-nav {
+	display: none;
+}
+
+.visible {
+	transform: translateX(0) !important;
+}
+
+@media (max-width: 1200px) {
+	.desktop-nav a {
+		font-size: 15px;
+	}
+}
+
 @media (max-width: 992px) {
-	ul.mobile {
-		position: fixed;
-		top: 0;
-		right: 0;
+	.burger {
+		margin-left: auto;
+		background-color: var(--color-yellow);
+		border: 1px solid var(--color-yellow);
+		height: 66.75px;
+		width: 60px;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		row-gap: 6px;
+		cursor: pointer;
+	}
+
+	.burger:hover {
 		background-color: var(--color-blue);
-		padding: 50px;
-		width: 50vw;
+	}
+
+	.burger-line {
+		height: 3px;
+		width: 35px;
+		background-color: white;
+	}
+	.desktop-nav {
+		display: none;
+	}
+
+	.mobile-nav {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		justify-content: start;
+		row-gap: 60px;
+		background-color: var(--color-blue);
+		top: 0;
+		right: -10px;
+		width: 70%;
 		height: 100vh;
-		z-index: 3;
-		box-shadow: 0 0 50px 10px rgba(0, 0, 0, 0.3);
+		padding: 120px 60px 60px;
 		transform: translateX(100%);
 	}
 
-	.visible {
-		transform: translateX(0) !important;
+	.close-nav {
+		color: var(--color-yellow);
+		font-size: 32px;
+		font-weight: 700;
+		position: absolute;
+		top: 20px;
+		right: 60px;
+		cursor: pointer;
 	}
+}
 
-	.close-btn {
-		display: block !important;
-	}
-
-	.menu-icon {
-		display: block !important;
-	}
-
+@media (max-width: 420px) {
 	.btn-yellow {
 		display: none !important;
 	}
-}
 
-@media (max-width: 576px) {
-	ul.mobile {
-		padding: 50px;
-		width: 70vw;
+	.mobile-nav {
+		width: 80%;
+		padding: 120px 30px 60px;
 	}
 }
+
 </style>

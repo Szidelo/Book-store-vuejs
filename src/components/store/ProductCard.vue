@@ -1,5 +1,5 @@
 <template>
-	<div class="col-12 col-lg-6 col-xxl-4 p-4">
+	<div class="col-12 col-lg-6 col-xxl-4 p-0 p-sm-4">
 		<div class="card mb-4">
 			<router-link
 				class="card__img-container"
@@ -46,7 +46,7 @@
 
 					<h5 class="color-blue py-3">{{ format }}</h5>
 				</div>
-				<div class="d-flex gap-3">
+				<div class="d-flex flex-column flex-sm-row gap-3">
 					<base-button
 						@click="$emit('add-product')"
 						class="btn-icon"

@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex gap-2 me-5 align-items-center">
+    <div class="d-flex gap-2 me-2 me-xl-5 align-items-center">
         <a href="">
             <img
                 class="mb-2"

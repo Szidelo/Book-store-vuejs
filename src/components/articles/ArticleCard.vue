@@ -1,5 +1,5 @@
 <template>
-	<div class="col-12 col-lg-6 col-xxl-4 p-4">
+	<div class="col-12 col-lg-6 col-xxl-4 p-0 pb-4 p-sm-4">
 		<div class="card mb-4">
 			<router-link class="card__img-container" :to="'/articles/' + id">
 				<div>

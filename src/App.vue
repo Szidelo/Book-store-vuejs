@@ -179,4 +179,10 @@ a {
 		font-size: 27px;
 	}
 }
+
+@media (max-width) {
+	h2 {
+		font-size: 32px;
+	}
+}
 </style>

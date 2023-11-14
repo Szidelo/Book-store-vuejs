@@ -29,7 +29,7 @@ export default defineComponent({
 header {
 	min-height: 45vh;
 	gap: 30px;
-	padding: 60px 0;
+	padding: 60px;
 }
 .banner-title {
 	color: #f5f8fc;
@@ -43,5 +43,11 @@ header {
 
 img {
 	margin: 0 auto;
+}
+
+@media (max-width: 350px) {
+	header {
+		padding: 20px;
+	}
 }
 </style>

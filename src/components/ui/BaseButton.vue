@@ -87,7 +87,7 @@ button {
 }
 
 .btn-white {
-	background-color: var(--color-white);
+	background-color: transparent;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -167,6 +167,16 @@ button {
 }
 
 @media (max-width: 350px) {
+	button {
+		font-size: 17px;
+		line-height: 17px;
+		letter-spacing: 0.38px;
+	}
+
+	.btn-sm {
+		padding: 20px 36px 21px 36px;
+		width: 100%;
+	}
 	.btn-description,
 	.btn-info {
 		font-family: "Cardo", serif !important;

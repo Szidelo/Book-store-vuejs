@@ -39,16 +39,21 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	transition: var(--transition);
 }
 
 .social-icon:hover {
 	background-color: var(--color-yellow);
 }
 
-@media (max-width: 992px) {
-	div {
-		display: none !important;
+@media (max-width: 420px) {
+	.social-icon {
+		background-color: var(--color-white);
+		height: 35px;
+		width: 35px;
+		margin: auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 }
 </style>

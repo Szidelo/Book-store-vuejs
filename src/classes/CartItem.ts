@@ -8,10 +8,6 @@ class CartItem {
         this.product = product;
         this.quantity = quantity;
     }
-
-    getPrice() {
-        return +(this.product.price * this.quantity).toFixed(2)
-    }
 }
 
 export default CartItem;

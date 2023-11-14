@@ -31,7 +31,7 @@
 						:id="item.product.id"
 						:title="item.product.title"
 						:img="item.product.img"
-						:price="item.product.price * item.quantity"
+						:price="price(item)"
 						:quantity="item.quantity"
 						@remove-item="removeItem(item)"
 						@update-quantity="updateQuantity(item, $event)"
@@ -75,6 +75,12 @@ export default defineComponent({
 			return orderedProducts.getItems().length > 0 ? 1 : 0;
 		});
 
+		const price = computed(() => {
+			return (item: CartItem) => {
+				return +(item.product.price * item.quantity).toFixed(2)
+			};
+		});
+
 		const totalPrice = computed(() => {
 			return orderedProducts.getTotal()
 		})
@@ -92,6 +98,7 @@ export default defineComponent({
 			productsInCart,
 			removeItem,
 			updateQuantity,
+			price,
 			totalPrice
 		}
 	}

@@ -1,0 +1,70 @@
+
+<!-- <script lang="ts">
+import Product from "@/classes/Product";
+import CartItem from "./CartItem.vue";
+import Cart from "@/classes/Cart";
+import { defineComponent, inject, computed } from "vue";
+export default defineComponent({
+	components: {
+		CartItem,
+	},
+
+	emits: ["close"],
+
+	setup() {
+		const orderedProducts = inject("orderedProducts") as Cart[];
+
+		const productsInCart = computed(() => {
+			return orderedProducts.length > 0 ? 1 : 0;
+		});
+
+		const price = computed(() => {
+			return (product: Product) => {
+				return +(product.price * product.quantity).toFixed(2);
+			};
+		});
+
+		const calculatedSubtotal = computed(() => {
+			// doc: https://stackoverflow.com/questions/42949931/how-to-compute-subtotal-of-all-items-on-their-property-criteria-qty-price
+			return orderedProducts.reduce((acc, product) => {
+				return acc + price.value(product);
+			}, 0);
+		});
+
+		const updateQuantity = (product: Product, newQuantity: number) => {
+			const index = orderedProducts.findIndex(
+				(item) => item.id === product.id
+			);
+
+			orderedProducts[index].quantity = newQuantity;
+
+			localStorage.setItem(
+				"orderedProducts",
+				JSON.stringify(orderedProducts)
+			);
+		};
+
+		const removeItem = (productId: string) => {
+			const index = orderedProducts.findIndex(
+				(item) => item.id === productId
+			);
+
+			orderedProducts.splice(index, 1);
+
+			localStorage.setItem(
+				"orderedProducts",
+				JSON.stringify(orderedProducts)
+			);
+		};
+
+		return {
+			orderedProducts,
+			removeItem,
+			updateQuantity,
+			calculatedSubtotal,
+			productsInCart,
+			price,
+		};
+	},
+});
+</script> -->

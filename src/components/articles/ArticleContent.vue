@@ -92,19 +92,18 @@
 
 <script lang="ts">
 import quotesImg from "../../assets/quotes-icon.svg";
-import ArticleData from "@/types/ArticleType";
-import ListOfArticles from "@/types/ListOfArticles";
+import Article from "@/classes/Article";
 import { defineComponent, reactive } from "vue";
 import { useRoute } from "vue-router";
 export default defineComponent({
 	setup() {
 		const articles = JSON.parse(
 			localStorage.getItem("articles") || "[]"
-		) as ListOfArticles;
+		) as Article[];
 
 		const route = useRoute();
 
-		let currentArticle = reactive<ArticleData>({
+		let currentArticle = reactive<Article>({
 			id: "",
 			img: "",
 			title: "",

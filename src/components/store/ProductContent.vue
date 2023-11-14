@@ -60,9 +60,10 @@
 import ProductExtra from "./ProductExtra.vue";
 import ProductShipment from "./ProductShipment.vue";
 import Product from "@/classes/Product";
+import Cart from "@/classes/Cart";
+import CartItem from "@/classes/CartItem";
 import { useRoute } from "vue-router";
 import { defineComponent, ref, reactive, inject } from "vue";
-import ListOfProducts from "@/types/ListOfProducts";
 export default defineComponent({
 	name: "ProductContent",
 	components: {
@@ -72,9 +73,9 @@ export default defineComponent({
 	setup() {
 		const products = JSON.parse(
 			localStorage.getItem("products") || "[]"
-		) as ListOfProducts;
+		) as Product[];
 
-		const orderedProducts = inject("orderedProducts") as ListOfProducts;
+		const orderedProducts = inject("orderedProducts") as Cart;
 
 		const productIsAdded = ref<boolean>(false);
 
@@ -87,7 +88,6 @@ export default defineComponent({
 			price: 0,
 			description: "",
 			format: "",
-			quantity: 0,
 		});
 
 		const route = useRoute();
@@ -108,29 +108,11 @@ export default defineComponent({
 				price: currentProduct.price,
 				description: currentProduct.description,
 				format: currentProduct.format,
-				quantity: enteredNumberOfProducts.value,
 			};
 
-			const index = orderedProducts.findIndex(
-				(item) => item.id === product.id
-			);
+			const item = new CartItem(product, enteredNumberOfProducts.value)
 
-			if (index !== -1) {
-				orderedProducts[index].quantity +=
-					enteredNumberOfProducts.value;
-				localStorage.setItem(
-					"orderedProducts",
-					JSON.stringify(orderedProducts)
-				);
-				return (productIsAdded.value = true);
-			}
-
-			orderedProducts.push(product);
-
-			localStorage.setItem(
-				"orderedProducts",
-				JSON.stringify(orderedProducts)
-			);
+			orderedProducts.addItem(item)
 
 			return (productIsAdded.value = true);
 		};

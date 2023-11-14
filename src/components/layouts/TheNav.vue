@@ -20,16 +20,26 @@
 					<router-link :to="link.path">{{ link.name }}</router-link>
 				</li>
 				<li>
-					<ul :class="!isNavVisible ? 'mobile-nav' : 'mobile-nav visible'">
-						<li @click="toggleNav" class="close-nav">X</li>
+					<ul
+						:class="
+							!isNavVisible ? 'mobile-nav' : 'mobile-nav visible'
+						"
+					>
 						<li
-							
+							@click="toggleNav"
+							class="close-nav"
+						>
+							X
+						</li>
+						<li
 							v-for="(link, index) in links"
 							:key="index"
 						>
-							<router-link @click="toggleNav" :to="link.path">{{
-								link.name
-							}}</router-link>
+							<router-link
+								@click="toggleNav"
+								:to="link.path"
+								>{{ link.name }}</router-link
+							>
 						</li>
 					</ul>
 				</li>
@@ -41,15 +51,13 @@
 						src="../../assets//cart.png"
 						alt=""
 					/>
-					<span>{{ productsInCart }}</span>
+					<!-- <span>{{ productsInCart }}</span> -->
 				</li>
 				<teleport to="#app">
-					<keep-alive>
-						<the-cart
-							@close="closeCart"
-							v-if="cardIsVisible"
-						></the-cart>
-					</keep-alive>
+					<the-cart
+						@close="closeCart"
+						v-if="cardIsVisible"
+					></the-cart>
 				</teleport>
 
 				<router-link to="/store">
@@ -58,7 +66,10 @@
 					</base-button>
 				</router-link>
 
-				<div @click="toggleNav" class="burger">
+				<div
+					@click="toggleNav"
+					class="burger"
+				>
 					<div class="burger-line"></div>
 					<div class="burger-line"></div>
 					<div class="burger-line"></div>
@@ -72,7 +83,7 @@
 import TheNavSocials from "./TheNavSocials.vue";
 import TheCart from "../cart/TheCart.vue";
 import { defineComponent, inject, ref, computed } from "vue";
-import ListOfProducts from "@/types/ListOfProducts";
+import Product from "@/classes/Product";
 export default defineComponent({
 	components: {
 		TheNavSocials,
@@ -103,15 +114,15 @@ export default defineComponent({
 			},
 		];
 
-		const orderedProducts = inject("orderedProducts") as ListOfProducts;
+		const orderedProducts = inject("orderedProducts") as Product[];
 
 		const cardIsVisible = ref<boolean>(false);
 
-		const productsInCart = computed(() => {
-			return orderedProducts.reduce((total, product) => {
-				return (total += product.quantity);
-			}, 0);
-		});
+		// const productsInCart = computed(() => {
+		// 	return orderedProducts.reduce((total, product) => {
+		// 		return (total += product.quantity);
+		// 	}, 0);
+		// });
 
 		const closeCart = () => {
 			console.log(cardIsVisible);
@@ -122,12 +133,19 @@ export default defineComponent({
 			return (cardIsVisible.value = true);
 		};
 
-		const isNavVisible = ref(false)
+		const isNavVisible = ref(false);
 
 		const toggleNav = () => {
-			return isNavVisible.value = !isNavVisible.value
-		}
-		return { cardIsVisible, productsInCart, links, isNavVisible, closeCart, showCart, toggleNav };
+			return (isNavVisible.value = !isNavVisible.value);
+		};
+		return {
+			cardIsVisible,
+			links,
+			isNavVisible,
+			closeCart,
+			showCart,
+			toggleNav,
+		};
 	},
 });
 </script>
@@ -285,5 +303,4 @@ span {
 		padding: 120px 30px 60px;
 	}
 }
-
 </style>

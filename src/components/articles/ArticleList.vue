@@ -48,17 +48,6 @@ export default defineComponent({
 
 		articles.loadArticles();
 
-		// const localArticles = articles.getArticles()
-
-		// if (localArticles.length === 0) {
-		// 	console.log('test if')
-		// 	articles.setArticles(data.articles);
-		// 	articles.saveArticles()
-		// } else {
-		// 	console.log('test else')
-		// 	articles.setArticles(localArticles)
-		// }
-
 		const addArticle = (newArticle: Article) => {
 			articles.addArticle(newArticle);
 			toggleForm();

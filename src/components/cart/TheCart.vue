@@ -24,24 +24,24 @@
 					>
 						No Items In Your Card
 					</p>
-					<cart-item
+					<cart-item-row
 						v-else
-						v-for="product in orderedProducts"
-						:key="product.id"
-						:id="product.id"
-						:title="product.title"
-						:img="product.img"
-						:price="price(product)"
-						:quantity="product.quantity"
-						@remove-item="removeItem(product.id)"
-						@update-quantity="updateQuantity(product, $event)"
-					></cart-item>
+						v-for="item in cartItems"
+						:key="item.product.id"
+						:id="item.product.id"
+						:title="item.product.title"
+						:img="item.product.img"
+						:price="item.product.price * item.quantity"
+						:quantity="item.quantity"
+						@remove-item="removeItem(item)"
+						@update-quantity="updateQuantity(item, $event)"
+					></cart-item-row>
 				</ul>
 			</div>
 			<div>
 				<div class="d-flex justify-content-between">
 					<p>Subtotal</p>
-					<strong>$ {{ calculatedSubtotal.toFixed(2) }} USD</strong>
+					<strong>$ {{ totalPrice }} USD</strong>
 				</div>
 				<base-button class="btn-yellow btn-xxl"
 					>Continue To Checkout</base-button
@@ -53,73 +53,51 @@
 
 <script lang="ts">
 import Product from "@/classes/Product";
-import ListOfProducts from "../../types/ListOfProducts";
-import CartItem from "./CartItem.vue";
-import { defineComponent, inject, computed } from "vue";
+import CartItem from "@/classes/CartItem";
+import CartItemRow from "./CartItemRow.vue";
+import Cart from "@/classes/Cart";
+import { defineComponent, inject, computed } from 'vue';
 export default defineComponent({
 	components: {
-		CartItem,
+		CartItemRow,
 	},
 
 	emits: ["close"],
 
 	setup() {
-		const orderedProducts = inject("orderedProducts") as ListOfProducts;
+		const orderedProducts = inject("orderedProducts") as Cart;
+
+		const cartItems = computed(() => {
+			return orderedProducts.getItems()
+		})
 
 		const productsInCart = computed(() => {
-			return orderedProducts.length > 0 ? 1 : 0;
+			return orderedProducts.getItems().length > 0 ? 1 : 0;
 		});
 
-		const price = computed(() => {
-			return (product: Product) => {
-				return +(product.price * product.quantity).toFixed(2);
-			};
-		});
+		const totalPrice = computed(() => {
+			return orderedProducts.getTotal()
+		})
 
-		const calculatedSubtotal = computed(() => {
-			// doc: https://stackoverflow.com/questions/42949931/how-to-compute-subtotal-of-all-items-on-their-property-criteria-qty-price
-			return orderedProducts.reduce((acc, product) => {
-				return acc + price.value(product);
-			}, 0);
-		});
+		const removeItem = (item: CartItem) => {
+			return item
+		}
 
-		const updateQuantity = (product: Product, newQuantity: number) => {
-			const index = orderedProducts.findIndex(
-				(item) => item.id === product.id
-			);
-
-			orderedProducts[index].quantity = newQuantity;
-
-			localStorage.setItem(
-				"orderedProducts",
-				JSON.stringify(orderedProducts)
-			);
-		};
-
-		const removeItem = (productId: string) => {
-			const index = orderedProducts.findIndex(
-				(item) => item.id === productId
-			);
-
-			orderedProducts.splice(index, 1);
-
-			localStorage.setItem(
-				"orderedProducts",
-				JSON.stringify(orderedProducts)
-			);
+		const updateQuantity = (item: CartItem, newQuantity: number) => {
+			return item.quantity + newQuantity
 		};
 
 		return {
-			orderedProducts,
+			cartItems,
+			productsInCart,
 			removeItem,
 			updateQuantity,
-			calculatedSubtotal,
-			productsInCart,
-			price,
-		};
-	},
-});
+			totalPrice
+		}
+	}
+})
 </script>
+
 
 <style scoped>
 .background-div {

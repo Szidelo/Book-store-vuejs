@@ -6,7 +6,6 @@ class Product {
 		public price: number,
 		public description: string,
 		public format: string,
-		public quantity: number
 	) {}
 }
 

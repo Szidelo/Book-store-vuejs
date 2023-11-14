@@ -4,9 +4,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, provide } from "vue";
+import { defineComponent, provide } from "vue";
 import TheNav from "./components//layouts/TheNav.vue";
-import ListOfProducts from "./types/ListOfProducts";
+import Cart from "./classes/Cart";
 
 export default defineComponent({
 	name: "App",
@@ -15,13 +15,9 @@ export default defineComponent({
 	},
 
 	setup() {
-		const orderedProducts = ref<ListOfProducts>([]);
+		const orderedProducts = new Cart()
 
-		orderedProducts.value = JSON.parse(
-			localStorage.getItem("orderedProducts") || "[]"
-		);
-
-		provide("orderedProducts", orderedProducts.value);
+		provide("orderedProducts", orderedProducts);
 	},
 });
 </script>

@@ -41,6 +41,22 @@ class Cart {
     public loadItems() {
         return this.getItems();
     }
+
+    public getTotalQuantity() {
+        return this.items.value.reduce((total, item) => {
+            return total += item.quantity
+        }, 0)
+    }
+
+    public removeItem(itemId: string) {
+        const index = this.items.value.findIndex((item) => {
+            return item.product.id === itemId
+        })
+
+        this.items.value.splice(index, 1)
+
+        this.saveToLocalStorage()
+    }
 }
 
 export default Cart;

@@ -51,7 +51,7 @@
 						src="../../assets//cart.png"
 						alt=""
 					/>
-					<!-- <span>{{ productsInCart }}</span> -->
+					<span>{{ orderedProducts.getTotalQuantity() }}</span>
 				</li>
 				<teleport to="#app">
 					<the-cart
@@ -82,8 +82,8 @@
 <script lang="ts">
 import TheNavSocials from "./TheNavSocials.vue";
 import TheCart from "../cart/TheCart.vue";
-import { defineComponent, inject, ref, computed } from "vue";
-import Product from "@/classes/Product";
+import { defineComponent, inject, ref } from "vue";
+import Cart from "@/classes/Cart";
 export default defineComponent({
 	components: {
 		TheNavSocials,
@@ -114,15 +114,9 @@ export default defineComponent({
 			},
 		];
 
-		const orderedProducts = inject("orderedProducts") as Product[];
+		const orderedProducts = inject("orderedProducts") as Cart;
 
 		const cardIsVisible = ref<boolean>(false);
-
-		// const productsInCart = computed(() => {
-		// 	return orderedProducts.reduce((total, product) => {
-		// 		return (total += product.quantity);
-		// 	}, 0);
-		// });
 
 		const closeCart = () => {
 			console.log(cardIsVisible);
@@ -139,6 +133,7 @@ export default defineComponent({
 			return (isNavVisible.value = !isNavVisible.value);
 		};
 		return {
+			orderedProducts,
 			cardIsVisible,
 			links,
 			isNavVisible,

@@ -26,14 +26,14 @@
 					</p>
 					<cart-item-row
 						v-else
-						v-for="item in cartItems"
+						v-for="item in orderedProducts.getItems()"
 						:key="item.product.id"
 						:id="item.product.id"
 						:title="item.product.title"
 						:img="item.product.img"
 						:price="price(item)"
 						:quantity="item.quantity"
-						@remove-item="removeItem(item)"
+						@remove-item="orderedProducts.removeItem(item.product.id)"
 						@update-quantity="updateQuantity(item, $event)"
 					></cart-item-row>
 				</ul>
@@ -41,7 +41,7 @@
 			<div>
 				<div class="d-flex justify-content-between">
 					<p>Subtotal</p>
-					<strong>$ {{ totalPrice }} USD</strong>
+					<strong>$ {{ orderedProducts.getTotal().toFixed(2) }} USD</strong>
 				</div>
 				<base-button class="btn-yellow btn-xxl"
 					>Continue To Checkout</base-button
@@ -52,7 +52,6 @@
 </template>
 
 <script lang="ts">
-import Product from "@/classes/Product";
 import CartItem from "@/classes/CartItem";
 import CartItemRow from "./CartItemRow.vue";
 import Cart from "@/classes/Cart";
@@ -67,10 +66,6 @@ export default defineComponent({
 	setup() {
 		const orderedProducts = inject("orderedProducts") as Cart;
 
-		const cartItems = computed(() => {
-			return orderedProducts.getItems()
-		})
-
 		const productsInCart = computed(() => {
 			return orderedProducts.getItems().length > 0 ? 1 : 0;
 		});
@@ -81,25 +76,20 @@ export default defineComponent({
 			};
 		});
 
-		const totalPrice = computed(() => {
-			return orderedProducts.getTotal()
-		})
-
-		const removeItem = (item: CartItem) => {
-			return item
-		}
+		// const removeItem = (itemId: string) => {
+		// 	return itemId
+		// }
 
 		const updateQuantity = (item: CartItem, newQuantity: number) => {
 			return item.quantity + newQuantity
 		};
 
 		return {
-			cartItems,
+			orderedProducts,
 			productsInCart,
-			removeItem,
+			// removeItem,
 			updateQuantity,
 			price,
-			totalPrice
 		}
 	}
 })

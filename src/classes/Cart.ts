@@ -38,10 +38,6 @@ class Cart {
         }, 0);
     }
 
-    public loadItems() {
-        return this.getItems();
-    }
-
     public getTotalQuantity() {
         return this.items.value.reduce((total, item) => {
             return total += item.quantity
@@ -54,6 +50,16 @@ class Cart {
         })
 
         this.items.value.splice(index, 1)
+
+        this.saveToLocalStorage()
+    }
+
+    public updateQuantity(item: CartItem, newQuantity: number) {
+        const index = this.items.value.findIndex((item) => {
+            return item.product.id === item.product.id
+        })
+
+        this.items.value[index].quantity = newQuantity
 
         this.saveToLocalStorage()
     }

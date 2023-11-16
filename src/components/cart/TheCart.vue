@@ -34,7 +34,7 @@
 						:price="price(item)"
 						:quantity="item.quantity"
 						@remove-item="orderedProducts.removeItem(item.product.id)"
-						@update-quantity="updateQuantity(item, $event)"
+						@update-quantity="orderedProducts.updateQuantity(item, $event)"
 					></cart-item-row>
 				</ul>
 			</div>
@@ -76,19 +76,9 @@ export default defineComponent({
 			};
 		});
 
-		// const removeItem = (itemId: string) => {
-		// 	return itemId
-		// }
-
-		const updateQuantity = (item: CartItem, newQuantity: number) => {
-			return item.quantity + newQuantity
-		};
-
 		return {
 			orderedProducts,
 			productsInCart,
-			// removeItem,
-			updateQuantity,
 			price,
 		}
 	}

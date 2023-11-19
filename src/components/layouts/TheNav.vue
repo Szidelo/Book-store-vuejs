@@ -119,7 +119,6 @@ export default defineComponent({
 		const cardIsVisible = ref<boolean>(false);
 
 		const closeCart = () => {
-			console.log(cardIsVisible);
 			return (cardIsVisible.value = false);
 		};
 

@@ -1,6 +1,6 @@
 <template>
 	<div class="col-12 col-xl-6 mb-4">
-		<div class="bg-white p-3 p-md-5 h-100">
+		<div class="custom-card bg-white p-3 p-md-5 h-100">
 			<h5>{{ title }}</h5>
 
 			<p>{{ text }}</p>

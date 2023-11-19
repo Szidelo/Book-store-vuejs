@@ -43,7 +43,7 @@ export default defineComponent({
 }
 
 ::-webkit-scrollbar {
-	display: none;
+	display: none; /* Chrome */
 }
 
 .container {
@@ -56,6 +56,11 @@ section {
 
 main {
 	min-height: 100vh;
+}
+
+.custom-card {
+	box-shadow: 0px 5px 10px 0px rgba(4, 11, 20, 0.15);
+	border-radius: 10px;
 }
 
 .color-blue {

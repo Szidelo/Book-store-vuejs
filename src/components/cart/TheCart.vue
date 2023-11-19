@@ -16,7 +16,7 @@
 			</button>
 		</header>
 		<div class="p-3">
-			<div class="w-100">
+			<div class="cart-content w-100">
 				<ul>
 					<p
 						v-if="!productsInCart"
@@ -40,10 +40,18 @@
 			</div>
 			<div>
 				<div class="d-flex justify-content-between">
-					<p>Subtotal</p>
+					<p class="mb-1">Books cost</p>
 					<strong>$ {{ orderedProducts.getTotal().toFixed(2) }} USD</strong>
 				</div>
-				<base-button class="btn-yellow btn-xxl"
+				<div class="d-flex justify-content-between">
+					<p class="mb-1">Shipping cost</p>
+					<strong>$ {{ orderedProducts.getShipmentCost() }} USD</strong>
+				</div>
+				<div class="d-flex justify-content-between">
+					<p class="mb-1">Total cost</p>
+					<strong>$ {{ orderedProducts.getTotalWithShipment().toFixed(2) }} USD</strong>
+				</div>
+				<base-button class="btn-yellow btn-xxl mt-2"
 					>Continue To Checkout</base-button
 				>
 			</div>
@@ -105,6 +113,11 @@ export default defineComponent({
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 	background-color: var(--color-white);
 	padding: 0;
+}
+
+.cart-content {
+	max-height: 400px;
+	overflow-y: scroll;
 }
 
 .close-btn {

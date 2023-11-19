@@ -1,6 +1,6 @@
 <template>
 	<div class="col-12 col-lg-6 col-xxl-4 p-0 pb-4 p-sm-4">
-		<div class="card mb-4">
+		<div class="card custom-card mb-4">
 			<router-link class="card__img-container" :to="'/articles/' + id">
 				<div>
 					<img
@@ -68,9 +68,9 @@ export default defineComponent({
 	height: 100%;
 	max-height: 580px;
 	padding: 0;
-	border-radius: 10px;
+	/* border-radius: 10px; */
 	overflow: hidden;
-	box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+	/* box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); */
 }
 
 .card__img-container {

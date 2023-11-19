@@ -1,5 +1,5 @@
 <template>
-	<div class="wrapper bg-blue p-3 p-sm-4 me-0 me-md-4">
+	<div class="custom-card wrapper bg-blue p-3 p-sm-4 me-0 me-md-4">
 		<div
 			class="d-flex flex-column flex-sm-row justify-content-center justify-content-sm-start align-items-center gap-3 mb-2 mx-auto mx-sm-0"
 		>

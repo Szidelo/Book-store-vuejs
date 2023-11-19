@@ -48,11 +48,17 @@
 						>
 					</div>
 				</div>
+				<p
+					v-if="!isValidOrder"
+					class="mt-3 color-red"
+				>
+					Order at least one product
+				</p>
 			</div>
 		</div>
 	</section>
-	<ProductExtra/>
-	<ProductShipment/>
+	<ProductExtra />
+	<ProductShipment />
 	<the-footer></the-footer>
 </template>
 
@@ -68,7 +74,7 @@ export default defineComponent({
 	name: "ProductContent",
 	components: {
 		ProductExtra,
-		ProductShipment
+		ProductShipment,
 	},
 	setup() {
 		const products = JSON.parse(
@@ -77,9 +83,11 @@ export default defineComponent({
 
 		const orderedProducts = inject("orderedProducts") as Cart;
 
-		const productIsAdded = ref<boolean>(false);
+		const productIsAdded = ref(false);
 
 		const enteredNumberOfProducts = ref<number>(1);
+
+		const isValidOrder = ref(true);
 
 		let currentProduct = reactive<Product>({
 			id: "",
@@ -101,6 +109,13 @@ export default defineComponent({
 		};
 
 		const addToCart = () => {
+			if (enteredNumberOfProducts.value < 1) {
+				isValidOrder.value = false;
+				return;
+			}
+
+			isValidOrder.value = true;
+
 			const product: Product = {
 				id: currentProduct.id,
 				title: currentProduct.title,
@@ -110,11 +125,13 @@ export default defineComponent({
 				format: currentProduct.format,
 			};
 
-			const item = new CartItem(product, enteredNumberOfProducts.value)
+			const item = new CartItem(product, enteredNumberOfProducts.value);
 
-			orderedProducts.addItem(item)
+			orderedProducts.addItem(item);
 
-			return (productIsAdded.value = true);
+			productIsAdded.value = true;
+
+			enteredNumberOfProducts.value = 1;
 		};
 
 		const closeDialog = () => {
@@ -127,6 +144,7 @@ export default defineComponent({
 			productIsAdded,
 			currentProduct,
 			enteredNumberOfProducts,
+			isValidOrder,
 			addToCart,
 			closeDialog,
 		};
@@ -135,6 +153,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.color-red {
+	color: rgb(179, 83, 83);
+}
 .product-book {
 	height: auto;
 	width: 600px;

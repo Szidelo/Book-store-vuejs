@@ -26,7 +26,7 @@
 			<div>
 				<input
 					type="number"
-					:value="quantity"
+					:value="localQuantity"
 					min="1"
 					@input="updateQuantity"
 				/>
@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { computed, defineComponent, ref } from "vue";
 export default defineComponent({
 	props: {
 		id: {
@@ -68,15 +68,22 @@ export default defineComponent({
 	emits: ["remove-item", "update-quantity"],
 
 	setup(props, { emit }) {
-		const isConfirmMessageVisible = ref<boolean>(false);
+		const isConfirmMessageVisible = ref(false);
 
-		const localQuantity = ref(props.quantity);
+		const localQuantity = computed(() => {
+			return props.quantity < 1 ? 1 : props.quantity;
+		});
 
 		const updateQuantity = (newQuantity: Event) => {
-			// doc: https://stackoverflow.com/questions/67434135/vue-3-typescript-warning-on-vue-emit-and-event-object-is-possibly-null
-			const quantity = Number(
-				(newQuantity.target as HTMLInputElement).value
-			);
+			const inputElement = newQuantity.target as HTMLInputElement;
+			let quantity = Number(inputElement.value);
+
+			// Check if the entered quantity is less than 1 and set it to 1
+			if (quantity < 1) {
+				quantity = 1;
+				inputElement.value = "1";
+			}
+
 			emit("update-quantity", quantity);
 		};
 

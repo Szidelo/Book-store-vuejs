@@ -55,9 +55,11 @@ class Cart {
     }
 
     public updateQuantity(item: CartItem, newQuantity: number) {
-        const index = this.items.value.findIndex((item) => {
-            return item.product.id === item.product.id
+        const index = this.items.value.findIndex((book) => {
+            return book.product.id === item.product.id
         })
+
+        newQuantity < 1 ? 1 : newQuantity
 
         this.items.value[index].quantity = newQuantity
 

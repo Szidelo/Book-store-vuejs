@@ -11,7 +11,6 @@
 					alt=""
 				/>
 			</router-link>
-			<!-- <div></div> -->
 			<div
 				class="card-body d-flex flex-column justify-content-between h-100 p-3"
 			>

@@ -1,4 +1,11 @@
 <template>
+	<base-dialog
+		v-if="productIsAdded"
+		@close="closeDialog"
+		title="Info"
+	>
+		<h6>{{ productTitle }} Was Added To Your Cart!</h6>
+	</base-dialog>
 	<section
 		class="container-fluid d-flex flex-column align-items-center py-5 px-1"
 	>
@@ -36,6 +43,8 @@
 				:format="product.format"
 				:price="product.price"
 				:img="product.img"
+				@add-product="addProduct(product)"
+				@set-format="(category = product.format)"
 			></product-card>
 		</div>
 	</section>
@@ -43,14 +52,34 @@
 
 <script lang="ts">
 import ProductCard from "@/components/store/ProductCard.vue";
-import { defineComponent, onMounted, ref } from "vue";
 import ProductList from "@/classes/ProductList";
+import Cart from "@/classes/Cart";
+import CartItem from "@/classes/CartItem";
+import Product from "@/classes/Product";
+import { defineComponent, onMounted, ref, inject } from "vue";
 export default defineComponent({
 	components: {
 		ProductCard,
 	},
 
 	setup() {
+		const productIsAdded = ref(false);
+
+		const closeDialog = () => {
+			return (productIsAdded.value = false);
+		};
+
+		const productTitle = ref("");
+
+		const orderedProducts = inject("orderedProducts") as Cart;
+
+		const addProduct = (product: Product) => {
+			const item = new CartItem(product, 1);
+			orderedProducts.addItem(item);
+			productTitle.value = product.title;
+			productIsAdded.value = true;
+		};
+
 		const products = new ProductList();
 
 		const category = ref("all");
@@ -68,7 +97,16 @@ export default defineComponent({
 			products.sortByCategory(category.value);
 		});
 
-		return { products, category, setActiveLink };
+		return {
+			productTitle,
+			productIsAdded,
+			products,
+			orderedProducts,
+			category,
+			closeDialog,
+			setActiveLink,
+			addProduct,
+		};
 	},
 });
 </script>

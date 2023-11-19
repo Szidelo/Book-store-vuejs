@@ -44,7 +44,7 @@
 						</svg>
 					</div>
 
-					<h5 class="color-blue py-3">{{ format }}</h5>
+					<h5 @click="$emit('set-format')" class="format-link color-blue py-3">{{ format }}</h5>
 				</div>
 				<div class="d-flex flex-column flex-sm-row gap-3">
 					<base-button
@@ -99,7 +99,7 @@ export default defineComponent({
 		},
 	},
 
-	emits: ["add-product"],
+	emits: ["add-product", "set-format"],
 
 	setup() {
 		return { icon };
@@ -114,6 +114,14 @@ export default defineComponent({
 
 h5 {
 	font-size: 26px;
+}
+
+.format-link {
+	cursor: pointer;
+}
+
+.format-link:hover {
+	color: var(--color-yellow);
 }
 
 strong {

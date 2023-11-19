@@ -26,7 +26,7 @@ export default defineComponent({
             title: {
                 type: String,
                 required: false,
-                default: 'Info'
+                default: 'Product'
             }
         },
         emits: ['close']
@@ -41,6 +41,7 @@ export default defineComponent({
         height: 100vh;
         width: 100%;
         background-color: rgba(0, 0, 0, 0.3);
+        z-index: 2;
     }
 
     dialog {
@@ -54,6 +55,7 @@ export default defineComponent({
         padding: 0;
         border: none;
         margin: 0;
+        z-index: 3;
     }
 
     .close-btn {

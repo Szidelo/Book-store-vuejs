@@ -29,7 +29,7 @@
 <script lang="ts">
 import BookCard from "./BookCard.vue";
 import Cart from "@/classes/Cart";
-import CartItem from "@/classes/CartItem";
+import CartItem from "../../classes/CartItem";
 import Product from "@/classes/Product";
 import ProductList from "@/classes/ProductList";
 import { defineComponent, inject, ref } from "vue";

@@ -1,5 +1,23 @@
 <template>
 	<nav class="bg-blue">
+		<ul :class="!isNavVisible ? 'mobile-nav' : 'mobile-nav visible'">
+			<li
+				@click="toggleNav"
+				class="close-nav"
+			>
+				X
+			</li>
+			<li
+				v-for="(link, index) in links"
+				:key="index"
+			>
+				<router-link
+					@click="toggleNav"
+					:to="link.path"
+					>{{ link.name }}</router-link
+				>
+			</li>
+		</ul>
 		<div
 			class="container d-flex flex-column flex-lg-row justify-content-between px-2 px-xxl-5"
 		>
@@ -18,30 +36,6 @@
 					:key="index"
 				>
 					<router-link :to="link.path">{{ link.name }}</router-link>
-				</li>
-				<li>
-					<ul
-						:class="
-							!isNavVisible ? 'mobile-nav' : 'mobile-nav visible'
-						"
-					>
-						<li
-							@click="toggleNav"
-							class="close-nav"
-						>
-							X
-						</li>
-						<li
-							v-for="(link, index) in links"
-							:key="index"
-						>
-							<router-link
-								@click="toggleNav"
-								:to="link.path"
-								>{{ link.name }}</router-link
-							>
-						</li>
-					</ul>
 				</li>
 
 				<li>
@@ -225,7 +219,7 @@ span {
 
 .visible {
 	transform: translateX(0) !important;
-	box-shadow: 0 10px 55px 10px rgba(0,0,0,0.3);
+	box-shadow: 0 10px 55px 10px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 1200px) {
@@ -269,12 +263,13 @@ span {
 		justify-content: start;
 		row-gap: 60px;
 		background-color: var(--color-blue);
-		top: -10px;
-		right: -10px;
+		top: 0;
+		right: 0;
 		width: 70%;
-		height: 700px;
+		height: 100vh;
 		padding: 120px 60px 60px;
 		transform: translateX(100%);
+		z-index: 101;
 	}
 
 	.close-nav {

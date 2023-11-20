@@ -20,6 +20,7 @@ button {
 	font-weight: 700;
 	line-height: 23.75px;
 	letter-spacing: 0.38px;
+	user-select: none;
 	transition: var(--transition);
 }
 

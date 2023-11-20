@@ -28,7 +28,7 @@
 							<h4
 								class="bg-blue p-3 my-0"
 							>
-								<img :src="contact.icon" alt="icon" />
+								<img class="icon" :src="contact.icon" alt="icon" />
 							</h4>
 						</div>
 						<div>
@@ -85,3 +85,10 @@ export default defineComponent({
     }
 })
 </script>
+
+<style scoped>
+.icon {
+	width: 35px;
+	height: 35px;
+}
+</style>

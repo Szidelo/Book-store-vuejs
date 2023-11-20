@@ -48,6 +48,10 @@
 					<strong>$ {{ orderedProducts.getShipmentCost() }} USD</strong>
 				</div>
 				<div class="d-flex justify-content-between">
+					<p class="mb-1">VAT amount (5%)</p>
+					<strong>$ {{ (orderedProducts.getTotalWithShipment() * 0.05).toFixed(2) }} USD</strong>
+				</div>
+				<div class="d-flex justify-content-between">
 					<p class="mb-1">Total cost</p>
 					<strong>$ {{ orderedProducts.getTotalWithShipment().toFixed(2) }} USD</strong>
 				</div>
@@ -106,10 +110,11 @@ export default defineComponent({
 
 .cart {
 	position: fixed;
-	top: 20%;
+	top: 15%;
 	left: 50%;
 	transform: translateX(-50%);
-	min-width: 480px;
+	width: 100%;
+	max-width: 600px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 	background-color: var(--color-white);
 	padding: 0;

@@ -64,7 +64,11 @@ class Cart {
 
 		this.items.value.splice(index, 1);
 
-		this.saveToLocalStorage();
+		if(this.items.value.length > 0) {
+			this.saveToLocalStorage();
+		} else {
+			localStorage.removeItem(this.key);
+		}
 	}
 
 	public updateQuantity(item: CartItem, newQuantity: number) {

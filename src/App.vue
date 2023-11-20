@@ -168,7 +168,7 @@ p {
 }
 
 a {
-	text-decoration: none;
+	text-decoration: none !important;
 }
 
 @media (max-width: 768px) {

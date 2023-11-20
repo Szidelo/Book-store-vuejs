@@ -28,6 +28,7 @@
 					type="number"
 					:value="localQuantity"
 					min="1"
+					max="99"
 					@input="updateQuantity"
 				/>
 			</div>
@@ -78,10 +79,14 @@ export default defineComponent({
 			const inputElement = newQuantity.target as HTMLInputElement;
 			let quantity = Number(inputElement.value);
 
-			// Check if the entered quantity is less than 1 and set it to 1
 			if (quantity < 1) {
 				quantity = 1;
 				inputElement.value = "1";
+			}
+
+			if(quantity > 99) {
+				quantity = 99;
+				inputElement.value = '99'
 			}
 
 			emit("update-quantity", quantity);
@@ -119,7 +124,7 @@ img {
 }
 
 input {
-	width: 50px;
+	width: 70px;
 	font-family: "Inter", sans-serif;
 	font-size: 19px;
 	border: 2px solid var(--color-yellow);

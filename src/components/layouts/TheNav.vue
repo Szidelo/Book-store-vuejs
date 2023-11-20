@@ -45,7 +45,7 @@
 						src="../../assets//cart.png"
 						alt=""
 					/>
-					<span>{{ orderedProducts.getTotalQuantity() }}</span>
+					<span>{{ numberOfProducts }}</span>
 				</li>
 				<teleport to="#app">
 					<the-cart
@@ -76,8 +76,9 @@
 <script lang="ts">
 import TheNavSocials from "./TheNavSocials.vue";
 import TheCart from "../cart/TheCart.vue";
-import { defineComponent, inject, ref } from "vue";
 import Cart from "@/classes/Cart";
+import data from "../../utils/data.json";
+import { computed, defineComponent, inject, ref } from "vue";
 export default defineComponent({
 	components: {
 		TheNavSocials,
@@ -85,32 +86,18 @@ export default defineComponent({
 	},
 
 	setup() {
-		const links = [
-			{
-				path: "/home",
-				name: "home",
-			},
-			{
-				path: "/about",
-				name: "about",
-			},
-			{
-				path: "/articles",
-				name: "articles",
-			},
-			{
-				path: "/store",
-				name: "our store",
-			},
-			{
-				path: "/contact",
-				name: "contact us",
-			},
-		];
+		const links = data.links;
 
 		const orderedProducts = inject("orderedProducts") as Cart;
 
-		const cardIsVisible = ref<boolean>(false);
+		const numberOfProducts = computed(() => {
+			if(orderedProducts.getTotalQuantity() > 99) {
+				return "99+"
+			}
+			return orderedProducts.getTotalQuantity()
+		})
+
+		const cardIsVisible = ref(false);
 
 		const closeCart = () => {
 			return (cardIsVisible.value = false);
@@ -130,6 +117,7 @@ export default defineComponent({
 			cardIsVisible,
 			links,
 			isNavVisible,
+			numberOfProducts,
 			closeCart,
 			showCart,
 			toggleNav,
@@ -203,6 +191,7 @@ span {
 	border-radius: 50%;
 	background-color: var(--color-yellow);
 	color: var(--color-blue);
+	font-size: 14px;
 	font-family: Inter;
 	font-weight: 700;
 	text-align: center;

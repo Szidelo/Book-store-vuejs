@@ -33,12 +33,17 @@
 						:img="item.product.img"
 						:price="price(item)"
 						:quantity="item.quantity"
-						@remove-item="orderedProducts.removeItem(item.product.id)"
-						@update-quantity="orderedProducts.updateQuantity(item, $event)"
+						@remove-item="
+							orderedProducts.removeItem(item.product.id)
+						"
+						@update-quantity="
+							orderedProducts.updateQuantity(item, $event)
+						"
 					></cart-item-row>
 				</ul>
 			</div>
 			<div>
+
 				<div class="d-flex justify-content-between">
 					<p class="mb-1">Books cost</p>
 					<strong>$ {{ orderedProducts.getTotal().toFixed(2) }} USD</strong>
@@ -67,7 +72,7 @@
 import CartItem from "@/classes/CartItem";
 import CartItemRow from "./CartItemRow.vue";
 import Cart from "@/classes/Cart";
-import { defineComponent, inject, computed } from 'vue';
+import { defineComponent, inject, computed } from "vue";
 export default defineComponent({
 	components: {
 		CartItemRow,
@@ -77,26 +82,53 @@ export default defineComponent({
 
 	setup() {
 		const orderedProducts = inject("orderedProducts") as Cart;
-
+		
 		const productsInCart = computed(() => {
 			return orderedProducts.getTotal() > 0 ? 1 : 0;
 		});
-
+		
 		const price = computed(() => {
 			return (item: CartItem) => {
-				return +(item.product.price * item.quantity).toFixed(2)
+				return +(item.product.price * item.quantity).toFixed(2);
 			};
 		});
+
+		// type payment = {
+		// 	text: string,
+		// 	method: number
+		// }
+
+		// const paymentDetials = ref<payment[]>([
+		// 	{
+		// 		text: "Books cost",
+		// 		method: +(orderedProducts.getTotal().toFixed(2)),
+		// 	},
+		// 	{
+		// 		text: "Shipping cost",
+		// 		method: orderedProducts.getShipmentCost(),
+		// 	},
+		// 	{
+		// 		text: "VAT amount (5%)",
+		// 		method: +(orderedProducts.getTotalWithShipment() * 0.05).toFixed(
+		// 			2
+		// 		),
+		// 	},
+		// 	{
+		// 		text: "Total cost",
+		// 		method: +(orderedProducts.getTotalWithShipment().toFixed(2)),
+		// 	},
+		// ]);
+
 
 		return {
 			orderedProducts,
 			productsInCart,
 			price,
-		}
-	}
-})
+			// paymentDetials,
+		};
+	},
+});
 </script>
-
 
 <style scoped>
 .background-div {
@@ -142,15 +174,15 @@ ul {
 }
 
 @media (max-width: 576px) {
-	.cart {
+	/* .cart {
 		position: fixed;
 		top: 10%;
 		left: 50%;
 		transform: translateX(-50%);
-		min-width: 98%;
+		width: 98%;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 		background-color: var(--color-white);
 		padding: 0;
-	}
+	} */
 }
 </style>

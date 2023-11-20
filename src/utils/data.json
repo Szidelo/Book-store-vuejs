@@ -129,5 +129,28 @@
 			"format": "Audio CD + Printed Book",
 			"quantity": 1
 		}
+	],
+
+	"links": [
+		{
+			"path": "/home",
+			"name": "home"
+		},
+		{
+			"path": "/about",
+			"name": "about"
+		},
+		{
+			"path": "/articles",
+			"name": "blog"
+		},
+		{
+			"path": "/store",
+			"name": "our store"
+		},
+		{
+			"path": "/contact",
+			"name": "contact us"
+		}
 	]
 }

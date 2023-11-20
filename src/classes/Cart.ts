@@ -33,7 +33,7 @@ class Cart {
 	}
 
 	public getShipmentCost() {
-		return this.getTotal() <= 100 ? this.shipmentCost : 0;
+		return this.getTotal() < 100 && this.getTotal() !== 0 ? this.shipmentCost : 0;
 	}
 
 	public getTotal() {
@@ -47,7 +47,7 @@ class Cart {
 
 	public getTotalWithShipment() {
 		return this.getTotal() < 100
-			? this.getTotal() + this.shipmentCost
+			? this.getTotal() + this.getShipmentCost()
 			: this.getTotal();
 	}
 

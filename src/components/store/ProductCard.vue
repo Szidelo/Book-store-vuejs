@@ -107,6 +107,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+img {
+	z-index: 0 !important;
+}
 .card {
 	border: none;
 }

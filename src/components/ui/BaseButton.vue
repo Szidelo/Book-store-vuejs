@@ -166,6 +166,12 @@ button {
 	background-color: var(--color-grayish-blue);
 }
 
+@media (max-width: 576px) {
+	.btn-white {
+		width: 100%;
+	}
+}
+
 @media (max-width: 350px) {
 	button {
 		font-size: 17px;

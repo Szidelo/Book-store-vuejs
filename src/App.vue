@@ -42,6 +42,10 @@ export default defineComponent({
 	transition: var(--transition);
 }
 
+html {
+	overflow-x: hidden !important;
+}
+
 ::-webkit-scrollbar {
 	display: none; /* Chrome */
 }
@@ -181,7 +185,7 @@ a {
 	}
 }
 
-@media (max-width) {
+@media (max-width: 5) {
 	h2 {
 		font-size: 32px;
 	}

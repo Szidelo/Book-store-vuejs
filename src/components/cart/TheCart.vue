@@ -75,7 +75,7 @@ export default defineComponent({
 		const orderedProducts = inject("orderedProducts") as Cart;
 
 		const productsInCart = computed(() => {
-			return orderedProducts.getItems().length > 0 ? 1 : 0;
+			return orderedProducts.getTotal() > 0 ? 1 : 0;
 		});
 
 		const price = computed(() => {
@@ -116,7 +116,7 @@ export default defineComponent({
 }
 
 .cart-content {
-	max-height: 400px;
+	max-height: 40vh;
 	overflow-y: scroll;
 }
 

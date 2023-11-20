@@ -225,6 +225,7 @@ span {
 
 .visible {
 	transform: translateX(0) !important;
+	box-shadow: 0 10px 55px 10px rgba(0,0,0,0.3);
 }
 
 @media (max-width: 1200px) {
@@ -262,16 +263,16 @@ span {
 	}
 
 	.mobile-nav {
-		position: absolute;
+		position: fixed;
 		display: flex;
 		flex-direction: column;
 		justify-content: start;
 		row-gap: 60px;
 		background-color: var(--color-blue);
-		top: 0;
+		top: -10px;
 		right: -10px;
 		width: 70%;
-		height: 100vh;
+		height: 700px;
 		padding: 120px 60px 60px;
 		transform: translateX(100%);
 	}

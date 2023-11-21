@@ -45,7 +45,7 @@
 			<div>
 
 				<div class="d-flex justify-content-between">
-					<p class="mb-1">Books cost</p>
+					<p class="mb-1">Books cost with VAT</p>
 					<strong>$ {{ orderedProducts.getTotal().toFixed(2) }} USD</strong>
 				</div>
 				<div class="d-flex justify-content-between">
@@ -93,38 +93,10 @@ export default defineComponent({
 			};
 		});
 
-		// type payment = {
-		// 	text: string,
-		// 	method: number
-		// }
-
-		// const paymentDetials = ref<payment[]>([
-		// 	{
-		// 		text: "Books cost",
-		// 		method: +(orderedProducts.getTotal().toFixed(2)),
-		// 	},
-		// 	{
-		// 		text: "Shipping cost",
-		// 		method: orderedProducts.getShipmentCost(),
-		// 	},
-		// 	{
-		// 		text: "VAT amount (5%)",
-		// 		method: +(orderedProducts.getTotalWithShipment() * 0.05).toFixed(
-		// 			2
-		// 		),
-		// 	},
-		// 	{
-		// 		text: "Total cost",
-		// 		method: +(orderedProducts.getTotalWithShipment().toFixed(2)),
-		// 	},
-		// ]);
-
-
 		return {
 			orderedProducts,
 			productsInCart,
 			price,
-			// paymentDetials,
 		};
 	},
 });
@@ -171,18 +143,5 @@ ul {
 	width: 100%;
 	list-style: none;
 	padding: 0;
-}
-
-@media (max-width: 576px) {
-	/* .cart {
-		position: fixed;
-		top: 10%;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 98%;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-		background-color: var(--color-white);
-		padding: 0;
-	} */
 }
 </style>

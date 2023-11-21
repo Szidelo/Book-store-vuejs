@@ -76,14 +76,7 @@ export default defineComponent({
 
     @media (max-width: 576px) {
         dialog {
-            position: fixed;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%);
             min-width: 98%;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-            background-color: var(--color-white);
-            padding: 0;
         }
     }
 </style>

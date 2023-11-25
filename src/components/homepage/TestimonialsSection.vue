@@ -44,8 +44,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import avatar1 from "../../assets/home-imgs/avatar1.jpg";
-import avatar2 from "../../assets/home-imgs/avatar1.jpg";
-import avatar3 from "../../assets/home-imgs/avatar1.jpg";
+import avatar2 from "../../assets/home-imgs/avatar2.jpg";
+import avatar3 from "../../assets/home-imgs/avatar3.jpg";
 import TestimonialCard from "./TestimonialCard.vue";
 export default defineComponent({
 	name: "TestimonialsSection",

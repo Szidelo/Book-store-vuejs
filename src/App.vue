@@ -119,6 +119,7 @@ h5,
 h6 {
 	font-family: Cardo;
 	font-weight: 700;
+	user-select: none;
 }
 
 h1 {
@@ -165,10 +166,12 @@ p {
 	font-weight: 400;
 	line-height: 32.3px;
 	letter-spacing: -0.19px;
+	user-select: none;
 }
 
 a {
 	text-decoration: none !important;
+	user-select: none;
 }
 
 @media (max-width: 768px) {

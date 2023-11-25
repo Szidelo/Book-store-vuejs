@@ -178,6 +178,10 @@ img {
 	user-select: none;
 }
 
+span {
+	user-select: none;
+}
+
 @media (max-width: 768px) {
 	h2 {
 		font-size: 48px;

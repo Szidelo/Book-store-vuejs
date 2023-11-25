@@ -174,6 +174,10 @@ a {
 	user-select: none;
 }
 
+img {
+	user-select: none;
+}
+
 @media (max-width: 768px) {
 	h2 {
 		font-size: 48px;

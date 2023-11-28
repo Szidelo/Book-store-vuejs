@@ -57,29 +57,30 @@ class Cart {
 		}, 0);
 	}
 
+
 	public removeItem(itemId: string) {
 		const index = this.items.value.findIndex((item) => {
 			return item.product.id === itemId;
 		});
-
+	
 		this.items.value.splice(index, 1);
-
+	
 		if(this.items.value.length > 0) {
 			this.saveToLocalStorage();
 		} else {
 			localStorage.removeItem(this.key);
 		}
 	}
-
+	
 	public updateQuantity(item: CartItem, newQuantity: number) {
 		const index = this.items.value.findIndex((book) => {
 			return book.product.id === item.product.id;
 		});
-
+	
 		newQuantity < 1 ? 1 : newQuantity;
-
+	
 		this.items.value[index].quantity = newQuantity;
-
+	
 		this.saveToLocalStorage();
 	}
 }

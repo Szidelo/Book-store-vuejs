@@ -68,9 +68,7 @@ export default defineComponent({
 	height: 100%;
 	max-height: 580px;
 	padding: 0;
-	/* border-radius: 10px; */
 	overflow: hidden;
-	/* box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); */
 }
 
 .card__img-container {

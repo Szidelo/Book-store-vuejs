@@ -16,7 +16,7 @@ class Cart {
 
 	public addItem(item: CartItem) {
 		const existingItemIndex = this.items.value.findIndex(
-			(cartItem) => cartItem.product.id === item.product.id
+			(cartItem) => cartItem.id === item.id
 		);
 
 		if (existingItemIndex !== -1) {
@@ -32,13 +32,17 @@ class Cart {
 		return JSON.parse(localStorage.getItem(this.key) || "[]") as CartItem[];
 	}
 
+	public getItemPrice(item: CartItem) {
+		return +((item.price * item.quantity).toFixed(2))
+	}
+
 	public getShipmentCost() {
 		return this.getTotal() < 100 && this.getTotal() !== 0 ? this.shipmentCost : 0;
 	}
 
 	public getTotal() {
 		const total = this.items.value.reduce((acc, item) => {
-			const itemPrice = +(item.product.price * item.quantity).toFixed(2);
+			const itemPrice = +(item.price * item.quantity).toFixed(2);
 			return acc + itemPrice;
 		}, 0);
 
@@ -60,7 +64,7 @@ class Cart {
 
 	public removeItem(itemId: string) {
 		const index = this.items.value.findIndex((item) => {
-			return item.product.id === itemId;
+			return item.id === itemId;
 		});
 	
 		this.items.value.splice(index, 1);
@@ -74,7 +78,7 @@ class Cart {
 	
 	public updateQuantity(item: CartItem, newQuantity: number) {
 		const index = this.items.value.findIndex((book) => {
-			return book.product.id === item.product.id;
+			return book.id === item.id;
 		});
 	
 		newQuantity < 1 ? 1 : newQuantity;

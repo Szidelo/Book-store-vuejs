@@ -46,7 +46,6 @@ const router = createRouter({
     routes,
     linkActiveClass: "active",
     scrollBehavior(to, from, savedPosition) {
-        // console.log(to, from, savedPosition)
         if (savedPosition) {
             return savedPosition;
         }

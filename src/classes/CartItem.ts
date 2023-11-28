@@ -1,13 +1,19 @@
 import Product from "./Product";
 
-class CartItem {
-    public product: Product;
-    public quantity: number;
+class CartItem extends Product {
+	public quantity: number;
 
-    constructor(product: Product, quantity: number) {
-        this.product = product;
-        this.quantity = quantity;
-    }
+	constructor(product: Product, quantity: number) {
+		super(
+			product.id,
+			product.title,
+			product.img,
+			product.price,
+			product.description,
+			product.format
+		);
+		this.quantity = quantity;
+	}
 }
 
 export default CartItem;

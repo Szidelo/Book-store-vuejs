@@ -27,14 +27,14 @@
 					<cart-item-row
 						v-else
 						v-for="item in orderedProducts.getItems()"
-						:key="item.product.id"
-						:id="item.product.id"
-						:title="item.product.title"
-						:img="item.product.img"
-						:price="price(item)"
+						:key="item.id"
+						:id="item.id"
+						:title="item.title"
+						:img="item.img"
+						:price="orderedProducts.getItemPrice(item)"
 						:quantity="item.quantity"
 						@remove-item="
-							orderedProducts.removeItem(item.product.id)
+							orderedProducts.removeItem(item.id)
 						"
 						@update-quantity="
 							orderedProducts.updateQuantity(item, $event)
@@ -69,7 +69,6 @@
 </template>
 
 <script lang="ts">
-import CartItem from "@/classes/CartItem";
 import CartItemRow from "./CartItemRow.vue";
 import Cart from "@/classes/Cart";
 import { defineComponent, inject, computed } from "vue";
@@ -84,19 +83,12 @@ export default defineComponent({
 		const orderedProducts = inject("orderedProducts") as Cart;
 		
 		const productsInCart = computed(() => {
-			return orderedProducts.getTotal() > 0 ? 1 : 0;
-		});
-		
-		const price = computed(() => {
-			return (item: CartItem) => {
-				return +(item.product.price * item.quantity).toFixed(2);
-			};
+			return orderedProducts.getTotal() > 0 ? true : false;
 		});
 
 		return {
 			orderedProducts,
 			productsInCart,
-			price,
 		};
 	},
 });

@@ -3,9 +3,10 @@ import HomePageVue from "./pages/HomePage.vue";
 import AboutPage from "./pages/AboutPage.vue";
 import ArticlesPage from "./pages/ArticlesPage.vue";
 import StorePage from "./pages/StorePage.vue";
-import ArticleContent from "./components/articles/ArticleContent.vue";
+// import ArticleContent from "./components/articles/ArticleContent.vue";
 import ProductContent from "./components/store/ProductContent.vue";
 import ContactPage from "./pages/ContactPage.vue";
+import NewsArticleContentVue from "./components/articles/NewsArticleContent.vue";
 
 const routes = [
     {
@@ -28,9 +29,13 @@ const routes = [
         path: "/store",
         component: StorePage,
     },
+    // {
+    //     path: "/articles/:articleId",
+    //     component: ArticleContent,
+    // },
     {
-        path: "/articles/:articleId",
-        component: ArticleContent,
+        path: '/articles/:articleId',
+        component: NewsArticleContentVue
     },
     {
         path: "/store/:productId",

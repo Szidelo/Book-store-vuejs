@@ -82,6 +82,15 @@ button {
 	padding: 20px;
 }
 
+.btn-search {
+	padding: 10px 20px;
+	max-height: min-content;
+}
+
+.btn-search:hover {
+	background-color: var(--color-blue) !important;
+}
+
 .btn-icon:hover {
 	background-color: var(--color-white);
 	color: var(--color-light);

@@ -1,10 +1,12 @@
 <template>
-	<TheNav />
-	<RouterView />
+	<div>
+		<TheNav />
+		<RouterView />
+	</div>
 </template>
 
 <script lang="ts">
-import { defineComponent, provide } from "vue";
+import { defineComponent, provide} from "vue";
 import TheNav from "./components//layouts/TheNav.vue";
 import Cart from "./classes/Cart";
 
@@ -15,7 +17,7 @@ export default defineComponent({
 	},
 
 	setup() {
-		const orderedProducts = new Cart()
+		const orderedProducts = new Cart();
 
 		provide("orderedProducts", orderedProducts);
 	},

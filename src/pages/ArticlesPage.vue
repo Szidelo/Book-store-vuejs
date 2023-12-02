@@ -12,17 +12,17 @@
 	<section
 		class="container-fluid d-flex flex-column align-items-center py-5 px-1 bg-light"
 	>
-		<article-list></article-list>
+		<news-article-list></news-article-list>
 	</section>
 	<the-footer />
 </template>
 
 <script lang="ts">
-import ArticleList from "../components/articles/ArticleList.vue";
+import NewsArticleList from "@/components/articles/NewsArticleList.vue";
 import { defineComponent } from "vue";
 export default defineComponent({
 	components: {
-		ArticleList,
+		NewsArticleList,
 	},
 });
 </script>

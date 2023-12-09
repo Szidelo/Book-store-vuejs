@@ -9,12 +9,18 @@ const fetchNews = async (keyWord: string) => {
 	);
 
 	const filteredArticles = response.data.articles.filter(
-		(article: NewsArticle) => {
-			return article.urlToImage !== "";
+		(article: NewsArticle, index = 0) => {
+			if (index < 99) {
+				return (
+					article.urlToImage !== "" &&
+					article.title !== "" &&
+					response.data.articles[index + 1]?.title !== article.title
+				);
+			} else {
+				return article.urlToImage !== "" && article.title !== "";
+			}
 		}
 	);
-
-  console.log(filteredArticles)
 
 	return filteredArticles;
 };

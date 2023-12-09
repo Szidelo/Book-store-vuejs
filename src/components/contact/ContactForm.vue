@@ -40,6 +40,8 @@
 					class="form-input"
 					type="text"
 					placeholder="Phone"
+					pattern="^\+?[0-9\s.-]{8,}$"
+					title="Please enter a valid phone number"
 				/>
 			</div>
 		</div>

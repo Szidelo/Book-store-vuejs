@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, provide} from "vue";
+import { defineComponent, provide } from "vue";
 import TheNav from "./components//layouts/TheNav.vue";
 import Cart from "./classes/Cart";
 import NewsArticleList from "./classes/NewsArticleList";
@@ -19,10 +19,10 @@ export default defineComponent({
 
 	setup() {
 		const orderedProducts = new Cart();
-		const news = new NewsArticleList()
+		const news = new NewsArticleList();
 
 		provide("orderedProducts", orderedProducts);
-		provide("news", news)
+		provide("news", news);
 	},
 });
 </script>

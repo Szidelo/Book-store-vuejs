@@ -9,6 +9,7 @@
 import { defineComponent, provide} from "vue";
 import TheNav from "./components//layouts/TheNav.vue";
 import Cart from "./classes/Cart";
+import NewsArticleList from "./classes/NewsArticleList";
 
 export default defineComponent({
 	name: "App",
@@ -18,8 +19,10 @@ export default defineComponent({
 
 	setup() {
 		const orderedProducts = new Cart();
+		const news = new NewsArticleList()
 
 		provide("orderedProducts", orderedProducts);
+		provide("news", news)
 	},
 });
 </script>
@@ -46,6 +49,10 @@ export default defineComponent({
 
 html {
 	overflow-x: hidden !important;
+}
+
+body {
+	overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {

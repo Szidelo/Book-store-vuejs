@@ -102,6 +102,7 @@ export default defineComponent({
 	height: 100vh;
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 100;
 }
 
 .cart {
@@ -109,11 +110,12 @@ export default defineComponent({
 	top: 15%;
 	left: 50%;
 	transform: translateX(-50%);
-	width: 100%;
+	width: 90%;
 	max-width: 600px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 	background-color: var(--color-white);
 	padding: 0;
+	z-index: 101;
 }
 
 .cart-content {

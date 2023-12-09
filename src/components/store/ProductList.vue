@@ -10,7 +10,7 @@
 		class="container-fluid d-flex flex-column align-items-center py-5 px-1"
 	>
 		<div class="container row px-0 px-md-2 px-xxl-5 py-5">
-			<div class="d-flex gap-4 ms-4 mb-4">
+			<div class="d-flex gap-4 ms-4 mb-4 p-0">
 				<base-button
 					:class="setActiveLink('all')"
 					@click="category = 'all'"

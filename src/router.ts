@@ -29,12 +29,8 @@ const routes = [
         path: "/store",
         component: StorePage,
     },
-    // {
-    //     path: "/articles/:articleId",
-    //     component: ArticleContent,
-    // },
     {
-        path: '/articles/:articleId',
+        path: '/articles/:articleTitle',
         component: NewsArticleContentVue
     },
     {

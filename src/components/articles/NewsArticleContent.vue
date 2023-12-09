@@ -1,105 +1,109 @@
 <template>
-	<the-header :title="currentArticle.title"></the-header>
+	<div v-if="currentArticle.title !== ''">
+		<the-header :title="currentArticle.title"></the-header>
 
-	<main class="container px-2 px-md-5">
-		<div class="py-5 my-5">
-			<img
-				class="img-fluid img-banner"
-				:src="currentArticle.urlToImage"
-				alt=""
-			/>
-			<div class="mt-4">
-				<h5 class="color-blue">
-					{{ currentArticle.publishedAt }} / Category:
-					{{ currentArticle.author }}
-				</h5>
-			</div>
-			<p class="article-body">
-				{{ currentArticle.content.substring(201, 0) }} <a :href="currentArticle.url"><base-button class="btn-link">Readmore</base-button></a>
-			</p>
-			<div class="my-4">
-				<h4 class="color-blue">The perfect book for all</h4>
-
-				<p>
-					Appropriately empower dynamic leadership skills after
-					business portals. Globally my coordinate interactive supply
-					chains with distinctive quality vectors global sources
-					services. Uniquely matrix economically sound value through
-					cooperative technology. Competently parallel task fully
-					researched data and enterprise process improvements.
-				</p>
-				<ul>
-					<li>
-						<div class="cirle"></div>
-						Dynamically target high-payoff intellectual capital for
-						customized
-					</li>
-					<li>
-						<div class="cirle"></div>
-						Interactively procrastinate high-payoff content
-					</li>
-					<li>
-						<div class="cirle"></div>
-						Credibly reinter mediate backend ideas for
-						cross-platform models
-					</li>
-				</ul>
-			</div>
-
-			<div class="quote">
+		<main class="container px-2 px-md-5">
+			<div class="py-5 my-5">
 				<img
-					class="quotes-img"
-					:src="quotesImg"
-					alt="quotes"
+					class="img-fluid img-banner"
+					:src="currentArticle.urlToImage"
+					alt=""
 				/>
-				<p class="quote-text color-white text-center">
-					"{{ currentArticle.description }}"
-				</p>
-			</div>
+				<div class="mt-4">
+					<h5 class="color-blue">
+						Publish at:
+						{{
+							currentArticle.publishedAt
+								.substring(10, 0)
+								.replaceAll("-", "/")
+						}}
+						/ Author:
+						{{ currentArticle.author }}
+					</h5>
+				</div>
+				<div class="row">
+					<div class="col-12 col-lg-6">
+						<h4 class="color-blue">{{ currentArticle.title }}</h4>
+						<p class="article-body">
+							{{ currentArticle.content.substring(201, 0) }}
+							<a :href="currentArticle.url"
+								><base-button class="btn-link"
+									>Readmore</base-button
+								></a
+							>
+						</p>
+					</div>
+					<div class="col-12 col-lg-5"></div>
+				</div>
+				<div class="my-4"></div>
 
-			<div class="mt-4">
-				<h4 class="color-blue">The perfect book for all</h4>
+				<div class="quote">
+					<img
+						class="quotes-img"
+						:src="quotesImg"
+						alt="quotes"
+					/>
+					<p class="quote-text color-white text-center">
+						"{{ currentArticle.description }}"
+					</p>
+				</div>
 
-				<p>
-					It is a long established fact that a reader will be
-					distracted by the readable content of a page when looking at
-					its layout. The point of using Lorem Ipsum is that it has
-					less normal distribution of letters, as opposed.
-				</p>
-				<ol>
-					<li>
-						It has roots in a piece of classical Latin literature
-						from 45 BC,
-					</li>
-					<li>To generate Lorem Ipsum which looks reasonable</li>
-					<li>
-						The first line of Lorem Ipsum, "Lorem ipsum” dolor sit
-						amet
-					</li>
-					<li>Be standard chunk of Lorem used since the 1500s</li>
-				</ol>
+				<div class="row mt-4">
+					<h4 class="color-blue">Relevant Articles</h4>
+					<NewsArticleCard
+						v-for="article in articles.getData().slice(12, 15)"
+						:key="news.getData().indexOf(article)"
+						:id="news.getData().indexOf(article).toString()"
+						:img="article.urlToImage"
+						:date="article.publishedAt"
+						:title="article.title"
+						:author="article.author"
+						:description="article.description"
+						@click="refreshPage"
+					/>
+				</div>
 			</div>
+		</main>
+		<the-footer></the-footer>
+	</div>
+	<div
+		v-else
+		class="spinner-wrapper d-flex justify-content-center align-items-center"
+	>
+		<div
+			class="spinner-border color-blue"
+			role="status"
+		>
+			<span class="visually-hidden">Loading...</span>
 		</div>
-	</main>
-	<the-footer></the-footer>
+	</div>
 </template>
 
 <script lang="ts">
 import quotesImg from "../../assets/quotes-icon.svg";
-import NewsArticle from "@/classes/NewsArticle";
-import { defineComponent, reactive, ref, onMounted } from "vue";
+import NewsArticleList from "@/classes/NewsArticleList";
+import NewsArticleCard from "./NewsArticleCard.vue";
+import { defineComponent, inject, onMounted, reactive } from "vue";
 import { useRoute } from "vue-router";
-import { fetchNews } from "@/fetch/newsApi";
+import NewsArticle from "@/classes/NewsArticle";
 
 export default defineComponent({
 	name: "NewsArticleContent",
 
+	components: {
+		NewsArticleCard,
+	},
+
 	setup() {
+		const refreshPage = () => {
+			return window.location.reload();
+		};
 		const route = useRoute();
-		const articles = ref<Promise<NewsArticle[]>>(
-			fetchNews("books")
-		);
-		const articlesResolved = ref<NewsArticle[]>([]);
+
+		const news = inject("news") as NewsArticleList;
+
+		const articles = new NewsArticleList();
+		articles.fetchData("Books");
 
 		let currentArticle = reactive<NewsArticle>({
 			author: "",
@@ -107,39 +111,39 @@ export default defineComponent({
 			description: "",
 			publishedAt: "",
 			source: {
-				id: '',
-				name: ''
+				id: "",
+				name: "",
 			},
 			title: "",
 			url: "",
 			urlToImage: "",
 		});
 
-		const findArticle = async () => {
-			const foundArticles = await articlesResolved.value.filter(
-				(article) => {
-					return articlesResolved.value.indexOf(article).toString() === route.params.articleId;
-				}
+		const findCurrentArticle = async () => {
+			const foundArticles = await news.fetchData(
+				route.params.articleTitle as string
 			);
 
-			const foundArticle = foundArticles[0];
-
-			Object.assign(currentArticle, foundArticle);
+			currentArticle.author = foundArticles[0]?.author || "";
+			currentArticle.content = foundArticles[0]?.content || "";
+			currentArticle.description = foundArticles[0]?.description || "";
+			currentArticle.publishedAt = foundArticles[0]?.publishedAt || "";
+			currentArticle.source = foundArticles[0]?.source || {
+				id: "",
+				name: "",
+			};
+			currentArticle.title = foundArticles[0]?.title || "";
+			currentArticle.url = foundArticles[0]?.url || "";
+			currentArticle.urlToImage = foundArticles[0]?.urlToImage || "";
 		};
 
 		onMounted(async () => {
-			articlesResolved.value = (await articles.value).filter(
-				(article: NewsArticle) => {
-		
-						return article
-					
-					// return article;
-				}
-			);
-			await findArticle(); // Wait for findArticle to complete before logging
+			await findCurrentArticle();
+
+			console.log(currentArticle);
 		});
 
-		return { currentArticle, quotesImg };
+		return { currentArticle, quotesImg, news, articles, refreshPage };
 	},
 });
 </script>
@@ -221,5 +225,15 @@ ol li {
 	position: absolute;
 	top: 0;
 	left: 50px;
+}
+
+.spinner-wrapper {
+	height: 80vh;
+}
+
+.spinner-border {
+	width: 100px;
+	height: 100px;
+	border-width: 10px;
 }
 </style>

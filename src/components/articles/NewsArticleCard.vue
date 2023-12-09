@@ -1,7 +1,7 @@
 <template>
 	<div class="col-12 col-lg-6 col-xxl-4 p-0 pb-4 p-sm-4">
 		<div class="card custom-card mb-4">
-			<router-link class="card__img-container" :to="'/articles/' + id">
+			<router-link class="card__img-container" :to="'/articles/' + title">
 				<div>
 					<img
 						:src="img"
@@ -22,7 +22,7 @@
 						<p>{{ description }}</p>
 					</div>
 					<div class="d-flex justify-content-between pt-4">
-						<router-link :to="'/articles/' + id">
+						<router-link :to="'/articles/' + title">
 							<base-button class="btn-link">Readmore</base-button>
 						</router-link>
 						<h6>{{ date }}</h6>

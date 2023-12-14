@@ -1,5 +1,8 @@
 <template>
-	<form class="d-flex flex-column gap-4 text-blue w-100">
+	<form
+		@submit.prevent="sendEmail($event)"
+		class="d-flex flex-column gap-4 text-blue w-100"
+	>
 		<div
 			class="d-flex flex-column flex-md-row gap-4 fw-bold font-inter font-medium-small"
 		>
@@ -12,8 +15,11 @@
 				<input
 					class="form-input"
 					type="text"
+					name="name"
 					placeholder="Name"
+					v-model="formData.name"
 				/>
+				<p v-if="isNameValid === false">Name should not be empty</p>
 			</div>
 			<div class="input-wrapper-block">
 				<img
@@ -24,8 +30,11 @@
 				<input
 					class="form-input"
 					type="email"
+					name="email"
 					placeholder="Email"
+					v-model="formData.email"
 				/>
+				<p v-if="isEmailValid === false">Please enter a valid emial address</p>
 			</div>
 		</div>
 
@@ -39,10 +48,11 @@
 				<input
 					class="form-input"
 					type="text"
+					name="phone"
 					placeholder="Phone"
-					pattern="^\+?[0-9\s.-]{8,}$"
-					title="Please enter a valid phone number"
+					v-model="formData.phone"
 				/>
+				<p v-if="isPhoneValid === false">Please enter a valid phone number</p>
 			</div>
 		</div>
 
@@ -55,8 +65,8 @@
 				/>
 				<textarea
 					class="form-input"
-					name=""
-					id=""
+					name="message"
+					v-model="formData.message"
 					cols="30"
 					rows="5"
 					placeholder="Message"
@@ -69,8 +79,8 @@
 				<input
 					class="form-check-input"
 					type="checkbox"
-					value=""
 					id="defaultCheck1"
+					v-model="formData.news"
 				/>
 				<label
 					class="form-check-label font-inter color-blue"
@@ -91,6 +101,100 @@
 		</div>
 	</form>
 </template>
+
+<script lang="ts">
+import emailjs, { EmailJSResponseStatus } from "@emailjs/browser";
+import { defineComponent, reactive, ref } from "vue";
+export default defineComponent({
+	setup() {
+		const formData = reactive({
+			name: "",
+			email: "",
+			phone: "",
+			message: "",
+			news: false,
+		});
+
+		const isNameValid = ref<boolean | null>(null)
+		const isEmailValid = ref<boolean | null>(null)
+		const isPhoneValid = ref<boolean | null>(null)
+		const isFormValid = ref<boolean | null>(null)
+		const isEmialSent = ref(false)
+
+		const validateForm = () => {
+			const nameRegex = /^[a-zA-Z -]+$/
+			const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+			const phoneRegex = /^\+?[0-9]{10,}$/
+
+			if(formData.name === "" && !nameRegex.test(formData.name)) {
+				isNameValid.value = false
+			} else {
+				isNameValid.value = true
+			}
+
+			if(formData.email === "" && !emailRegex.test(formData.email)) {
+				isEmailValid.value = false
+			} else {
+				isEmailValid.value = true
+			}
+
+			if(formData.phone === "" && !phoneRegex.test(formData.phone)) {
+				isPhoneValid.value = false
+			} else {
+				isPhoneValid.value = true
+			}
+
+			if(isNameValid.value === true && isEmailValid.value === true && isPhoneValid.value === true) {
+				return isFormValid.value = true
+			} else {
+				return isFormValid.value = false
+			}
+		}
+
+
+		const sendEmail = (e: Event) => {
+			validateForm()
+
+			if(isFormValid.value === false) {
+				return
+			} 
+
+			emailjs
+				.sendForm(
+					"service_kvzd81h",
+					"template_0hkc0pf",
+					e.target as HTMLFormElement,
+					"yc9EDnZIlelh6XRF8"
+				)
+				.then(
+					(result: EmailJSResponseStatus) => {
+						console.log(result.text);
+						if (result.text === "OK") {
+							formData.name = "";
+							formData.email = "";
+							formData.phone = "";
+							formData.message = "";
+							formData.news = false;
+						}
+					},
+					(error) => {
+						console.log(error.text);
+					}
+				);
+		};
+
+		return {
+			sendEmail,
+			formData,
+			isNameValid,
+			isEmailValid,
+			isPhoneValid,
+			isFormValid,
+			isEmialSent
+		};
+	},
+});
+</script>
 
 <style scoped>
 .input-wrapper-block {

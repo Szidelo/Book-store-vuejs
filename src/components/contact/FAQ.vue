@@ -61,8 +61,8 @@ export default defineComponent({
 		const isPanelVisible = ref<null | number>(0);
 
 		const handleVisibility = (index: number) => {
-			isPanelVisible.value =
-				isPanelVisible.value === index ? null : index;
+			isPanelVisible.value = isPanelVisible.value === index ? null : index;
+				
 		};
 
 		return { questions, isPanelVisible, handleVisibility };

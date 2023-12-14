@@ -41,7 +41,6 @@ export default defineComponent({
 
 		onMounted(() => {
 			news.fetchData("books");
-			console.log(news.getData().slice(0, 12))
 		});
 
 

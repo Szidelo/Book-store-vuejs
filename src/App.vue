@@ -128,7 +128,6 @@ h5,
 h6 {
 	font-family: Cardo;
 	font-weight: 700;
-	user-select: none;
 }
 
 h1 {
@@ -175,7 +174,6 @@ p {
 	font-weight: 400;
 	line-height: 32.3px;
 	letter-spacing: -0.19px;
-	user-select: none;
 }
 
 a {
@@ -189,6 +187,16 @@ img {
 
 span {
 	user-select: none;
+}
+
+.spinner-wrapper {
+	height: 80vh;
+}
+
+.spinner-border {
+	width: 100px;
+	height: 100px;
+	border-width: 10px;
 }
 
 @media (max-width: 768px) {

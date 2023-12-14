@@ -1,5 +1,7 @@
 <template>
-	<div v-if="currentArticle.title !== ''">
+	<div
+		v-if="currentArticle.title !== '' || currentArticle.description !== ''"
+	>
 		<the-header :title="currentArticle.title"></the-header>
 
 		<main class="container px-2 px-md-5">
@@ -51,7 +53,7 @@
 				<div class="row mt-4">
 					<h4 class="color-blue">Relevant Articles</h4>
 					<NewsArticleCard
-						v-for="article in articles.getData().slice(12, 15)"
+						v-for="article in articles.getData().slice(1, 4)"
 						:key="news.getData().indexOf(article)"
 						:id="news.getData().indexOf(article).toString()"
 						:img="article.urlToImage"
@@ -83,7 +85,7 @@
 import quotesImg from "../../assets/quotes-icon.svg";
 import NewsArticleList from "@/classes/NewsArticleList";
 import NewsArticleCard from "./NewsArticleCard.vue";
-import { defineComponent, inject, onMounted, reactive } from "vue";
+import { defineComponent, inject, onMounted, reactive, ref } from "vue";
 import { useRoute } from "vue-router";
 import NewsArticle from "@/classes/NewsArticle";
 
@@ -100,10 +102,28 @@ export default defineComponent({
 		};
 		const route = useRoute();
 
-		const news = inject("news") as NewsArticleList;
+		let title = route.params.articleTitle as string;
+		console.log(title);
 
-		const articles = new NewsArticleList();
-		articles.fetchData("Books");
+		let relevantArticles = ref("");
+
+		const getRelevantArticles = () => {
+			if (title) {
+				const words = title.split(" ");
+				const filteredWords = words.filter((word) => word.length >= 3);
+
+				if (filteredWords.length > 0) {
+					const randomIndex = Math.floor(
+						Math.random() * filteredWords.length
+					);
+					relevantArticles.value = filteredWords[randomIndex];
+				}
+			}
+		};
+
+		console.log(relevantArticles);
+
+		const news = inject("news") as NewsArticleList;
 
 		let currentArticle = reactive<NewsArticle>({
 			author: "",
@@ -120,9 +140,12 @@ export default defineComponent({
 		});
 
 		const findCurrentArticle = async () => {
+			// there are articles that cannot be found using this method. only unique article preperty is article.publishedAt ?
 			const foundArticles = await news.fetchData(
 				route.params.articleTitle as string
 			);
+
+			console.log(foundArticles)
 
 			currentArticle.author = foundArticles[0]?.author || "";
 			currentArticle.content = foundArticles[0]?.content || "";
@@ -137,10 +160,12 @@ export default defineComponent({
 			currentArticle.urlToImage = foundArticles[0]?.urlToImage || "";
 		};
 
+		const articles = new NewsArticleList();
+		getRelevantArticles();
+
 		onMounted(async () => {
 			await findCurrentArticle();
-
-			console.log(currentArticle);
+			await articles.fetchData(relevantArticles.value);
 		});
 
 		return { currentArticle, quotesImg, news, articles, refreshPage };
@@ -225,15 +250,5 @@ ol li {
 	position: absolute;
 	top: 0;
 	left: 50px;
-}
-
-.spinner-wrapper {
-	height: 80vh;
-}
-
-.spinner-border {
-	width: 100px;
-	height: 100px;
-	border-width: 10px;
 }
 </style>

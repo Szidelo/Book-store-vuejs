@@ -5,7 +5,7 @@
 	></div>
 	<div class="cart">
 		<header
-			class="d-flex justify-content-between align-items-center bg-yellow w-100 p-4"
+			class="d-flex justify-content-between align-items-center bg-yellow w-100 px-4 py-2"
 		>
 			<h4 class="color-white m-0">Your Cart</h4>
 			<button
@@ -33,9 +33,7 @@
 						:img="item.img"
 						:price="orderedProducts.getItemPrice(item)"
 						:quantity="item.quantity"
-						@remove-item="
-							orderedProducts.removeItem(item.id)
-						"
+						@remove-item="orderedProducts.removeItem(item.id)"
 						@update-quantity="
 							orderedProducts.updateQuantity(item, $event)
 						"
@@ -43,22 +41,40 @@
 				</ul>
 			</div>
 			<div>
-
 				<div class="d-flex justify-content-between">
 					<p class="mb-1">Books cost with VAT</p>
-					<strong>$ {{ orderedProducts.getTotal().toFixed(2) }} USD</strong>
+					<strong
+						>$
+						{{ orderedProducts.getTotal().toFixed(2) }} USD</strong
+					>
 				</div>
 				<div class="d-flex justify-content-between">
 					<p class="mb-1">Shipping cost</p>
-					<strong>$ {{ orderedProducts.getShipmentCost() }} USD</strong>
+					<strong
+						>$ {{ orderedProducts.getShipmentCost() }} USD</strong
+					>
 				</div>
 				<div class="d-flex justify-content-between">
 					<p class="mb-1">VAT amount (5%)</p>
-					<strong>$ {{ (orderedProducts.getTotalWithShipment() * 0.05).toFixed(2) }} USD</strong>
+					<strong
+						>$
+						{{
+							(
+								orderedProducts.getTotalWithShipment() * 0.05
+							).toFixed(2)
+						}}
+						USD</strong
+					>
 				</div>
 				<div class="d-flex justify-content-between">
 					<p class="mb-1">Total cost</p>
-					<strong>$ {{ orderedProducts.getTotalWithShipment().toFixed(2) }} USD</strong>
+					<strong
+						>$
+						{{
+							orderedProducts.getTotalWithShipment().toFixed(2)
+						}}
+						USD</strong
+					>
 				</div>
 				<base-button class="btn-yellow btn-xxl mt-2"
 					>Continue To Checkout</base-button
@@ -81,7 +97,7 @@ export default defineComponent({
 
 	setup() {
 		const orderedProducts = inject("orderedProducts") as Cart;
-		
+
 		const productsInCart = computed(() => {
 			return orderedProducts.getTotal() > 0 ? true : false;
 		});
@@ -107,7 +123,7 @@ export default defineComponent({
 
 .cart {
 	position: fixed;
-	top: 15%;
+	top: 10%;
 	left: 50%;
 	transform: translateX(-50%);
 	width: 90%;
@@ -119,7 +135,7 @@ export default defineComponent({
 }
 
 .cart-content {
-	max-height: 40vh;
+	max-height: 45vh;
 	overflow-y: scroll;
 }
 
@@ -137,5 +153,24 @@ ul {
 	width: 100%;
 	list-style: none;
 	padding: 0;
+}
+
+@media (max-width: 576px) {
+	.cart {
+		top: 2%;
+		width: 95%;
+		
+
+	}
+}
+
+@media (max-width: 300px) {
+	p {
+		font-size: 13px;
+	}
+
+	strong {
+		/* font-size: 15px; */
+	}
 }
 </style>

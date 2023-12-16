@@ -10,7 +10,7 @@
 		class="container-fluid d-flex flex-column align-items-center py-5 px-1"
 	>
 		<div class="container row px-0 px-md-2 px-xxl-5 py-5">
-			<div class="d-flex gap-4 ms-4 mb-4 p-0">
+			<div class="category-links d-flex flex-column flex-sm-row gap-2 ms-sm-4 mb-4 p-0">
 				<base-button
 					:class="setActiveLink('all')"
 					@click="category = 'all'"
@@ -44,7 +44,7 @@
 				:price="product.price"
 				:img="product.img"
 				@add-product="addProduct(product)"
-				@set-format="(category = product.format)"
+				@set-format="category = product.format"
 			></product-card>
 		</div>
 	</section>
@@ -110,3 +110,15 @@ export default defineComponent({
 	},
 });
 </script>
+
+<style scoped>
+.category-links {
+	overflow-x: scroll;
+}
+
+@media (max-width: 400px) {
+	a {
+		font-size: 8px !important;
+	}
+}
+</style>

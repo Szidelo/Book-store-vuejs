@@ -39,6 +39,7 @@ export default defineComponent({
 	--color-paragraph: #969aa0;
 	--color-paragraph-light: #b4c7e7;
 	--color-grayish-blue: #f4f8ff;
+	--color-error: rgb(224, 21, 21);
 
 	--transition: all 0.3s ease;
 }

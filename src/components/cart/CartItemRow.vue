@@ -1,13 +1,16 @@
 <template>
 	<li class="w-100">
-		<div class="d-flex justify-content-between gap-2">
-			<div>
+		<div
+			class="d-flex flex-column flex-sm-row justify-content-between gap-2"
+		>
+			<div class="cart-image">
 				<img
+				class="cart-image"
 					:src="img"
 					alt=""
 				/>
 			</div>
-			<div class="w-75">
+			<div class="cart-content">
 				<h5>{{ title }}</h5>
 				<p class="m-0">$ {{ price }} USD</p>
 				<base-confirm
@@ -23,7 +26,7 @@
 					>Remove
 				</base-button>
 			</div>
-			<div>
+			<div class="cart-input">
 				<input
 					type="number"
 					:value="localQuantity"
@@ -84,9 +87,9 @@ export default defineComponent({
 				inputElement.value = "1";
 			}
 
-			if(quantity > 99) {
+			if (quantity > 99) {
 				quantity = 99;
-				inputElement.value = '99'
+				inputElement.value = "99";
 			}
 
 			emit("update-quantity", quantity);
@@ -137,5 +140,29 @@ li {
 	min-height: 100px;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	margin-bottom: 10px;
+}
+
+
+.cart-content {
+	width: 75%;
+}
+
+@media (max-width: 576px) {
+	.cart-image {
+		height: auto;
+		width: 210px;
+		margin: 0 auto;
+	}
+	.cart-content {
+		width: 100%;
+	}
+
+	.cart-input {
+		width: 100%;
+	}
+
+	.cart-input input {
+		/* width: 50%; */
+	}
 }
 </style>

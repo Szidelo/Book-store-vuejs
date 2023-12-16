@@ -25,7 +25,7 @@
 						<router-link :to="'/articles/' + title">
 							<base-button class="btn-link">Readmore</base-button>
 						</router-link>
-						<h6>{{ date }}</h6>
+						<h6>{{ date.replaceAll("-", "/").substring(10, 0) }}</h6>
 					</div>
 				</div>
 			</div>

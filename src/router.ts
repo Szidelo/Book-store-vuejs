@@ -7,6 +7,7 @@ import StorePage from "./pages/StorePage.vue";
 import ProductContent from "./components/store/ProductContent.vue";
 import ContactPage from "./pages/ContactPage.vue";
 import NewsArticleContentVue from "./components/articles/NewsArticleContent.vue";
+import NotFound from "./pages/NotFound.vue";
 
 const routes = [
     {
@@ -40,6 +41,10 @@ const routes = [
     {
         path: "/contact",
         component: ContactPage
+    },
+    {
+        path: "/:notFound(.*)",
+        component: NotFound
     }
 ];
 const router = createRouter({

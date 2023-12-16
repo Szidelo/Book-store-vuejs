@@ -13,9 +13,9 @@
 	</div>
 	<div class="container row px-0 px-md-2 px-xxl-5 py-5">
 		<news-article-card
-			v-for="(article, index) in news.getData().slice(0,12)"
+			v-for="(article, index) in news.getData().slice(0,30)"
 			:key="index"
-			:id="news.getData().indexOf(article).toString()"
+			:id="index.toString()"
 			:title="article.title"
 			:img="article.urlToImage"
 			:description="article.description"

@@ -13,14 +13,24 @@
 					alt=""
 				/>
 				<input
-					class="form-input"
+					:class="
+						isNameValid === false
+							? 'form-input input-error'
+							: 'form-input'
+					"
 					type="text"
 					name="name"
 					placeholder="Name"
 					v-model="formData.name"
 				/>
-				<p v-if="isNameValid === false">Name should not be empty</p>
+				<p
+					class="error-message"
+					v-if="isNameValid === false"
+				>
+					Name should not be empty
+				</p>
 			</div>
+
 			<div class="input-wrapper-block">
 				<img
 					class="form-icon"
@@ -28,13 +38,22 @@
 					alt=""
 				/>
 				<input
-					class="form-input"
+					:class="
+						isEmailValid === false
+							? 'form-input input-error'
+							: 'form-input'
+					"
 					type="email"
 					name="email"
 					placeholder="Email"
 					v-model="formData.email"
 				/>
-				<p v-if="isEmailValid === false">Please enter a valid emial address</p>
+				<p
+					class="error-message"
+					v-if="isEmailValid === false"
+				>
+					Please enter a valid emial address
+				</p>
 			</div>
 		</div>
 
@@ -46,13 +65,22 @@
 					alt=""
 				/>
 				<input
-					class="form-input"
+					:class="
+						isPhoneValid === false
+							? 'form-input input-error'
+							: 'form-input'
+					"
 					type="text"
 					name="phone"
 					placeholder="Phone"
 					v-model="formData.phone"
 				/>
-				<p v-if="isPhoneValid === false">Please enter a valid phone number</p>
+				<p
+					class="error-message"
+					v-if="isPhoneValid === false"
+				>
+					Please enter a valid phone number
+				</p>
 			</div>
 		</div>
 
@@ -115,49 +143,35 @@ export default defineComponent({
 			news: false,
 		});
 
-		const isNameValid = ref<boolean | null>(null)
-		const isEmailValid = ref<boolean | null>(null)
-		const isPhoneValid = ref<boolean | null>(null)
-		const isFormValid = ref<boolean | null>(null)
-		const isEmialSent = ref(false)
+		const isNameValid = ref<boolean | null>(null);
+		const isEmailValid = ref<boolean | null>(null);
+		const isPhoneValid = ref<boolean | null>(null);
+		const isFormValid = ref<boolean | null>(null);
+		const isEmialSent = ref(false);
 
 		const validateForm = () => {
-			const nameRegex = /^[a-zA-Z -]+$/
+			const nameRegex = /^[a-zA-Z -]+$/;
 			const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
-			const phoneRegex = /^\+?[0-9]{10,}$/
+			const phoneRegex = /^\+?[0-9]{10,}$/;
 
-			if(formData.name === "" && !nameRegex.test(formData.name)) {
-				isNameValid.value = false
-			} else {
-				isNameValid.value = true
-			}
+			const isInputValid = (value: string, regex: RegExp) => {
+				return value !== "" && regex.test(value);
+			};
 
-			if(formData.email === "" && !emailRegex.test(formData.email)) {
-				isEmailValid.value = false
-			} else {
-				isEmailValid.value = true
-			}
+			isNameValid.value = isInputValid(formData.name, nameRegex);
+			isEmailValid.value = isInputValid(formData.email, emailRegex);
+			isPhoneValid.value = isInputValid(formData.phone, phoneRegex);
 
-			if(formData.phone === "" && !phoneRegex.test(formData.phone)) {
-				isPhoneValid.value = false
-			} else {
-				isPhoneValid.value = true
-			}
-
-			if(isNameValid.value === true && isEmailValid.value === true && isPhoneValid.value === true) {
-				return isFormValid.value = true
-			} else {
-				return isFormValid.value = false
-			}
-		}
-
+			isFormValid.value =
+				isNameValid.value && isEmailValid.value && isPhoneValid.value;
+		};
 
 		const sendEmail = (e: Event) => {
-			validateForm()
+			validateForm();
 
-			if(isFormValid.value === false) {
-				return
-			} 
+			if (isFormValid.value === false) {
+				return;
+			}
 
 			emailjs
 				.sendForm(
@@ -190,7 +204,7 @@ export default defineComponent({
 			isEmailValid,
 			isPhoneValid,
 			isFormValid,
-			isEmialSent
+			isEmialSent,
 		};
 	},
 });
@@ -218,7 +232,8 @@ export default defineComponent({
 	font-size: 19px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 180%; /* 34.2px */
+	line-height: 180%;
+	/* 34.2px */
 	letter-spacing: -0.19px;
 }
 
@@ -227,6 +242,17 @@ export default defineComponent({
 	border-color: var(--color-yellow) !important;
 	box-shadow: none !important;
 	outline: none;
+}
+
+.input-error {
+	border-color: var(--color-error) !important;
+}
+
+.error-message {
+	position: absolute;
+	top: 70px;
+	font-size: 13px;
+	color: var(--color-error);
 }
 
 textarea {
@@ -240,7 +266,8 @@ textarea {
 	font-size: 19px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 180%; /* 34.2px */
+	line-height: 180%;
+	/* 34.2px */
 	letter-spacing: -0.19px;
 }
 
@@ -250,7 +277,8 @@ textarea {
 	font-size: 19px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 180%; /* 34.2px */
+	line-height: 180%;
+	/* 34.2px */
 	letter-spacing: -0.19px;
 }
 </style>

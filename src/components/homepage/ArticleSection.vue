@@ -3,38 +3,38 @@
 		<base-section-header title="Latest Articles"></base-section-header>
 
 		<div class="container row px-0 px-md-2 px-xxl-5 py-5 mx-auto">
-			<article-card
-				v-for="article in articles"
-				:key="article.id"
-				:id="article.id"
+			<NewsArticleCard 
+				v-for="(article, index) in news.getData().slice(0, 3)"
+				:key="index"
+				:id="index.toString()"
 				:title="article.title"
-				:img="article.img"
+				:img="article.urlToImage"
 				:description="article.description"
-				:date="article.date"
-			></article-card>
+				:date="article.publishedAt"
+			/>
 		</div>
 	</section>
 </template>
 
 <script lang="ts">
-import ArticleCard from "../articles/ArticleCard.vue";
-import ArticleList from "@/classes/ArticleList";
-import { defineComponent } from "vue";
+import NewsArticleCard from "../articles/NewsArticleCard.vue";
+import NewsArticleList from "@/classes/NewsArticleList";
+import { defineComponent, onMounted, inject } from "vue";
 export default defineComponent({
 	name: "ArticleSection",
 	components: {
-		ArticleCard,
+		NewsArticleCard,
 	},
 
 	setup() {
-		const articles = new ArticleList();
+		const news = inject("news") as NewsArticleList;
 
-		articles.loadArticles();
-
-		const localArticles = articles.getArticles().slice(0, 3);
+		onMounted(() => {
+			news.fetchData("books");
+		});
 
 		return {
-			articles: localArticles,
+			news,
 		};
 	},
 });

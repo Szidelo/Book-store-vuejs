@@ -102,10 +102,11 @@ export default defineComponent({
 		};
 		const route = useRoute();
 
-		let title = route.params.articleTitle as string;
-		console.log(title);
+		const articles = new NewsArticleList();
 
-		let relevantArticles = ref("");
+		const title = route.params.articleTitle as string;
+
+		const relevantArticles = ref("");
 
 		const getRelevantArticles = () => {
 			if (title) {
@@ -116,7 +117,8 @@ export default defineComponent({
 					const randomIndex = Math.floor(
 						Math.random() * filteredWords.length
 					);
-					relevantArticles.value = filteredWords[randomIndex];
+					return (relevantArticles.value =
+						filteredWords[randomIndex]);
 				}
 			}
 		};
@@ -145,7 +147,7 @@ export default defineComponent({
 				route.params.articleTitle as string
 			);
 
-			console.log(foundArticles)
+			console.log(foundArticles);
 
 			currentArticle.author = foundArticles[0]?.author || "";
 			currentArticle.content = foundArticles[0]?.content || "";
@@ -160,7 +162,6 @@ export default defineComponent({
 			currentArticle.urlToImage = foundArticles[0]?.urlToImage || "";
 		};
 
-		const articles = new NewsArticleList();
 		getRelevantArticles();
 
 		onMounted(async () => {

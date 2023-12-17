@@ -162,7 +162,6 @@ export default defineComponent({
 			const amount = (
 				orderedProducts.getTotalWithShipment() * 100
 			).toFixed(0);
-			console.log("test");
 			try {
 				const response = await axios.post(
 					"http://localhost:8085/stripe/create-payment-link",
@@ -171,8 +170,6 @@ export default defineComponent({
 						currency: "usd",
 					}
 				);
-
-				console.log(response.data.paymentLink);
 
 				window.location.href = response.data.paymentLink;
 			} catch (error: any) {

@@ -123,8 +123,6 @@ export default defineComponent({
 			}
 		};
 
-		console.log(relevantArticles);
-
 		const news = inject("news") as NewsArticleList;
 
 		let currentArticle = reactive<NewsArticle>({
@@ -146,8 +144,6 @@ export default defineComponent({
 			const foundArticles = await news.fetchData(
 				route.params.articleTitle as string
 			);
-
-			console.log(foundArticles);
 
 			currentArticle.author = foundArticles[0]?.author || "";
 			currentArticle.content = foundArticles[0]?.content || "";

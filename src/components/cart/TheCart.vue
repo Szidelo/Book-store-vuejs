@@ -70,15 +70,15 @@
 					<p class="mb-1">Total cost</p>
 					<strong
 						>$
-						{{
-							orderedProducts.getTotalWithShipment().toFixed(2)
-						}}
+						{{ orderedProducts.getTotalWithShipment().toFixed(2) }}
 						USD</strong
 					>
 				</div>
-				<base-button class="btn-yellow btn-xxl mt-2"
-					>Continue To Checkout</base-button
-				>
+				<router-link @click="$emit('close')" to="/checkout"
+					><base-button class="btn-yellow btn-xxl mt-2"
+						>Continue To Checkout</base-button
+					>
+				</router-link>
 			</div>
 		</div>
 	</div>
@@ -159,18 +159,12 @@ ul {
 	.cart {
 		top: 2%;
 		width: 95%;
-		
-
 	}
 }
 
 @media (max-width: 300px) {
 	p {
 		font-size: 13px;
-	}
-
-	strong {
-		/* font-size: 15px; */
 	}
 }
 </style>

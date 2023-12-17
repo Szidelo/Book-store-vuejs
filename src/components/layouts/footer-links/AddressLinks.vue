@@ -20,6 +20,9 @@
 </template>
 
 <style scoped>
+h6 {
+    min-width: 100px;
+}
     p {
         font-size: 17px;
         line-height: 1.3rem;

@@ -233,7 +233,6 @@ export default defineComponent({
 	font-style: normal;
 	font-weight: 400;
 	line-height: 180%;
-	/* 34.2px */
 	letter-spacing: -0.19px;
 }
 
@@ -260,14 +259,12 @@ textarea {
 }
 
 ::-ms-input-placeholder {
-	/* Edge 12-18 */
 	color: #969aa0;
 	font-family: Inter;
 	font-size: 19px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: 180%;
-	/* 34.2px */
 	letter-spacing: -0.19px;
 }
 
@@ -278,7 +275,6 @@ textarea {
 	font-style: normal;
 	font-weight: 400;
 	line-height: 180%;
-	/* 34.2px */
 	letter-spacing: -0.19px;
 }
 </style>

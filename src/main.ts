@@ -23,6 +23,6 @@ app.component("base-confirm", BaseConfirm);
 app.component("base-section-header", BaseSectionHeader);
 app.component("the-footer", TheFooterVue);
 
-app.use(router);
+app.use(router)
 
 app.mount("#app");

@@ -1,11 +1,11 @@
 <template>
 	<div>
 		<h5 class="color-white mb-4">Explore</h5>
-		<ul>
+		<ul class="links d-flex flex-column flex-wrap">
 			<li
 				v-for="link in links"
 				:key="link.name"
-				class="d-flex align-items-center gap-3"
+				class="d-flex align-items-center gap-3 me-4"
 			>
 				<img
 					src="../../../assets/icon.png"
@@ -30,6 +30,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.links {
+	max-height: 150px;
+}
+
 ul {
 	list-style: none;
 	padding: 0;

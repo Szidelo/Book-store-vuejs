@@ -1,16 +1,16 @@
 <template>
 	<li class="w-100">
 		<div
-			class="d-flex flex-column flex-sm-row justify-content-between gap-2"
+			class="cart-container d-flex flex-column flex-sm-row justify-content-between gap-2"
 		>
-			<div class="cart-image">
+			<div class="image-wrapper py-2">
 				<img
-				class="cart-image"
+					class="cart-image"
 					:src="img"
 					alt=""
 				/>
 			</div>
-			<div class="cart-content">
+			<div class="cart-content py-2">
 				<h5>{{ title }}</h5>
 				<p class="m-0">$ {{ price }} USD</p>
 				<base-confirm
@@ -26,7 +26,7 @@
 					>Remove
 				</base-button>
 			</div>
-			<div class="cart-input">
+			<div class="cart-input py-2">
 				<input
 					type="number"
 					:value="localQuantity"
@@ -123,7 +123,7 @@ export default defineComponent({
 <style scoped>
 img {
 	height: auto;
-	width: 75px;
+	width: 80px;
 }
 
 input {
@@ -142,12 +142,14 @@ li {
 	margin-bottom: 10px;
 }
 
-
 .cart-content {
 	width: 75%;
 }
 
 @media (max-width: 576px) {
+	.cart-container {
+		background-color: var(--color-light);
+	}
 	.cart-image {
 		height: auto;
 		width: 210px;
@@ -159,10 +161,6 @@ li {
 
 	.cart-input {
 		width: 100%;
-	}
-
-	.cart-input input {
-		/* width: 50%; */
 	}
 }
 </style>

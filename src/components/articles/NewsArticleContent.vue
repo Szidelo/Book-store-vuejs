@@ -140,10 +140,20 @@ export default defineComponent({
 		});
 
 		const findCurrentArticle = async () => {
-			// there are articles that cannot be found using this method. only unique article preperty is article.publishedAt ?
-			const foundArticles = await news.fetchData(
+			let foundArticles = await news.fetchData(
 				route.params.articleTitle as string
 			);
+
+			// if current article cannot be created be articleTitle will search for the first three words and get the first article from the found array
+			if(foundArticles.length === 0) {
+				let keyWords = title.split(" ")
+				let newKeyWords = (keyWords[0] + " " + keyWords[1] + " " + keyWords[2])
+
+				console.log(newKeyWords)
+
+				foundArticles = await news.fetchData(newKeyWords)
+
+			}
 
 			currentArticle.author = foundArticles[0]?.author || "";
 			currentArticle.content = foundArticles[0]?.content || "";
@@ -156,6 +166,8 @@ export default defineComponent({
 			currentArticle.title = foundArticles[0]?.title || "";
 			currentArticle.url = foundArticles[0]?.url || "";
 			currentArticle.urlToImage = foundArticles[0]?.urlToImage || "";
+
+			console.log(foundArticles)
 		};
 
 		getRelevantArticles();

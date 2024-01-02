@@ -8,6 +8,7 @@ import ContactPage from "./pages/ContactPage.vue";
 import NewsArticleContentVue from "./components/articles/NewsArticleContent.vue";
 import CheckOut from "./pages/CheckOut.vue";
 import NotFound from "./pages/NotFound.vue";
+import CheckoutSuccess from "./pages/CheckoutSuccess.vue";
 
 const routes = [
 	{
@@ -45,6 +46,10 @@ const routes = [
 	{
 		path: "/checkout",
 		component: CheckOut,
+	},
+	{
+		path: "/success",
+		component: CheckoutSuccess,
 	},
 	{
 		path: "/:notFound(.*)",

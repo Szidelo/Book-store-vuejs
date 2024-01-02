@@ -1,5 +1,5 @@
 <template>
-	<h2 class="color-blue text-center">Contact details</h2>
+	<h2 class="color-blue text-center">Shipping Details</h2>
 	<form @submit.prevent="handleCheckout">
 		<div
 			class="d-flex flex-column gap-4 fw-bold font-inter font-medium-small"
@@ -15,6 +15,8 @@
 					type="email"
 					name="email"
 					placeholder="Email..."
+					v-model="enteredData.email"
+					required
 				/>
 			</div>
 			<div class="input-wrapper-block"></div>
@@ -33,6 +35,8 @@
 					type="text"
 					name="name"
 					placeholder="Name..."
+					v-model="enteredData.name"
+					required
 				/>
 			</div>
 
@@ -47,6 +51,8 @@
 					type="text"
 					name="surname"
 					placeholder="Surname..."
+					v-model="enteredData.surname"
+					required
 				/>
 			</div>
 
@@ -61,6 +67,8 @@
 					type="text"
 					name="phone"
 					placeholder="Phone number..."
+					v-model="enteredData.phone"
+					required
 				/>
 			</div>
 		</div>
@@ -79,6 +87,8 @@
 					type="text"
 					name="country"
 					placeholder="Country"
+					v-model="enteredData.country"
+					required
 				/>
 			</div>
 
@@ -93,6 +103,8 @@
 					type="text"
 					name="County"
 					placeholder="County"
+					v-model="enteredData.county"
+					required
 				/>
 			</div>
 
@@ -107,6 +119,8 @@
 					type="text"
 					name="city"
 					placeholder="City"
+					v-model="enteredData.city"
+					required
 				/>
 			</div>
 		</div>
@@ -124,6 +138,8 @@
 					type="text"
 					name="address"
 					placeholder="Street , nr, etc.."
+					v-model="enteredData.address"
+					required
 				/>
 			</div>
 			<div class="input-wrapper-block"></div>
@@ -134,6 +150,7 @@
 					class="form-check-input"
 					type="checkbox"
 					id="defaultCheck1"
+					v-model="enteredData.news"
 				/>
 				<label
 					class="form-check-label font-inter color-blue"
@@ -145,20 +162,47 @@
 			</div>
 		</div>
 
-		<base-button class="btn-yellow btn-xxl">Go to Payment</base-button>
+		<base-button class="btn-yellow btn-xxl">{{ validate }}</base-button>
 	</form>
 </template>
 
 <script lang="ts">
 import axios from "axios";
 import Cart from "@/classes/Cart";
-import { defineComponent, inject } from "vue";
-
+import Swal from "sweetalert2";
+import { computed, defineComponent, inject, reactive } from "vue";
 export default defineComponent({
 	setup() {
 		const orderedProducts = inject("orderedProducts") as Cart;
 
+		const enteredData = reactive({
+			email: "",
+			name: "",
+			surname: "",
+			phone: "",
+			country: "",
+			county: "",
+			city: "",
+			address: "",
+			news: false
+		})
+
+		const validate = computed(() => {
+			if(enteredData.address && enteredData.city && enteredData.country && enteredData.county && enteredData.email && enteredData.name && enteredData.phone && enteredData.surname) {
+				return "Go to Payment"
+			}
+			return "Fill out all inputs to go to paymanet!"
+		})
+
 		const handleCheckout = async () => {
+			if(validate.value === "Fill out all inputs to go to paymanet!") {
+				Swal.fire({
+					icon: "error",
+					title: "Oops...",
+					text: "Something went wrong! Please fill out all inputs!",
+				});
+				return
+			}
 			const amount = (
 				orderedProducts.getTotalWithShipment() * 100
 			).toFixed(0);
@@ -180,7 +224,9 @@ export default defineComponent({
 		return {
 			handleCheckout,
 			orderedProducts,
-			location
+			location,
+			enteredData,
+			validate
 		};
 	},
 });

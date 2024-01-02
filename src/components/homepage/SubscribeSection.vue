@@ -18,17 +18,59 @@
 					class="subscribe-form d-flex flex-column flex-lg-row mx-auto gap-2"
 				>
 					<input
-						type="text"
+						type="email"
 						name="title"
 						id="title"
 						placeholder="Your Email Address..."
+						v-model="enteredEmail"
+						required
 					/>
-					<base-button class="btn-blue">Subscribe</base-button>
+					<base-button
+						@click="submit"
+						class="btn-blue"
+						>Subscribe</base-button
+					>
 				</div>
 			</div>
 		</div>
 	</section>
 </template>
+
+<script lang="ts">
+import Swal from "sweetalert2";
+import { defineComponent, ref } from "vue";
+export default defineComponent({
+	setup() {
+		const enteredEmail = ref("");
+
+		const submit = () => {
+			const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+			const validateEmail = () => {
+				return emailRegex.test(enteredEmail.value);
+			};
+
+			if (validateEmail()) {
+				Swal.fire({
+					title: "Good job!",
+					text: "Thank you for subscribing!",
+					icon: "success",
+				});
+
+				enteredEmail.value = "";
+			} else {
+				Swal.fire({
+					icon: "error",
+					title: "Oops...",
+					text: "Something went wrong! Please enter a valid email!",
+				});
+			}
+		};
+
+		return { submit, enteredEmail };
+	},
+});
+</script>
 
 <style scoped>
 .subscribe {

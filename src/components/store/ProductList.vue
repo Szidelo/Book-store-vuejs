@@ -112,9 +112,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.category-links {
-	overflow-x: scroll;
-}
+
 
 @media (max-width: 400px) {
 	a {

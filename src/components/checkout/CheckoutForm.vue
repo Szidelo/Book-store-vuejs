@@ -184,24 +184,33 @@ export default defineComponent({
 			county: "",
 			city: "",
 			address: "",
-			news: false
-		})
+			news: false,
+		});
 
 		const validate = computed(() => {
-			if(enteredData.address && enteredData.city && enteredData.country && enteredData.county && enteredData.email && enteredData.name && enteredData.phone && enteredData.surname) {
-				return "Go to Payment"
+			if (
+				enteredData.address &&
+				enteredData.city &&
+				enteredData.country &&
+				enteredData.county &&
+				enteredData.email &&
+				enteredData.name &&
+				enteredData.phone &&
+				enteredData.surname
+			) {
+				return "Go to Payment";
 			}
-			return "Fill out all inputs to go to paymanet!"
-		})
+			return "Fill out all inputs to go to paymanet!";
+		});
 
 		const handleCheckout = async () => {
-			if(validate.value === "Fill out all inputs to go to paymanet!") {
+			if (validate.value === "Fill out all inputs to go to paymanet!") {
 				Swal.fire({
 					icon: "error",
 					title: "Oops...",
 					text: "Something went wrong! Please fill out all inputs!",
 				});
-				return
+				return;
 			}
 			const amount = (
 				orderedProducts.getTotalWithShipment() * 100
@@ -226,7 +235,7 @@ export default defineComponent({
 			orderedProducts,
 			location,
 			enteredData,
-			validate
+			validate,
 		};
 	},
 });

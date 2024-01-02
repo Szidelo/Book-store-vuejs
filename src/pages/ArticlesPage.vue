@@ -2,9 +2,7 @@
 	<the-header title="Articles">
 		<template v-slot:text>
 			<p class="text-center">
-				Every single details in the book store like offers latest news
-				about the events <br />
-				has more attractive and provide a seamless user experience.
+				Please note that the <base-button class="btn-link">newsapi.org</base-button> free version will work only in localhost.
 			</p>
 		</template>
 	</the-header>

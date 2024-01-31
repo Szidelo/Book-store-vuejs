@@ -1,5 +1,5 @@
 <template>
-	<div class="d-flex">
+	<div class="search-bar d-flex px-md-5 px-xxl-5">
 		<input
 			v-model="enteredValue"
 			type="text"
@@ -52,3 +52,24 @@ export default defineComponent({
 	},
 });
 </script>
+
+<style scoped>
+.search-bar {
+	width: 100%;
+	max-width: 800px;
+}
+
+.search-bar input {
+	width: 100%;
+	padding: 12px 25px 12px 45px;
+	border: 2px solid #dce1e9;
+	transition: var(--transition);
+	color: var(--color-blue);
+	font-family: Inter;
+	font-size: 19px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 180%;
+	letter-spacing: -0.19px;
+}
+</style>

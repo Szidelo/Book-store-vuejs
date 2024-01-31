@@ -89,6 +89,8 @@ export default defineComponent({
 
 		const isValidOrder = ref(true);
 
+		const route = useRoute();
+
 		let currentProduct = reactive<Product>({
 			id: "",
 			title: "",
@@ -97,8 +99,6 @@ export default defineComponent({
 			description: "",
 			format: "",
 		});
-
-		const route = useRoute();
 
 		const findProducts = () => {
 			const foundProducts = products.filter((product) => {

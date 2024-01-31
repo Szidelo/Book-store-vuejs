@@ -33,11 +33,13 @@ class Cart {
 	}
 
 	public getItemPrice(item: CartItem) {
-		return +((item.price * item.quantity).toFixed(2))
+		return +(item.price * item.quantity).toFixed(2);
 	}
 
 	public getShipmentCost() {
-		return this.getTotal() < 100 && this.getTotal() !== 0 ? this.shipmentCost : 0;
+		return this.getTotal() < 100 && this.getTotal() !== 0
+			? this.shipmentCost
+			: 0;
 	}
 
 	public getTotal() {
@@ -61,30 +63,29 @@ class Cart {
 		}, 0);
 	}
 
-
 	public removeItem(itemId: string) {
 		const index = this.items.value.findIndex((item) => {
 			return item.id === itemId;
 		});
-	
+
 		this.items.value.splice(index, 1);
-	
-		if(this.items.value.length > 0) {
+
+		if (this.items.value.length > 0) {
 			this.saveToLocalStorage();
 		} else {
 			localStorage.removeItem(this.key);
 		}
 	}
-	
+
 	public updateQuantity(item: CartItem, newQuantity: number) {
 		const index = this.items.value.findIndex((book) => {
 			return book.id === item.id;
 		});
-	
+
 		newQuantity < 1 ? 1 : newQuantity;
-	
+
 		this.items.value[index].quantity = newQuantity;
-	
+
 		this.saveToLocalStorage();
 	}
 }

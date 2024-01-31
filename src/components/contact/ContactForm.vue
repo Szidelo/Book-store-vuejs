@@ -150,7 +150,7 @@ export default defineComponent({
 		const isEmialSent = ref(false);
 
 		const validateForm = () => {
-			const nameRegex = /^[a-zA-Z -]+$/;
+			const nameRegex = /^[a-zA-Z -]+$/;  
 			const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
 			const phoneRegex = /^\+?[0-9]{10,}$/;
 
@@ -172,7 +172,6 @@ export default defineComponent({
 			if (isFormValid.value === false) {
 				return;
 			}
-
 			emailjs
 				.sendForm(
 					"service_kvzd81h",

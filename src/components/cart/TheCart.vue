@@ -74,7 +74,9 @@
 						USD</strong
 					>
 				</div>
-				<router-link @click="$emit('close')" to="/checkout"
+				<router-link
+					@click="$emit('close')"
+					to="/checkout"
 					><base-button class="btn-yellow btn-xxl mt-2"
 						>Continue To Checkout</base-button
 					>

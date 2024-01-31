@@ -16,7 +16,6 @@
 					name="email"
 					placeholder="Email..."
 					v-model="enteredData.email"
-					required
 				/>
 			</div>
 			<div class="input-wrapper-block"></div>
@@ -36,7 +35,6 @@
 					name="name"
 					placeholder="Name..."
 					v-model="enteredData.name"
-					required
 				/>
 			</div>
 
@@ -52,7 +50,6 @@
 					name="surname"
 					placeholder="Surname..."
 					v-model="enteredData.surname"
-					required
 				/>
 			</div>
 
@@ -68,7 +65,6 @@
 					name="phone"
 					placeholder="Phone number..."
 					v-model="enteredData.phone"
-					required
 				/>
 			</div>
 		</div>
@@ -88,7 +84,6 @@
 					name="country"
 					placeholder="Country"
 					v-model="enteredData.country"
-					required
 				/>
 			</div>
 
@@ -104,7 +99,6 @@
 					name="County"
 					placeholder="County"
 					v-model="enteredData.county"
-					required
 				/>
 			</div>
 
@@ -120,7 +114,6 @@
 					name="city"
 					placeholder="City"
 					v-model="enteredData.city"
-					required
 				/>
 			</div>
 		</div>
@@ -139,7 +132,6 @@
 					name="address"
 					placeholder="Street , nr, etc.."
 					v-model="enteredData.address"
-					required
 				/>
 			</div>
 			<div class="input-wrapper-block"></div>
@@ -162,7 +154,11 @@
 			</div>
 		</div>
 
-		<base-button class="btn-yellow btn-xxl">{{ validate }}</base-button>
+		<base-button class="btn-yellow btn-xxl">{{
+			validate
+				? "Go to Payment"
+				: "Fill out all inputs to go to paymanet!"
+		}}</base-button>
 	</form>
 </template>
 
@@ -187,6 +183,10 @@ export default defineComponent({
 			news: false,
 		});
 
+		const amount = (orderedProducts.getTotalWithShipment() * 100).toFixed(
+			0
+		);
+
 		const validate = computed(() => {
 			if (
 				enteredData.address &&
@@ -198,13 +198,13 @@ export default defineComponent({
 				enteredData.phone &&
 				enteredData.surname
 			) {
-				return "Go to Payment";
+				return true;
 			}
-			return "Fill out all inputs to go to paymanet!";
+			return false;
 		});
 
 		const handleCheckout = async () => {
-			if (validate.value === "Fill out all inputs to go to paymanet!") {
+			if (!validate.value) {
 				Swal.fire({
 					icon: "error",
 					title: "Oops...",
@@ -212,9 +212,6 @@ export default defineComponent({
 				});
 				return;
 			}
-			const amount = (
-				orderedProducts.getTotalWithShipment() * 100
-			).toFixed(0);
 			try {
 				const response = await axios.post(
 					"http://localhost:8085/stripe/create-payment-link",

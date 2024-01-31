@@ -1,6 +1,6 @@
 <template>
 	<div
-		v-if="currentArticle.title !== '' || currentArticle.description !== ''"
+		v-if="currentArticle.title !== ''"
 	>
 		<the-header :title="currentArticle.title"></the-header>
 

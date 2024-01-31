@@ -7,7 +7,6 @@ class NewsArticleList {
 
 	async fetchData(keyWord: string) {
 		const response = (await fetchNews(keyWord)) as NewsArticle[];
-
 		return (this.data.value = response);
 	}
 

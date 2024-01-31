@@ -8,6 +8,8 @@ const fetchNews = async (keyWord: string) => {
 		`https://newsapi.org/v2/everything?q=${keyWord}&searchIn=title&apiKey=${API_KEY}`
 	);
 
+	console.log(response)
+
 	const filteredArticles = response.data.articles.filter(
 		(article: NewsArticle, index = 0) => {
 			if (index < 99) {

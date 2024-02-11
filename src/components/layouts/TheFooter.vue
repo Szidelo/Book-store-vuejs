@@ -10,9 +10,7 @@
 				<address-links class="ms-xl-auto"></address-links>
 			</div>
 			<hr class="color-yellow" />
-			<div
-				class="container d-flex justify-content-center align-items-center"
-			>
+			<div class="container d-flex justify-content-center align-items-center">
 				<p class="color-light">
 					All rights reserved
 					<span class="color-yellow">Szidelo Claudiu</span> @2023
@@ -47,6 +45,6 @@ export default defineComponent({
 }
 
 .icon:hover {
-	scale: 1.2
+	scale: 1.2;
 }
 </style>

@@ -2,30 +2,23 @@
 	<section class="container-fluid bg-grayish-blue">
 		<div class="row container mx-auto px-0 px-md-2 px-xxl-5 py-5">
 			<div
-				class="col-12 col-lg-8 col-xl-6 d-flex justify-content-center mx-auto mx-xl-0 mb-4 mb-xl-0"
-			>
+				class="col-12 col-lg-8 col-xl-6 d-flex justify-content-center mx-auto mx-xl-0 mb-4 mb-xl-0">
 				<div class="img-wrapper">
 					<img
 						class="img-fluid img-author"
 						src="../../assets/home-imgs/author-img.jpg"
-						alt=""
-					/>
+						alt="" />
 				</div>
 			</div>
 			<div class="col-12 col-xl-6 mx-auto mx-xl-0">
 				<div
-					class="d-flex flex-column justify-content-center align-items-start h-100 gap-4"
-				>
+					class="d-flex flex-column justify-content-center align-items-start h-100 gap-4">
 					<h3 class="color-blue font-cardo">About Author</h3>
-					<img
-						src="../../assets/Line.png"
-						alt="line"
-					/>
+					<img src="../../assets/Line.png" alt="line" />
 					<p>
-						All the Lorem Ipsum generators on the Internet tend to
-						repeated predefined chunks as necessary, making this the
-						first true value generator on the Internet. It uses a
-						dictionary of over 200 Latin words, combined with a
+						All the Lorem Ipsum generators on the Internet tend to repeated predefined
+						chunks as necessary, making this the first true value generator on the
+						Internet. It uses a dictionary of over 200 Latin words, combined with a
 						handful.
 					</p>
 					<div class="row w-100">
@@ -43,13 +36,11 @@
 						</div>
 					</div>
 					<div
-						class="qr-wrapper bg-blue p-3 d-flex flex-column flex-sm-row align-items-center"
-					>
+						class="qr-wrapper bg-blue p-3 d-flex flex-column flex-sm-row align-items-center">
 						<img
 							class="me-0 me-sm-4 mb-3 mb-sm-0"
 							src="../../assets/home-imgs/qr.svg"
-							alt=""
-						/>
+							alt="" />
 
 						<div class="">
 							<h5 class="qr-title">John Abraham , Ph.d</h5>

@@ -1,57 +1,26 @@
 <template>
-	<form
-		@submit.prevent="sendEmail($event)"
-		class="d-flex flex-column gap-4 text-blue w-100"
-	>
-		<div
-			class="d-flex flex-column flex-md-row gap-4 fw-bold font-inter font-medium-small"
-		>
+	<form @submit.prevent="sendEmail($event)" class="d-flex flex-column gap-4 text-blue w-100">
+		<div class="d-flex flex-column flex-md-row gap-4 fw-bold font-inter font-medium-small">
 			<div class="input-wrapper-block">
-				<img
-					class="form-icon"
-					src="../../assets/contact-imgs/user.svg"
-					alt=""
-				/>
+				<img class="form-icon" src="../../assets/contact-imgs/user.svg" alt="" />
 				<input
-					:class="
-						isNameValid === false
-							? 'form-input input-error'
-							: 'form-input'
-					"
+					:class="isNameValid === false ? 'form-input input-error' : 'form-input'"
 					type="text"
 					name="name"
 					placeholder="Name"
-					v-model="formData.name"
-				/>
-				<p
-					class="error-message"
-					v-if="isNameValid === false"
-				>
-					Name should not be empty
-				</p>
+					v-model="formData.name" />
+				<p class="error-message" v-if="isNameValid === false">Name should not be empty</p>
 			</div>
 
 			<div class="input-wrapper-block">
-				<img
-					class="form-icon"
-					src="../../assets/contact-imgs/mail.svg"
-					alt=""
-				/>
+				<img class="form-icon" src="../../assets/contact-imgs/mail.svg" alt="" />
 				<input
-					:class="
-						isEmailValid === false
-							? 'form-input input-error'
-							: 'form-input'
-					"
+					:class="isEmailValid === false ? 'form-input input-error' : 'form-input'"
 					type="email"
 					name="email"
 					placeholder="Email"
-					v-model="formData.email"
-				/>
-				<p
-					class="error-message"
-					v-if="isEmailValid === false"
-				>
+					v-model="formData.email" />
+				<p class="error-message" v-if="isEmailValid === false">
 					Please enter a valid emial address
 				</p>
 			</div>
@@ -59,26 +28,14 @@
 
 		<div class="d-flex fw-bold font-inter font-medium-small">
 			<div class="input-wrapper-block">
-				<img
-					class="form-icon"
-					src="../../assets/contact-imgs/phone.svg"
-					alt=""
-				/>
+				<img class="form-icon" src="../../assets/contact-imgs/phone.svg" alt="" />
 				<input
-					:class="
-						isPhoneValid === false
-							? 'form-input input-error'
-							: 'form-input'
-					"
+					:class="isPhoneValid === false ? 'form-input input-error' : 'form-input'"
 					type="text"
 					name="phone"
 					placeholder="Phone"
-					v-model="formData.phone"
-				/>
-				<p
-					class="error-message"
-					v-if="isPhoneValid === false"
-				>
+					v-model="formData.phone" />
+				<p class="error-message" v-if="isPhoneValid === false">
 					Please enter a valid phone number
 				</p>
 			</div>
@@ -86,19 +43,14 @@
 
 		<div class="d-flex fw-bold font-inter font-medium-small">
 			<div class="input-wrapper-block">
-				<img
-					class="form-icon"
-					src="../../assets/contact-imgs/edit.svg"
-					alt=""
-				/>
+				<img class="form-icon" src="../../assets/contact-imgs/edit.svg" alt="" />
 				<textarea
 					class="form-input"
 					name="message"
 					v-model="formData.message"
 					cols="30"
 					rows="5"
-					placeholder="Message"
-				></textarea>
+					placeholder="Message"></textarea>
 			</div>
 		</div>
 
@@ -108,23 +60,16 @@
 					class="form-check-input"
 					type="checkbox"
 					id="defaultCheck1"
-					v-model="formData.news"
-				/>
-				<label
-					class="form-check-label font-inter color-blue"
-					for="defaultCheck1"
-				>
-					Keep me up to date with news and offers from time to time by
-					email
+					v-model="formData.news" />
+				<label class="form-check-label font-inter color-blue" for="defaultCheck1">
+					Keep me up to date with news and offers from time to time by email
 				</label>
 			</div>
 		</div>
 
 		<div class="d-flex gap-3">
 			<div class="form-check p-0 w-100">
-				<base-button class="btn-yellow btn-xxl"
-					>Send a message</base-button
-				>
+				<base-button class="btn-yellow btn-xxl">Send a message</base-button>
 			</div>
 		</div>
 	</form>
@@ -150,7 +95,7 @@ export default defineComponent({
 		const isEmialSent = ref(false);
 
 		const validateForm = () => {
-			const nameRegex = /^[a-zA-Z -]+$/;  
+			const nameRegex = /^[a-zA-Z -]+$/;
 			const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
 			const phoneRegex = /^\+?[0-9]{10,}$/;
 
@@ -162,8 +107,7 @@ export default defineComponent({
 			isEmailValid.value = isInputValid(formData.email, emailRegex);
 			isPhoneValid.value = isInputValid(formData.phone, phoneRegex);
 
-			isFormValid.value =
-				isNameValid.value && isEmailValid.value && isPhoneValid.value;
+			isFormValid.value = isNameValid.value && isEmailValid.value && isPhoneValid.value;
 		};
 
 		const sendEmail = (e: Event) => {

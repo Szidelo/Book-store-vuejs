@@ -1,28 +1,16 @@
 <template>
 	<section class="container-fluid bg-white">
-		<div
-			class="testimonails-grid container mx-auto px-0 px-md-2 px-xxl-5 py-5"
-		>
-			<div
-				class="pe-5 d-flex flex-column justify-content-center align-items-start gap-3"
-			>
+		<div class="testimonails-grid container mx-auto px-0 px-md-2 px-xxl-5 py-5">
+			<div class="pe-5 d-flex flex-column justify-content-center align-items-start gap-3">
 				<h3 class="color-blue font-cardo">Words From Our Readers</h3>
-				<img
-					src="../../assets/Line.png"
-					alt="line"
-				/>
+				<img src="../../assets/Line.png" alt="line" />
 				<p>
-					We believe that bookstores are essential to a healthy
-					culture. They’re where authors can connect with readers,
-					where we discover new writers, where children get hooked on
-					the thrill of reading that can last a lifetime.
+					We believe that bookstores are essential to a healthy culture. They’re where
+					authors can connect with readers, where we discover new writers, where children
+					get hooked on the thrill of reading that can last a lifetime.
 				</p>
 				<div class="d-flex">
-					<img
-						class="me-3"
-						src="../../assets/home-imgs/rate.svg"
-						alt="rate"
-					/>
+					<img class="me-3" src="../../assets/home-imgs/rate.svg" alt="rate" />
 					<span>(4.8/5)</span>
 				</div>
 				<p class="subhead">Overall Customer Ratings</p>
@@ -34,8 +22,7 @@
 					:img="card.img"
 					:name="card.name"
 					:review="card.review"
-					:comment="card.comment"
-				/>
+					:comment="card.comment" />
 			</div>
 		</div>
 	</section>

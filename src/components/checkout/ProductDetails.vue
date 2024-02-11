@@ -10,16 +10,13 @@
 					:price="orderedProducts.getItemPrice(item)"
 					:title="item.title"
 					:description="item.description"
-					:quantity="item.quantity"
-				/>
+					:quantity="item.quantity" />
 			</ul>
 		</div>
 		<div>
 			<div class="d-flex justify-content-between">
 				<p class="mb-1">Books cost with VAT</p>
-				<strong
-					>$ {{ orderedProducts.getTotal().toFixed(2) }} USD</strong
-				>
+				<strong>$ {{ orderedProducts.getTotal().toFixed(2) }} USD</strong>
 			</div>
 			<div class="d-flex justify-content-between">
 				<p class="mb-1">Shipping cost</p>
@@ -29,11 +26,7 @@
 				<p class="mb-1">VAT amount (5%)</p>
 				<strong
 					>$
-					{{
-						(orderedProducts.getTotalWithShipment() * 0.05).toFixed(
-							2
-						)
-					}}
+					{{ (orderedProducts.getTotalWithShipment() * 0.05).toFixed(2) }}
 					USD</strong
 				>
 			</div>
@@ -45,7 +38,6 @@
 					USD</strong
 				>
 			</div>
-			
 		</div>
 	</div>
 </template>
@@ -76,6 +68,6 @@ ul {
 }
 .cart-detials {
 	box-shadow: 0px 5px 10px 0px rgba(4, 11, 20, 0.15);
-    height: 550px;
+	height: 550px;
 }
 </style>

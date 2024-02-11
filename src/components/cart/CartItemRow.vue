@@ -1,14 +1,8 @@
 <template>
 	<li class="w-100">
-		<div
-			class="cart-container d-flex flex-column flex-sm-row justify-content-between gap-2"
-		>
+		<div class="cart-container d-flex flex-column flex-sm-row justify-content-between gap-2">
 			<div class="image-wrapper py-2">
-				<img
-					class="cart-image"
-					:src="img"
-					alt=""
-				/>
+				<img class="cart-image" :src="img" alt="" />
 			</div>
 			<div class="cart-content py-2">
 				<h5>{{ title }}</h5>
@@ -16,15 +10,9 @@
 				<base-confirm
 					v-if="isConfirmMessageVisible"
 					@confirm="confirmRemoveItem"
-					@cancel="cancelRemoveItem"
-				>
+					@cancel="cancelRemoveItem">
 				</base-confirm>
-				<base-button
-					v-else
-					class="btn-link"
-					@click="removeItem"
-					>Remove
-				</base-button>
+				<base-button v-else class="btn-link" @click="removeItem">Remove </base-button>
 			</div>
 			<div class="cart-input py-2">
 				<input
@@ -32,8 +20,7 @@
 					:value="localQuantity"
 					min="1"
 					max="99"
-					@input="updateQuantity"
-				/>
+					@input="updateQuantity" />
 			</div>
 		</div>
 	</li>

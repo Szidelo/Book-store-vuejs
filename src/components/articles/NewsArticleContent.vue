@@ -1,24 +1,14 @@
 <template>
-	<div
-		v-if="currentArticle.title !== ''"
-	>
+	<div v-if="currentArticle.title !== ''">
 		<the-header :title="currentArticle.title"></the-header>
 
 		<main class="container px-2 px-md-5">
 			<div class="py-5 my-5">
-				<img
-					class="img-fluid img-banner"
-					:src="currentArticle.urlToImage"
-					alt=""
-				/>
+				<img class="img-fluid img-banner" :src="currentArticle.urlToImage" alt="" />
 				<div class="mt-4">
 					<h5 class="color-blue">
 						Publish at:
-						{{
-							currentArticle.publishedAt
-								.substring(10, 0)
-								.replaceAll("-", "/")
-						}}
+						{{ currentArticle.publishedAt.substring(10, 0).replaceAll("-", "/") }}
 						/ Author:
 						{{ currentArticle.author }}
 					</h5>
@@ -29,9 +19,7 @@
 						<p class="article-body">
 							{{ currentArticle.content.substring(201, 0) }}
 							<a :href="currentArticle.url"
-								><base-button class="btn-link"
-									>Readmore</base-button
-								></a
+								><base-button class="btn-link">Readmore</base-button></a
 							>
 						</p>
 					</div>
@@ -40,11 +28,7 @@
 				<div class="my-4"></div>
 
 				<div class="quote">
-					<img
-						class="quotes-img"
-						:src="quotesImg"
-						alt="quotes"
-					/>
+					<img class="quotes-img" :src="quotesImg" alt="quotes" />
 					<p class="quote-text color-white text-center">
 						"{{ currentArticle.description }}"
 					</p>
@@ -61,21 +45,14 @@
 						:title="article.title"
 						:author="article.author"
 						:description="article.description"
-						@click="refreshPage"
-					/>
+						@click="refreshPage" />
 				</div>
 			</div>
 		</main>
 		<the-footer></the-footer>
 	</div>
-	<div
-		v-else
-		class="spinner-wrapper d-flex justify-content-center align-items-center"
-	>
-		<div
-			class="spinner-border color-blue"
-			role="status"
-		>
+	<div v-else class="spinner-wrapper d-flex justify-content-center align-items-center">
+		<div class="spinner-border color-blue" role="status">
 			<span class="visually-hidden">Loading...</span>
 		</div>
 	</div>
@@ -114,11 +91,8 @@ export default defineComponent({
 				const filteredWords = words.filter((word) => word.length >= 3);
 
 				if (filteredWords.length > 0) {
-					const randomIndex = Math.floor(
-						Math.random() * filteredWords.length
-					);
-					return (relevantArticles.value =
-						filteredWords[randomIndex]);
+					const randomIndex = Math.floor(Math.random() * filteredWords.length);
+					return (relevantArticles.value = filteredWords[randomIndex]);
 				}
 			}
 		};
@@ -140,19 +114,16 @@ export default defineComponent({
 		});
 
 		const findCurrentArticle = async () => {
-			let foundArticles = await news.fetchData(
-				route.params.articleTitle as string
-			);
+			let foundArticles = await news.fetchData(route.params.articleTitle as string);
 
 			// if current article cannot be created be articleTitle will search for the first three words and get the first article from the found array
-			if(foundArticles.length === 0) {
-				let keyWords = title.split(" ")
-				let newKeyWords = (keyWords[0] + " " + keyWords[1] + " " + keyWords[2])
+			if (foundArticles.length === 0) {
+				let keyWords = title.split(" ");
+				let newKeyWords = keyWords[0] + " " + keyWords[1] + " " + keyWords[2];
 
-				console.log(newKeyWords)
+				console.log(newKeyWords);
 
-				foundArticles = await news.fetchData(newKeyWords)
-
+				foundArticles = await news.fetchData(newKeyWords);
 			}
 
 			currentArticle.author = foundArticles[0]?.author || "";
@@ -167,7 +138,7 @@ export default defineComponent({
 			currentArticle.url = foundArticles[0]?.url || "";
 			currentArticle.urlToImage = foundArticles[0]?.urlToImage || "";
 
-			console.log(foundArticles)
+			console.log(foundArticles);
 		};
 
 		getRelevantArticles();

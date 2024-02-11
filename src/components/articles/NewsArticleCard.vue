@@ -3,21 +3,14 @@
 		<div class="card custom-card mb-4">
 			<router-link class="card__img-container" :to="'/articles/' + title">
 				<div>
-					<img
-						:src="img"
-						alt=""
-					/>
+					<img :src="img" alt="" />
 				</div>
 			</router-link>
-			<div
-				class="card-body d-flex flex-column justify-content-between p-3"
-			>
+			<div class="card-body d-flex flex-column justify-content-between p-3">
 				<div class="card__body-header">
 					<h5 class="color-bue py-3">{{ title }}</h5>
 				</div>
-				<div
-					class="card__body-bottom d-flex flex-column justify-content-between"
-				>
+				<div class="card__body-bottom d-flex flex-column justify-content-between">
 					<div class="overflow-hidden card__body-description">
 						<p>{{ description }}</p>
 					</div>
@@ -56,7 +49,7 @@ export default defineComponent({
 		date: {
 			type: String,
 			required: true,
-		}
+		},
 	},
 });
 </script>
@@ -91,8 +84,8 @@ img:hover {
 
 .card__body-header {
 	min-height: 50px;
-    max-height: 80px;
-    overflow: hidden;
+	max-height: 80px;
+	overflow: hidden;
 }
 
 .card__body-description {

@@ -1,69 +1,35 @@
 <template>
 	<nav class="bg-blue">
 		<ul :class="!isNavVisible ? 'mobile-nav' : 'mobile-nav visible'">
-			<li
-				@click="toggleNav"
-				class="close-nav"
-			>
-				X
-			</li>
-			<li
-				v-for="(link, index) in links"
-				:key="index"
-			>
-				<router-link
-					@click="toggleNav"
-					:to="link.path"
-					>{{ link.name }}</router-link
-				>
+			<li @click="toggleNav" class="close-nav">X</li>
+			<li v-for="(link, index) in links" :key="index">
+				<router-link @click="toggleNav" :to="link.path">{{ link.name }}</router-link>
 			</li>
 		</ul>
-		<div
-			class="container d-flex flex-column flex-lg-row justify-content-between px-2 px-xxl-5"
-		>
-			<div
-				class="d-flex justify-content-between justify-content-xl-start"
-			>
+		<div class="container d-flex flex-column flex-lg-row justify-content-between px-2 px-xxl-5">
+			<div class="d-flex justify-content-between justify-content-xl-start">
 				<base-logo></base-logo>
 				<TheNavSocials />
 			</div>
 			<ul
-				class="d-flex justify-content-start justify-content-xl-center align-items-center gap-4 gap-xxl-5 px-0 mt-3 mt-lg-0"
-			>
-				<li
-					class="desktop-nav"
-					v-for="(link, index) in links"
-					:key="index"
-				>
+				class="d-flex justify-content-start justify-content-xl-center align-items-center gap-4 gap-xxl-5 px-0 mt-3 mt-lg-0">
+				<li class="desktop-nav" v-for="(link, index) in links" :key="index">
 					<router-link :to="link.path">{{ link.name }}</router-link>
 				</li>
 
 				<li>
-					<img
-						@click="showCart"
-						class="cart"
-						src="../../assets//cart.png"
-						alt=""
-					/>
+					<img @click="showCart" class="cart" src="../../assets//cart.png" alt="" />
 					<span>{{ numberOfProducts }}</span>
 				</li>
 				<teleport to="#app">
-					<the-cart
-						@close="closeCart"
-						v-if="cardIsVisible"
-					></the-cart>
+					<the-cart @close="closeCart" v-if="cardIsVisible"></the-cart>
 				</teleport>
 
 				<router-link to="/store">
-					<base-button class="btn-yellow btn-sm"
-						>Order Today
-					</base-button>
+					<base-button class="btn-yellow btn-sm">Order Today </base-button>
 				</router-link>
 
-				<div
-					@click="toggleNav"
-					class="burger"
-				>
+				<div @click="toggleNav" class="burger">
 					<div class="burger-line"></div>
 					<div class="burger-line"></div>
 					<div class="burger-line"></div>
@@ -91,11 +57,11 @@ export default defineComponent({
 		const orderedProducts = inject("orderedProducts") as Cart;
 
 		const numberOfProducts = computed(() => {
-			if(orderedProducts.getTotalQuantity() > 99) {
-				return "99+"
+			if (orderedProducts.getTotalQuantity() > 99) {
+				return "99+";
 			}
-			return orderedProducts.getTotalQuantity()
-		})
+			return orderedProducts.getTotalQuantity();
+		});
 
 		const cardIsVisible = ref(false);
 

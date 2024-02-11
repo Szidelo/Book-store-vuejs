@@ -9,17 +9,12 @@
 				:title="card.title"
 				:text="card.text"
 				:amount="card.amount"
-				:length="card.length"
-			/>
+				:length="card.length" />
 		</div>
-		<div
-			class="d-flex flex-column justify-content-center align-items-center mb-5"
-		>
+		<div class="d-flex flex-column justify-content-center align-items-center mb-5">
 			<div class="wrapper px-2">
 				<router-link to="/contact">
-					<base-button class="btn-yellow btn-xxl"
-						>Start a 15-Days Free Trail</base-button
-					>
+					<base-button class="btn-yellow btn-xxl">Start a 15-Days Free Trail</base-button>
 				</router-link>
 				<p class="text-center mt-3">
 					Short description about each chapter <br />

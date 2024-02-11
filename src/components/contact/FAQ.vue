@@ -2,15 +2,10 @@
 	<section class="container-fluid bg-grayish-blue">
 		<base-section-header title="Frequent Questions?" />
 		<div class="d-flex flex-column justify-content-center pb-5">
-			<div
-				v-for="(question, index) in questions"
-				:key="index"
-				class="accordion-items"
-			>
+			<div v-for="(question, index) in questions" :key="index" class="accordion-items">
 				<div
 					@click="handleVisibility(index)"
-					class="accordion font-cardo d-flex align-items-center"
-				>
+					class="accordion font-cardo d-flex align-items-center">
 					<div class="circle me-3"></div>
 					{{ question.q }}
 				</div>
@@ -19,8 +14,7 @@
 					class="panel"
 					:style="{
 						maxHeight: isPanelVisible === index ? '500px' : '0',
-					}"
-				>
+					}">
 					<p class="p-4">
 						{{ question.a }}
 					</p>
@@ -62,7 +56,6 @@ export default defineComponent({
 
 		const handleVisibility = (index: number) => {
 			isPanelVisible.value = isPanelVisible.value === index ? null : index;
-				
 		};
 
 		return { questions, isPanelVisible, handleVisibility };

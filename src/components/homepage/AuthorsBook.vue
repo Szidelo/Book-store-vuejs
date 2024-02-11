@@ -1,9 +1,5 @@
 <template>
-	<base-dialog
-		v-if="productIsAdded"
-		@close="closeDialog"
-		title="Info"
-	>
+	<base-dialog v-if="productIsAdded" @close="closeDialog" title="Info">
 		<h6>{{ productTitle }} Was Added To Your Cart!</h6>
 	</base-dialog>
 	<section :class="'container-fluid ' + background">
@@ -20,8 +16,7 @@
 				:price="book.price"
 				:format="book.format"
 				:background="background"
-				@add-product="addToCart(book)"
-			/>
+				@add-product="addToCart(book)" />
 		</div>
 	</section>
 </template>

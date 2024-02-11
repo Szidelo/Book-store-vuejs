@@ -1,26 +1,19 @@
 <template>
 	<div class="search-bar d-flex px-md-5 px-xxl-5">
-		<input
-			v-model="enteredValue"
-			type="text"
-			placeholder="Search..."
-		/>
-		<base-button
-			@click="news.serach(enteredValue)"
-			class="btn-icon btn-search"
+		<input v-model="enteredValue" type="text" placeholder="Search..." />
+		<base-button @click="news.serach(enteredValue)" class="btn-icon btn-search"
 			>Search</base-button
 		>
 	</div>
 	<div class="container row px-0 px-md-2 px-xxl-5 py-5">
 		<news-article-card
-			v-for="(article, index) in news.getData().slice(0,30)"
+			v-for="(article, index) in news.getData().slice(0, 30)"
 			:key="index"
 			:id="index.toString()"
 			:title="article.title"
 			:img="article.urlToImage"
 			:description="article.description"
-			:date="article.publishedAt"
-		></news-article-card>
+			:date="article.publishedAt"></news-article-card>
 	</div>
 </template>
 
@@ -43,12 +36,10 @@ export default defineComponent({
 			news.fetchData("books");
 		});
 
-
 		return {
 			enteredValue,
 			news,
 		};
-
 	},
 });
 </script>

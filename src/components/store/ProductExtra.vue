@@ -1,14 +1,10 @@
 <template>
 	<div class="d-flex flex-column justify-content-center pb-5 mb-5">
 		<div class="d-flex flex-column flex-md-row gap-3 mx-auto mb-5 px-2">
-			<base-button
-				@click="setContent(description)"
-				:class="btnClass(description)"
+			<base-button @click="setContent(description)" :class="btnClass(description)"
 				>product description</base-button
 			>
-			<base-button
-				@click="setContent(info)"
-				:class="btnClass(info)"
+			<base-button @click="setContent(info)" :class="btnClass(info)"
 				>aditional info</base-button
 			>
 		</div>
@@ -36,9 +32,7 @@ export default defineComponent({
 
 		const btnClass = computed(() => {
 			return (option: string) => {
-				return option === content.value
-					? "btn-description"
-					: "btn-info";
+				return option === content.value ? "btn-description" : "btn-info";
 			};
 		});
 

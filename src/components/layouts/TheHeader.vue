@@ -4,10 +4,7 @@
 			<h2 class="banner-title">{{ title }}</h2>
 		</slot>
 		<div class="d-flex">
-			<img
-				src="../../assets/Line.png"
-				alt=""
-			/>
+			<img src="../../assets/Line.png" alt="" />
 		</div>
 		<slot name="text"> </slot>
 	</header>

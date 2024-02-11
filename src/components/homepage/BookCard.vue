@@ -1,23 +1,15 @@
 <template>
 	<div class="col-12 col-lg-6">
 		<div :class="'card d-flex flex-column flex-xl-row mb-4 ' + background">
-			<router-link
-				class="card__img-container"
-				:to="'/store/' + id"
-			>
-				<img
-					class="img-fluid h-100 book-img"
-					:src="img"
-					alt=""
-				/>
+			<router-link class="card__img-container" :to="'/store/' + id">
+				<img class="img-fluid h-100 book-img" :src="img" alt="" />
 			</router-link>
 
 			<div
 				:class="
 					'card-body d-flex flex-column justify-content-between h-100 p-0 p-sm-3 ' +
 					background
-				"
-			>
+				">
 				<div class="card__header">
 					<h5 class="color-blue py-3">{{ title }}</h5>
 				</div>
@@ -36,34 +28,19 @@
 							width="16"
 							height="16"
 							viewBox="0 0 16 16"
-							fill="none"
-						>
-							<circle
-								cx="8"
-								cy="8"
-								r="8"
-								fill="#FFCA42"
-							/>
+							fill="none">
+							<circle cx="8" cy="8" r="8" fill="#FFCA42" />
 						</svg>
 					</div>
 
 					<h5 class="color-blue py-3">{{ format }}</h5>
 				</div>
 				<div class="d-flex flex-column flex-sm-row gap-3">
-					<base-button
-						@click="$emit('add-product')"
-						class="btn-icon"
-					>
-						<img
-							class="card-icon"
-							:src="icon"
-							alt=""
-						/>
+					<base-button @click="$emit('add-product')" class="btn-icon">
+						<img class="card-icon" :src="icon" alt="" />
 					</base-button>
 					<router-link :to="'/store/' + id">
-						<base-button class="btn-white btn-sm"
-							>View Details</base-button
-						>
+						<base-button class="btn-white btn-sm">View Details</base-button>
 					</router-link>
 				</div>
 			</div>

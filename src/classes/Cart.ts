@@ -15,9 +15,7 @@ class Cart {
 	}
 
 	public addItem(item: CartItem) {
-		const existingItemIndex = this.items.value.findIndex(
-			(cartItem) => cartItem.id === item.id
-		);
+		const existingItemIndex = this.items.value.findIndex((cartItem) => cartItem.id === item.id);
 
 		if (existingItemIndex !== -1) {
 			this.items.value[existingItemIndex].quantity += item.quantity;
@@ -37,9 +35,7 @@ class Cart {
 	}
 
 	public getShipmentCost() {
-		return this.getTotal() < 100 && this.getTotal() !== 0
-			? this.shipmentCost
-			: 0;
+		return this.getTotal() < 100 && this.getTotal() !== 0 ? this.shipmentCost : 0;
 	}
 
 	public getTotal() {
@@ -52,9 +48,7 @@ class Cart {
 	}
 
 	public getTotalWithShipment() {
-		return this.getTotal() < 100
-			? this.getTotal() + this.getShipmentCost()
-			: this.getTotal();
+		return this.getTotal() < 100 ? this.getTotal() + this.getShipmentCost() : this.getTotal();
 	}
 
 	public getTotalQuantity() {

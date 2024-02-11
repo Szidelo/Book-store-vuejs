@@ -5,7 +5,7 @@
 				<CheckoutForm />
 			</div>
 			<div class="col-12 col-xl-4">
-				<ProductDetails/>
+				<ProductDetails />
 			</div>
 		</div>
 	</section>

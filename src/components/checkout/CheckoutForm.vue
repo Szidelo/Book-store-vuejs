@@ -1,138 +1,90 @@
 <template>
 	<h2 class="color-blue text-center">Shipping Details</h2>
 	<form @submit.prevent="handleCheckout">
-		<div
-			class="d-flex flex-column gap-4 fw-bold font-inter font-medium-small"
-		>
+		<div class="d-flex flex-column gap-4 fw-bold font-inter font-medium-small">
 			<div class="input-wrapper-block">
-				<label
-					class="color-blue ps-1 mb-3"
-					for="email"
-					>Email Address</label
-				>
+				<label class="color-blue ps-1 mb-3" for="email">Email Address</label>
 				<input
 					class="form-input"
 					type="email"
 					name="email"
 					placeholder="Email..."
-					v-model="enteredData.email"
-				/>
+					v-model="enteredData.email" />
 			</div>
 			<div class="input-wrapper-block"></div>
 		</div>
-		<div
-			class="d-flex flex-column flex-md-row gap-4 fw-bold font-inter font-medium-small mb-4"
-		>
+		<div class="d-flex flex-column flex-md-row gap-4 fw-bold font-inter font-medium-small mb-4">
 			<div class="input-wrapper-block">
-				<label
-					class="color-blue ps-1 mb-3"
-					for="name"
-					>Name</label
-				>
+				<label class="color-blue ps-1 mb-3" for="name">Name</label>
 				<input
 					class="form-input"
 					type="text"
 					name="name"
 					placeholder="Name..."
-					v-model="enteredData.name"
-				/>
+					v-model="enteredData.name" />
 			</div>
 
 			<div class="input-wrapper-block">
-				<label
-					class="color-blue ps-1 mb-3"
-					for="surname"
-					>Surname</label
-				>
+				<label class="color-blue ps-1 mb-3" for="surname">Surname</label>
 				<input
 					class="form-input"
 					type="text"
 					name="surname"
 					placeholder="Surname..."
-					v-model="enteredData.surname"
-				/>
+					v-model="enteredData.surname" />
 			</div>
 
 			<div class="input-wrapper-block">
-				<label
-					class="color-blue ps-1 mb-3"
-					for="phone"
-					>Phone</label
-				>
+				<label class="color-blue ps-1 mb-3" for="phone">Phone</label>
 				<input
 					class="form-input"
 					type="text"
 					name="phone"
 					placeholder="Phone number..."
-					v-model="enteredData.phone"
-				/>
+					v-model="enteredData.phone" />
 			</div>
 		</div>
 
-		<div
-			class="d-flex flex-column flex-md-row gap-4 fw-bold font-inter font-medium-small mb-4"
-		>
+		<div class="d-flex flex-column flex-md-row gap-4 fw-bold font-inter font-medium-small mb-4">
 			<div class="input-wrapper-block">
-				<label
-					class="color-blue ps-1 mb-3"
-					for="country"
-					>Country</label
-				>
+				<label class="color-blue ps-1 mb-3" for="country">Country</label>
 				<input
 					class="form-input"
 					type="text"
 					name="country"
 					placeholder="Country"
-					v-model="enteredData.country"
-				/>
+					v-model="enteredData.country" />
 			</div>
 
 			<div class="input-wrapper-block">
-				<label
-					class="color-blue ps-1 mb-3"
-					for="county"
-					>County</label
-				>
+				<label class="color-blue ps-1 mb-3" for="county">County</label>
 				<input
 					class="form-input"
 					type="text"
 					name="County"
 					placeholder="County"
-					v-model="enteredData.county"
-				/>
+					v-model="enteredData.county" />
 			</div>
 
 			<div class="input-wrapper-block">
-				<label
-					class="color-blue ps-1 mb-3"
-					for="city"
-					>City</label
-				>
+				<label class="color-blue ps-1 mb-3" for="city">City</label>
 				<input
 					class="form-input"
 					type="text"
 					name="city"
 					placeholder="City"
-					v-model="enteredData.city"
-				/>
+					v-model="enteredData.city" />
 			</div>
 		</div>
-		<div
-			class="d-flex flex-column gap-4 fw-bold font-inter font-medium-small"
-		>
+		<div class="d-flex flex-column gap-4 fw-bold font-inter font-medium-small">
 			<div class="input-wrapper-block">
-				<label
-					class="color-blue ps-1 mb-3"
-					for="address"
-					>Address</label
-				>
+				<label class="color-blue ps-1 mb-3" for="address">Address</label>
 				<input
 					class="form-input"
 					type="text"
 					name="address"
 					placeholder="Street , nr, etc.."
-					v-model="enteredData.address"
-				/>
+					v-model="enteredData.address" />
 			</div>
 			<div class="input-wrapper-block"></div>
 		</div>
@@ -142,22 +94,15 @@
 					class="form-check-input"
 					type="checkbox"
 					id="defaultCheck1"
-					v-model="enteredData.news"
-				/>
-				<label
-					class="form-check-label font-inter color-blue"
-					for="defaultCheck1"
-				>
-					Keep me up to date with news and offers from time to time by
-					email
+					v-model="enteredData.news" />
+				<label class="form-check-label font-inter color-blue" for="defaultCheck1">
+					Keep me up to date with news and offers from time to time by email
 				</label>
 			</div>
 		</div>
 
 		<base-button class="btn-yellow btn-xxl">{{
-			validate
-				? "Go to Payment"
-				: "Fill out all inputs to go to paymanet!"
+			validate ? "Go to Payment" : "Fill out all inputs to go to paymanet!"
 		}}</base-button>
 	</form>
 </template>
@@ -183,9 +128,7 @@ export default defineComponent({
 			news: false,
 		});
 
-		const amount = (orderedProducts.getTotalWithShipment() * 100).toFixed(
-			0
-		);
+		const amount = (orderedProducts.getTotalWithShipment() * 100).toFixed(0);
 
 		const validate = computed(() => {
 			if (

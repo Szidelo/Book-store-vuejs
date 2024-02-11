@@ -1,8 +1,7 @@
 <template>
 	<section class="container-fluid bg-white">
-
 		<base-section-header title="What will you learn?" />
-		
+
 		<div class="row container mx-auto px-0 px-md-2 px-xxl-5 py-5">
 			<div class="col-12 col-xl-6 mx-auto mx-xl-0 order-1 order-md-2 order-xl-1">
 				<div class="row mb-5 mb-md-0">
@@ -10,19 +9,16 @@
 						v-for="card in learnCards"
 						:key="card.number"
 						:number="card.number"
-						:text="card.text"
-					/>
+						:text="card.text" />
 				</div>
 			</div>
 			<div
-				class="col-12 col-lg-8 col-xl-6 d-flex justify-content-center mx-auto mx-xl-0 mb-4 mb-xl-0 order-2 order-md-1 order-xl-2"
-			>
+				class="col-12 col-lg-8 col-xl-6 d-flex justify-content-center mx-auto mx-xl-0 mb-4 mb-xl-0 order-2 order-md-1 order-xl-2">
 				<div class="img-wrapper">
 					<img
 						class="img-fluid img-author"
 						src="../../assets/home-imgs/learn-img.jpg"
-						alt=""
-					/>
+						alt="" />
 				</div>
 			</div>
 		</div>

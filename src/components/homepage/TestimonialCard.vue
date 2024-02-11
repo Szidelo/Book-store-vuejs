@@ -1,25 +1,14 @@
 <template>
 	<div class="custom-card wrapper bg-blue p-3 p-sm-4 me-0 me-md-4">
 		<div
-			class="d-flex flex-column flex-sm-row justify-content-center justify-content-sm-start align-items-center gap-3 mb-2 mx-auto mx-sm-0"
-		>
-			<img
-				class="avatar"
-				:src="img"
-				alt="avatar"
-			/>
+			class="d-flex flex-column flex-sm-row justify-content-center justify-content-sm-start align-items-center gap-3 mb-2 mx-auto mx-sm-0">
+			<img class="avatar" :src="img" alt="avatar" />
 			<div class="d-flex flex-column align-items-start">
 				<h5 class="color-white font-cardo">{{ name }}</h5>
-				<img
-					class="mx-auto mx-sm-0"
-					src="../../assets/home-imgs/rate.svg"
-					alt="rate"
-				/>
+				<img class="mx-auto mx-sm-0" src="../../assets/home-imgs/rate.svg" alt="rate" />
 			</div>
 		</div>
-		<h5 class="quote color-white font-cardo text-center text-sm-start">
-			" {{ review }} "
-		</h5>
+		<h5 class="quote color-white font-cardo text-center text-sm-start">" {{ review }} "</h5>
 		<p class="text-center text-sm-start">{{ comment }}</p>
 	</div>
 </template>

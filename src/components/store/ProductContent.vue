@@ -1,22 +1,13 @@
 <template>
 	<section>
-		<base-dialog
-			v-if="productIsAdded"
-			@close="closeDialog"
-			title="Info"
-		>
+		<base-dialog v-if="productIsAdded" @close="closeDialog" title="Info">
 			<h6>{{ currentProduct.title }} Was Added To Your Cart!</h6>
 		</base-dialog>
 		<div
 			:id="currentProduct.id"
-			class="d-flex flex-column flex-xl-row align-items-center justify-content-center column-gap-4 my-5 py-4"
-		>
+			class="d-flex flex-column flex-xl-row align-items-center justify-content-center column-gap-4 my-5 py-4">
 			<div class="img-container">
-				<img
-					class="img-fluid product-book"
-					:src="currentProduct.img"
-					alt=""
-				/>
+				<img class="img-fluid product-book" :src="currentProduct.img" alt="" />
 			</div>
 			<div class="p-3">
 				<h2>{{ currentProduct.title }}</h2>
@@ -37,23 +28,15 @@
 							type="number"
 							placeholder="0"
 							v-model="enteredNumberOfProducts"
-							min="1"
-						/>
+							min="1" />
 					</div>
 					<div class="col-12 col-md-9">
-						<base-button
-							@click="addToCart"
-							class="btn-yellow btn-xxl"
+						<base-button @click="addToCart" class="btn-yellow btn-xxl"
 							>Add To Cart</base-button
 						>
 					</div>
 				</div>
-				<p
-					v-if="!isValidOrder"
-					class="mt-3 color-red"
-				>
-					Order at least one product
-				</p>
+				<p v-if="!isValidOrder" class="mt-3 color-red">Order at least one product</p>
 			</div>
 		</div>
 	</section>
@@ -77,9 +60,7 @@ export default defineComponent({
 		ProductShipment,
 	},
 	setup() {
-		const products = JSON.parse(
-			localStorage.getItem("products") || "[]"
-		) as Product[];
+		const products = JSON.parse(localStorage.getItem("products") || "[]") as Product[];
 
 		const orderedProducts = inject("orderedProducts") as Cart;
 

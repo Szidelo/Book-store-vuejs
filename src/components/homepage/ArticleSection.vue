@@ -3,15 +3,14 @@
 		<base-section-header title="Latest Articles"></base-section-header>
 
 		<div class="container row px-0 px-md-2 px-xxl-5 py-5 mx-auto">
-			<NewsArticleCard 
+			<NewsArticleCard
 				v-for="(article, index) in news.getData().slice(0, 3)"
 				:key="index"
 				:id="index.toString()"
 				:title="article.title"
 				:img="article.urlToImage"
 				:description="article.description"
-				:date="article.publishedAt"
-			/>
+				:date="article.publishedAt" />
 		</div>
 	</section>
 </template>

@@ -1,29 +1,14 @@
 <template>
-	<div
-		@click="$emit('close')"
-		class="background-div"
-	></div>
+	<div @click="$emit('close')" class="background-div"></div>
 	<div class="cart">
-		<header
-			class="d-flex justify-content-between align-items-center bg-yellow w-100 px-4 py-2"
-		>
+		<header class="d-flex justify-content-between align-items-center bg-yellow w-100 px-4 py-2">
 			<h4 class="color-white m-0">Your Cart</h4>
-			<button
-				class="close-btn"
-				@click="$emit('close')"
-			>
-				x
-			</button>
+			<button class="close-btn" @click="$emit('close')">x</button>
 		</header>
 		<div class="p-3">
 			<div class="cart-content w-100">
 				<ul>
-					<p
-						v-if="!productsInCart"
-						class="text-center"
-					>
-						No Items In Your Card
-					</p>
+					<p v-if="!productsInCart" class="text-center">No Items In Your Card</p>
 					<cart-item-row
 						v-else
 						v-for="item in orderedProducts.getItems()"
@@ -36,33 +21,23 @@
 						@remove-item="orderedProducts.removeItem(item.id)"
 						@update-quantity="
 							orderedProducts.updateQuantity(item, $event)
-						"
-					></cart-item-row>
+						"></cart-item-row>
 				</ul>
 			</div>
 			<div>
 				<div class="d-flex justify-content-between">
 					<p class="mb-1">Books cost with VAT</p>
-					<strong
-						>$
-						{{ orderedProducts.getTotal().toFixed(2) }} USD</strong
-					>
+					<strong>$ {{ orderedProducts.getTotal().toFixed(2) }} USD</strong>
 				</div>
 				<div class="d-flex justify-content-between">
 					<p class="mb-1">Shipping cost</p>
-					<strong
-						>$ {{ orderedProducts.getShipmentCost() }} USD</strong
-					>
+					<strong>$ {{ orderedProducts.getShipmentCost() }} USD</strong>
 				</div>
 				<div class="d-flex justify-content-between">
 					<p class="mb-1">VAT amount (5%)</p>
 					<strong
 						>$
-						{{
-							(
-								orderedProducts.getTotalWithShipment() * 0.05
-							).toFixed(2)
-						}}
+						{{ (orderedProducts.getTotalWithShipment() * 0.05).toFixed(2) }}
 						USD</strong
 					>
 				</div>
@@ -74,12 +49,8 @@
 						USD</strong
 					>
 				</div>
-				<router-link
-					@click="$emit('close')"
-					to="/checkout"
-					><base-button class="btn-yellow btn-xxl mt-2"
-						>Continue To Checkout</base-button
-					>
+				<router-link @click="$emit('close')" to="/checkout"
+					><base-button class="btn-yellow btn-xxl mt-2">Continue To Checkout</base-button>
 				</router-link>
 			</div>
 		</div>

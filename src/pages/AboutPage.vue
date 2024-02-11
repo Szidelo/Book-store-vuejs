@@ -8,14 +8,12 @@
 			</p>
 		</template>
 	</the-header>
-	<section
-		class="container-fluid d-flex flex-column align-items-center py-0 px-0 bg-light"
-	>
+	<section class="container-fluid d-flex flex-column align-items-center py-0 px-0 bg-light">
 		<!-- components here -->
 		<AboutBanner />
-		<AboutStory/>
+		<AboutStory />
 		<AuthorsBook :background="'bg-light'" />
-		<TrustedSection/>
+		<TrustedSection />
 		<SubscribeSection />
 	</section>
 	<the-footer />
@@ -35,7 +33,7 @@ export default defineComponent({
 		AuthorsBook,
 		SubscribeSection,
 		AboutStory,
-		TrustedSection
+		TrustedSection,
 	},
 });
 </script>

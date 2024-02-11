@@ -5,14 +5,9 @@
 				<div
 					v-for="item in data"
 					:key="item.name"
-					class="labels d-flex flex-column justify-content-start align-items-center gap-3"
-				>
+					class="labels d-flex flex-column justify-content-start align-items-center gap-3">
 					<div class="img-container d-flex justify-content-center align-items-center">
-						<img
-							:src="item.icon"
-							class="trusted-logo"
-							alt="logo"
-						/>
+						<img :src="item.icon" class="trusted-logo" alt="logo" />
 					</div>
 					<h4 class="color-blue mb-0">{{ item.name }}</h4>
 					<p class="text-center color-blue">{{ item.desc }}</p>

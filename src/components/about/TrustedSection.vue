@@ -6,14 +6,9 @@
 				<div
 					v-for="label in labels"
 					:key="label.name"
-					class="labels d-flex flex-column justify-content-start align-items-center gap-3"
-				>
+					class="labels d-flex flex-column justify-content-start align-items-center gap-3">
 					<div class="img-container mb-3">
-						<img
-							:src="label.img"
-                            class="trusted-logo"
-							alt="logo"
-						/>
+						<img :src="label.img" class="trusted-logo" alt="logo" />
 					</div>
 					<h5 class="color-blue">{{ label.name }}</h5>
 					<p class="text-center">{{ label.desc }}</p>
@@ -64,15 +59,15 @@ export default defineComponent({
 
 <style scoped>
 .labels {
-    max-width: 300px;
+	max-width: 300px;
 }
 .img-container {
-    min-height: 100px;
+	min-height: 100px;
 }
 
 .trusted-logo {
-    height: 100%;
-    width: auto;
-    object-fit: contain;
+	height: 100%;
+	width: auto;
+	object-fit: contain;
 }
 </style>
